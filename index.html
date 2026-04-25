@@ -81,13 +81,13 @@
 
 <aside>
     <div class="logo">🚔 MOCHI POLICE</div>
-    <div class="nav-item active" onclick="switchTab('notice', this)">📋 공지 시스템</div>
+    <div class="nav-item active" onclick="switchTab('notice', this)">📋 사이드공지</div>
     <div class="nav-item" onclick="switchTab('calc', this)">⚖️ 벌금 계산기</div>
 </aside>
 
 <main>
     <div class="header">
-        <h2 id="title">공지 시스템</h2>
+        <h2 id="title">사이드공지</h2>
         <div class="clock" id="clock">00:00:00</div>
     </div>
 
@@ -134,7 +134,10 @@
     const DB = {
         "강력/RP 범죄": [
             ["ATM 강도", 50000000, 10], ["편의점 강도", 80000000, 10], ["빈집 털이", 50000000, 10],
-            ["보석상 습격", 250000000, 20], ["남부은행", 350000000, 20], ["즉흥 RP", 200000000, 20],
+            ["빈집2 털이", 50000000, 10], 
+            ["보석상 습격", 250000000, 20], 
+            ["도넛 가게", 300000000, 10], 
+            ["남부은행", 350000000, 20], ["즉흥 RP", 200000000, 20],
             ["수배 RP", 200000000, 20], ["영장 RP 최초 수배자", 600000000, 40], ["영장 RP 참여자", 300000000, 30]
         ],
         "경범죄 상황": [
@@ -156,10 +159,11 @@
         ]
     };
 
+    // [변경] "주요 상황" -> "중 대형 및 기타RP" 및 세부 항목 추가
     const NOTICES = {
         "ATM 상황": ["광장 밑 ATM", "신경 위 ATM", "은행 밑 ATM"],
         "편의점 상황": ["남부 편의점", "신경 옆 편의점", "신경 위 편의점", "은행 뒤 편의점"],
-        "주요 상황": ["보석상", "남부은행", "남부 빈집", "헬기 이륙"]
+        "중 대형 및 기타RP": ["보석상", "도넛가게", "남부은행", "남부 빈집", "남부 빈집2", "헬기 이륙"]
     };
 
     let selected = [];
@@ -176,7 +180,17 @@
                 let btn = document.createElement('button');
                 btn.innerText = name;
                 btn.onclick = () => {
-                    let msg = name === "헬기 이륙" ? "/경찰청 경찰청 헬기 영공순찰로 인하여 이륙합니다." : `/경찰청 ╭《 ${name} 강도사건 발생 》╮ 경찰청이 출동합니다. 현 시간부로 사건 지점으로부터 2블럭이상 접근 시 공범으로 간주하여 사살 및 긴급체포 등 불이익이 발생할 수 있습니다. -『 경찰청 』-`;
+                    let msg = "";
+                    // [변경] 각 항목별 전용 문구 분기 처리
+                    if(name === "헬기 이륙") {
+                        msg = "/경찰청 경찰청 헬기 영공순찰로 인하여 이륙합니다.";
+                    } else if(name === "도넛가게") {
+                        msg = "/경찰청 ╭《 도넛가게 강도사건 발생 》╮ 경찰청이 출동합니다. 현 시간부로 사건 지점으로부터 2블럭이상 접근 시 공범으로 간주하여 사살 및 긴급체포 등 불이익이 발생할 수 있습니다. -『 경찰청 』-";
+                    } else if(name === "남부 빈집2") {
+                        msg = "/경찰청 ╭《 남부 빈집2 강도사건 발생 》╮ 경찰청이 출동합니다. 현 시간부로 사건 지점으로부터 2블럭이상 접근 시 공범으로 간주하여 사살 및 긴급체포 등 불이익이 발생할 수 있습니다. -『 경찰청 』-";
+                    } else {
+                        msg = `/경찰청 ╭《 ${name} 강도사건 발생 》╮ 경찰청이 출동합니다. 현 시간부로 사건 지점으로부터 2블럭이상 접근 시 공범으로 간주하여 사살 및 긴급체포 등 불이익이 발생할 수 있습니다. -『 경찰청 』-`;
+                    }
                     copyRaw(msg);
                 };
                 blist.appendChild(btn);
@@ -193,7 +207,7 @@
             DB[cat].forEach(([name, p, t]) => {
                 let row = document.createElement('div');
                 row.className = 'crime-row';
-                row.onclick = () => toggleCrime(name, p, t, row); // 행 클릭으로 토글
+                row.onclick = () => toggleCrime(name, p, t, row);
                 row.innerHTML = `
                     <div class="crime-label">${name}</div>
                     <div class="crime-info">
