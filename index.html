@@ -40,7 +40,7 @@
         .card { background: var(--bg-card); backdrop-filter: blur(10px); border: 1px solid var(--border); border-radius: 20px; padding: 25px; margin-bottom: 20px;}
         .card h3 { font-size: 16px; color: var(--primary); margin-bottom: 20px; border-left: 4px solid var(--primary); padding-left: 10px; }
 
-        /* [디자인 변경] 클릭형 범죄 항목 */
+        /* 클릭형 범죄 항목 */
         .crime-row { 
             display: flex; align-items: center; justify-content: space-between; 
             padding: 12px 15px; border-bottom: 1px solid rgba(255,255,255,0.05); 
@@ -54,7 +54,7 @@
         .p-val { color: var(--accent); font-weight: 800; font-size: 14px; display: block; }
         .t-val { color: var(--danger); font-size: 12px; font-weight: 600; }
 
-        /* [디자인 변경] 슬라이드 토글 스위치 */
+        /* 슬라이드 토글 스위치 */
         .switch { position: relative; display: inline-block; width: 50px; height: 26px; }
         .switch input { opacity: 0; width: 0; height: 0; }
         .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #334155; transition: .4s; border-radius: 34px; }
@@ -137,6 +137,8 @@
             ["빈집2 털이", 50000000, 10], 
             ["보석상 습격", 250000000, 20], 
             ["도넛 가게", 300000000, 10], 
+            ["저택RP", 200000000, 20], // 벌금 2억, 구금 20분
+            ["경찰서 털이", 350000000, 30], // 벌금 3.5억, 구금 30분
             ["남부은행", 350000000, 20], ["즉흥 RP", 200000000, 20],
             ["수배 RP", 200000000, 20], ["영장 RP 최초 수배자", 600000000, 40], ["영장 RP 참여자", 300000000, 30]
         ],
@@ -159,11 +161,10 @@
         ]
     };
 
-    // [변경] "주요 상황" -> "중 대형 및 기타RP" 및 세부 항목 추가
     const NOTICES = {
         "ATM 상황": ["광장 밑 ATM", "신경 위 ATM", "은행 밑 ATM"],
         "편의점 상황": ["남부 편의점", "신경 옆 편의점", "신경 위 편의점", "은행 뒤 편의점"],
-        "중 대형 및 기타RP": ["보석상", "도넛가게", "남부은행", "남부 빈집", "남부 빈집2", "헬기 이륙"]
+        "중 대형 및 기타RP": ["보석상", "도넛가게", "저택RP", "경찰서 털이", "남부은행", "남부 빈집", "남부 빈집2", "헬기 이륙"]
     };
 
     let selected = [];
@@ -181,11 +182,14 @@
                 btn.innerText = name;
                 btn.onclick = () => {
                     let msg = "";
-                    // [변경] 각 항목별 전용 문구 분기 처리
                     if(name === "헬기 이륙") {
                         msg = "/경찰청 경찰청 헬기 영공순찰로 인하여 이륙합니다.";
                     } else if(name === "도넛가게") {
                         msg = "/경찰청 ╭《 도넛가게 강도사건 발생 》╮ 경찰청이 출동합니다. 현 시간부로 사건 지점으로부터 2블럭이상 접근 시 공범으로 간주하여 사살 및 긴급체포 등 불이익이 발생할 수 있습니다. -『 경찰청 』-";
+                    } else if(name === "저택RP") {
+                        msg = "/경찰청 ╭《 저택RP 강도사건 발생 》╮ 경찰청이 출동합니다. 현 시간부로 사건 지점으로부터 2블럭이상 접근 시 공범으로 간주하여 사살 및 긴급체포 등 불이익이 발생할 수 있습니다. -『 경찰청 』-";
+                    } else if(name === "경찰서 털이") {
+                        msg = "/경찰청 ╭《 경찰서 내부 강도사건 발생 》╮ 경찰청이 출동합니다. 현 시간부로 사건 지점으로부터 2블럭이상 접근 시 공범으로 간주하여 사살 및 긴급체포 등 불이익이 발생할 수 있습니다. -『 경찰청 』-";
                     } else if(name === "남부 빈집2") {
                         msg = "/경찰청 ╭《 남부 빈집2 강도사건 발생 》╮ 경찰청이 출동합니다. 현 시간부로 사건 지점으로부터 2블럭이상 접근 시 공범으로 간주하여 사살 및 긴급체포 등 불이익이 발생할 수 있습니다. -『 경찰청 』-";
                     } else {
@@ -250,6 +254,7 @@
             let isHeavy = selected.some(c => 
                 c.name.includes("은행") || 
                 c.name.includes("보석상") || 
+                c.name === "저택RP" || // 저택RP 필수 구금 적용
                 (c.name.includes("즉흥") && !c.name.includes("영장")) || 
                 (c.name.includes("수배") && !c.name.includes("영장"))
             );
