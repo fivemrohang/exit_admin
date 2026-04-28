@@ -20,13 +20,11 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Pretendard', sans-serif; }
         body { background-color: var(--bg-main); color: var(--text); display: flex; height: 100vh; overflow: hidden; }
 
-        /* 사이드바 */
         aside { width: 260px; background: var(--bg-side); border-right: 1px solid var(--border); display: flex; flex-direction: column; padding: 30px 20px; }
         .logo { font-size: 20px; font-weight: 800; color: var(--accent); text-align: center; margin-bottom: 40px; }
         .nav-item { list-style: none; padding: 15px; margin-bottom: 8px; border-radius: 12px; cursor: pointer; transition: 0.3s; color: #94a3b8; font-weight: 600; }
         .nav-item.active { background: var(--primary); color: white; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4); }
 
-        /* 메인 영역 */
         main { flex: 1; padding: 40px; overflow-y: auto; position: relative; }
         .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
         .clock { font-family: monospace; color: var(--primary); font-size: 1.2rem; }
@@ -35,12 +33,10 @@
         .page.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* 그리드 및 카드 */
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 20px; }
         .card { background: var(--bg-card); backdrop-filter: blur(10px); border: 1px solid var(--border); border-radius: 20px; padding: 25px; margin-bottom: 20px;}
         .card h3 { font-size: 16px; color: var(--primary); margin-bottom: 20px; border-left: 4px solid var(--primary); padding-left: 10px; }
 
-        /* 클릭형 범죄 항목 */
         .crime-row { 
             display: flex; align-items: center; justify-content: space-between; 
             padding: 12px 15px; border-bottom: 1px solid rgba(255,255,255,0.05); 
@@ -54,7 +50,6 @@
         .p-val { color: var(--accent); font-weight: 800; font-size: 14px; display: block; }
         .t-val { color: var(--danger); font-size: 12px; font-weight: 600; }
 
-        /* 슬라이드 토글 스위치 */
         .switch { position: relative; display: inline-block; width: 50px; height: 26px; }
         .switch input { opacity: 0; width: 0; height: 0; }
         .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #334155; transition: .4s; border-radius: 34px; }
@@ -62,7 +57,6 @@
         input:checked + .slider { background-color: var(--primary); }
         input:checked + .slider:before { transform: translateX(24px); }
 
-        /* 하단 정산바 */
         .footer-bar {
             position: fixed; bottom: 20px; left: 280px; right: 20px;
             background: rgba(10, 18, 39, 0.95); border: 2px solid var(--primary);
@@ -137,8 +131,8 @@
             ["빈집2 털이", 50000000, 10], 
             ["보석상 습격", 250000000, 20], 
             ["도넛 가게", 300000000, 10], 
-            ["저택RP", 200000000, 20], // 벌금 2억, 구금 20분
-            ["경찰서 털이", 350000000, 30], // 벌금 3.5억, 구금 30분
+            ["저택RP", 200000000, 20],
+            ["경찰서 털이", 350000000, 30],
             ["남부은행", 350000000, 20], ["즉흥 RP", 200000000, 20],
             ["수배 RP", 200000000, 20], ["영장 RP 최초 수배자", 600000000, 40], ["영장 RP 참여자", 300000000, 30]
         ],
@@ -251,10 +245,12 @@
         let isBail = document.getElementById('bail-on').checked;
 
         if(isBail) {
+            // [수정] 경찰서 털이도 필수 구금(10분) 범죄군에 추가
             let isHeavy = selected.some(c => 
                 c.name.includes("은행") || 
                 c.name.includes("보석상") || 
-                c.name === "저택RP" || // 저택RP 필수 구금 적용
+                c.name === "저택RP" || 
+                c.name === "경찰서 털이" || 
                 (c.name.includes("즉흥") && !c.name.includes("영장")) || 
                 (c.name.includes("수배") && !c.name.includes("영장"))
             );
