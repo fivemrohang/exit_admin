@@ -1,320 +1,360 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mochi Police Control Center v2.2</title>
-    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-main: #050a18;
-            --bg-side: #0a1227;
-            --bg-card: rgba(30, 41, 59, 0.6);
-            --primary: #3b82f6;
-            --accent: #ffc947;
-            --danger: #ff5252;
-            --text: #e2e8f0;
-            --border: rgba(255, 255, 255, 0.1);
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Pretendard', sans-serif; }
-        body { background-color: var(--bg-main); color: var(--text); display: flex; height: 100vh; overflow: hidden; }
-
-        aside { width: 260px; background: var(--bg-side); border-right: 1px solid var(--border); display: flex; flex-direction: column; padding: 30px 20px; }
-        .logo { font-size: 20px; font-weight: 800; color: var(--accent); text-align: center; margin-bottom: 40px; }
-        .nav-item { list-style: none; padding: 15px; margin-bottom: 8px; border-radius: 12px; cursor: pointer; transition: 0.3s; color: #94a3b8; font-weight: 600; }
-        .nav-item.active { background: var(--primary); color: white; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4); }
-
-        main { flex: 1; padding: 40px; overflow-y: auto; position: relative; }
-        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
-        .clock { font-family: monospace; color: var(--primary); font-size: 1.2rem; }
-
-        .page { display: none; animation: fadeIn 0.4s ease; }
-        .page.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 20px; }
-        .card { background: var(--bg-card); backdrop-filter: blur(10px); border: 1px solid var(--border); border-radius: 20px; padding: 25px; margin-bottom: 20px;}
-        .card h3 { font-size: 16px; color: var(--primary); margin-bottom: 20px; border-left: 4px solid var(--primary); padding-left: 10px; }
-
-        .crime-row { 
-            display: flex; align-items: center; justify-content: space-between; 
-            padding: 12px 15px; border-bottom: 1px solid rgba(255,255,255,0.05); 
-            cursor: pointer; transition: 0.2s; border-radius: 10px; margin-bottom: 4px;
-        }
-        .crime-row:hover { background: rgba(255,255,255,0.05); }
-        .crime-row.selected { background: rgba(59, 130, 246, 0.2); border: 1px solid var(--primary); }
-        
-        .crime-label { font-size: 14.5px; font-weight: 500; pointer-events: none; }
-        .crime-info { text-align: right; min-width: 100px; pointer-events: none; }
-        .p-val { color: var(--accent); font-weight: 800; font-size: 14px; display: block; }
-        .t-val { color: var(--danger); font-size: 12px; font-weight: 600; }
-
-        .switch { position: relative; display: inline-block; width: 50px; height: 26px; }
-        .switch input { opacity: 0; width: 0; height: 0; }
-        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #334155; transition: .4s; border-radius: 34px; }
-        .slider:before { position: absolute; content: ""; height: 18px; width: 18px; left: 4px; bottom: 4px; background-color: white; transition: .4s; border-radius: 50%; }
-        input:checked + .slider { background-color: var(--primary); }
-        input:checked + .slider:before { transform: translateX(24px); }
-
-        .footer-bar {
-            position: fixed; bottom: 20px; left: 280px; right: 20px;
-            background: rgba(10, 18, 39, 0.95); border: 2px solid var(--primary);
-            border-radius: 20px; padding: 18px 40px; display: flex; justify-content: space-between; align-items: center;
-            box-shadow: 0 -10px 40px rgba(0,0,0,0.6); z-index: 1000;
-        }
-        .res-text span { font-size: 1.4rem; font-weight: 800; margin-right: 25px; }
-
-        .btn-list { display: grid; gap: 10px; }
-        button { padding: 12px; border: none; border-radius: 10px; cursor: pointer; font-weight: 700; transition: 0.2s; background: rgba(255,255,255,0.08); color: white; }
-        button:hover { background: var(--primary); transform: translateY(-2px); }
-        input[type="text"] { width: 100%; padding: 12px; margin-bottom: 10px; border-radius: 10px; background: #000; border: 1px solid var(--border); color: white; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EXIT RP 코드표</title>
+<style>
+:root {
+  --border: #e5e7eb;
+  --header: #f8fafc;
+  --section: #f1f5f9;
+  --text: #111827;
+  --muted: #64748b;
+  --code-bg: #f8fafc;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  padding: 32px 20px;
+  background: #fff;
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR",
+               "Malgun Gothic", Arial, sans-serif;
+}
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+h1 {
+  margin: 0 0 8px;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+.description {
+  margin: 0 0 22px;
+  color: var(--muted);
+  font-size: 14px;
+}
+.table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+table {
+  width: 100%;
+  min-width: 820px;
+  border-collapse: separate;
+  border-spacing: 0;
+  table-layout: fixed;
+  font-size: 14px;
+}
+col.code { width: 23%; }
+col.name { width: 22%; }
+col.category { width: 12%; }
+col.note { width: 43%; }
+th {
+  padding: 14px 16px;
+  background: var(--header);
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  font-weight: 700;
+  white-space: nowrap;
+}
+th:not(:last-child), td:not(:last-child) {
+  border-right: 1px solid var(--border);
+}
+td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+  line-height: 1.55;
+  word-break: break-word;
+}
+tbody tr:last-child td { border-bottom: 0; }
+tbody tr:hover td { background: #fafafa; }
+td.code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  font-size: 13px;
+  color: #334155;
+}
+.category-cell {
+  text-align: center;
+}
+.badge {
+  display: inline-block;
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: #f1f5f9;
+  color: #475569;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.section-row td {
+  padding: 13px 16px;
+  background: var(--section);
+  color: #1e293b;
+  font-size: 15px;
+  font-weight: 800;
+  border-bottom: 1px solid var(--border);
+}
+.section-row:hover td { background: var(--section); }
+.empty { color: #94a3b8; }
+@media (max-width: 700px) {
+  body { padding: 20px 12px; }
+  h1 { font-size: 23px; }
+  .table-wrap { border-radius: 9px; }
+  table { font-size: 13px; }
+  th, td { padding: 10px 12px; }
+}
+</style>
 </head>
 <body>
+<div class="container">
+  <h1>EXIT RP 코드표</h1>
+  <p class="description">서버에서 사용되는 아이템 · 차량 · 기타 코드 목록</p>
+  <div class="table-wrap">
+    <table>
+      <colgroup>
+        <col class="code">
+        <col class="name">
+        <col class="category">
+        <col class="note">
+      </colgroup>
+      <thead>
+        <tr>
+          <th>코드명</th>
+          <th>코드 이름</th>
+          <th>구분</th>
+          <th>비고</th>
+        </tr>
+      </thead>
+      <tbody>
 
-<aside>
-    <div class="logo">🚔 MOCHI POLICE</div>
-    <div class="nav-item active" onclick="switchTab('notice', this)">📋 사이드공지</div>
-    <div class="nav-item" onclick="switchTab('calc', this)">⚖️ 벌금 계산기</div>
-</aside>
-
-<main>
-    <div class="header">
-        <h2 id="title">사이드공지</h2>
-        <div class="clock" id="clock">00:00:00</div>
-    </div>
-
-    <div id="page-notice" class="page active">
-        <div class="grid" id="notice-grid">
-            <div class="card">
-                <h3>👤 출석 & 수배</h3>
-                <input type="text" id="nick" placeholder="닉네임">
-                <input type="text" id="uid" placeholder="고유번호">
-                <input type="text" id="reason" placeholder="사유">
-                <div class="btn-list">
-                    <button onclick="copyAttend()" style="color:var(--accent)">출석 요구 복사</button>
-                    <button onclick="copyWanted()" style="color:var(--danger)">수배 공지 복사</button>
-                    <button onclick="copyRaw('/경찰청 수배 상황 종료되었습니다.')">수배 종료</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="page-calc" class="page">
-        <div class="grid" id="calc-grid" style="padding-bottom: 120px;"></div>
-
-        <div class="footer-bar">
-            <div class="res-text">
-                <span style="color:var(--accent)" id="total-p">벌금 0원</span>
-                <span style="color:var(--danger)" id="total-t">구금 0분</span>
-            </div>
-            <div style="display:flex; gap:20px; align-items:center;">
-                <div style="display:flex; align-items:center; gap:10px;">
-                    <label class="switch">
-                        <input type="checkbox" id="bail-on" onchange="updateCalc()">
-                        <span class="slider"></span>
-                    </label>
-                    <span style="font-weight:600; font-size:14px;">보석금 적용</span>
-                </div>
-                <button onclick="resetCalc()" style="background:transparent; color:#94a3b8;">초기화</button>
-                <button onclick="copyResult()" style="background:var(--primary); padding:12px 25px; border-radius:15px; box-shadow: 0 4px 15px var(--border);">내역 복사</button>
-            </div>
-        </div>
-    </div>
-</main>
-
-<script>
-    const DB = {
-        "강력/RP 범죄": [
-            ["ATM 강도", 50000000, 10], ["편의점 강도", 80000000, 10], ["빈집 털이", 50000000, 10],
-            ["빈집2 털이", 50000000, 10], 
-            ["보석상 습격", 250000000, 20], 
-            ["도넛 가게", 300000000, 10], 
-            ["저택RP", 200000000, 20],
-            ["경찰서 털이", 350000000, 30],
-            ["남부은행", 350000000, 20], ["즉흥 RP", 200000000, 20],
-            ["수배 RP", 200000000, 20], ["영장 RP 최초 수배자", 600000000, 40], ["영장 RP 참여자", 300000000, 30]
-        ],
-        "경범죄 상황": [
-            ["소음 공해", 10000000, 0], ["불법 주정차", 10000000, 0], ["속도 위반", 10000000, 0],
-            ["신호 위반", 10000000, 0], ["불법 유턴", 10000000, 0], ["역주행", 10000000, 0],
-            ["인도 주행", 10000000, 0], ["기물 파손", 10000000, 0], ["스턴트 주행", 20000000, 0],
-            ["차량 파손", 50000000, 10], ["뺑소니 사고", 100000000, 20], ["폭주(400km↑)", 50000000, 20],
-            ["보복 운전", 200000000, 30]
-        ],
-        "중범죄 상황": [
-            ["난폭 운전", 50000000, 30], ["명예 훼손", 20000000, 10], ["일반 폭행", 100000000, 20],
-            ["불법물건소지", 80000000, 20], ["불법총기소지", 150000000, 20], ["증거 인멸", 200000000, 20],
-            ["차량 절도", 100000000, 30], ["시민 살인", 300000000, 30]
-        ],
-        "공무원 관련": [
-            ["공무원 차량 절도시도", 100000000, 0], ["공무원 명예훼손", 200000000, 10], ["공무원 차량파손", 100000000, 20],
-            ["공무집행 방해", 150000000, 30], ["공무원 사유지 침입", 400000000, 10], ["공무원 폭행", 300000000, 30],
-            ["공무원 차량절도", 400000000, 30], ["공무원 살인", 400000000, 40]
-        ]
-    };
-
-    const NOTICES = {
-        "ATM 상황": ["광장 밑 ATM", "신경 위 ATM", "은행 밑 ATM"],
-        "편의점 상황": ["남부 편의점", "신경 옆 편의점", "신경 위 편의점", "은행 뒤 편의점"],
-        "중 대형 및 기타RP": ["보석상", "도넛가게", "저택RP", "경찰서 털이", "남부은행", "남부 빈집", "남부 빈집2", "헬기 이륙"]
-    };
-
-    let selected = [];
-
-    function init() {
-        const nGrid = document.getElementById('notice-grid');
-        for(let cat in NOTICES) {
-            let card = document.createElement('div');
-            card.className = 'card';
-            card.innerHTML = `<h3>▮ ${cat}</h3>`;
-            let blist = document.createElement('div');
-            blist.className = 'btn-list';
-            NOTICES[cat].forEach(name => {
-                let btn = document.createElement('button');
-                btn.innerText = name;
-                btn.onclick = () => {
-                    let msg = "";
-                    if(name === "헬기 이륙") {
-                        msg = "/경찰청 경찰청 헬기 영공순찰로 인하여 이륙합니다.";
-                    } else if(name === "도넛가게") {
-                        msg = "/경찰청 ╭《 도넛가게 강도사건 발생 》╮ 경찰청이 출동합니다. 현 시간부로 사건 지점으로부터 2블럭이상 접근 시 공범으로 간주하여 사살 및 긴급체포 등 불이익이 발생할 수 있습니다. -『 경찰청 』-";
-                    } else if(name === "저택RP") {
-                        msg = "/경찰청 ╭《 저택RP 강도사건 발생 》╮ 경찰청이 출동합니다. 현 시간부로 사건 지점으로부터 2블럭이상 접근 시 공범으로 간주하여 사살 및 긴급체포 등 불이익이 발생할 수 있습니다. -『 경찰청 』-";
-                    } else if(name === "경찰서 털이") {
-                        msg = "/경찰청 ╭《 경찰서 내부 강도사건 발생 》╮ 경찰청이 출동합니다. 현 시간부로 사건 지점으로부터 2블럭이상 접근 시 공범으로 간주하여 사살 및 긴급체포 등 불이익이 발생할 수 있습니다. -『 경찰청 』-";
-                    } else if(name === "남부 빈집2") {
-                        msg = "/경찰청 ╭《 남부 빈집2 강도사건 발생 》╮ 경찰청이 출동합니다. 현 시간부로 사건 지점으로부터 2블럭이상 접근 시 공범으로 간주하여 사살 및 긴급체포 등 불이익이 발생할 수 있습니다. -『 경찰청 』-";
-                    } else {
-                        msg = `/경찰청 ╭《 ${name} 강도사건 발생 》╮ 경찰청이 출동합니다. 현 시간부로 사건 지점으로부터 2블럭이상 접근 시 공범으로 간주하여 사살 및 긴급체포 등 불이익이 발생할 수 있습니다. -『 경찰청 』-`;
-                    }
-                    copyRaw(msg);
-                };
-                blist.appendChild(btn);
-            });
-            card.appendChild(blist);
-            nGrid.appendChild(card);
-        }
-
-        const cGrid = document.getElementById('calc-grid');
-        for(let cat in DB) {
-            let card = document.createElement('div');
-            card.className = 'card';
-            card.innerHTML = `<h3>▮ ${cat}</h3>`;
-            DB[cat].forEach(([name, p, t]) => {
-                let row = document.createElement('div');
-                row.className = 'crime-row';
-                row.onclick = () => toggleCrime(name, p, t, row);
-                row.innerHTML = `
-                    <div class="crime-label">${name}</div>
-                    <div class="crime-info">
-                        <span class="p-val">${p.toLocaleString()}원</span>
-                        <span class="t-val">${t > 0 ? t+'분' : ''}</span>
-                    </div>
-                `;
-                card.appendChild(row);
-            });
-            cGrid.appendChild(card);
-        }
-    }
-
-    function switchTab(t, el) {
-        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-        document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
-        document.getElementById(`page-${t}`).classList.add('active');
-        el.classList.add('active');
-        document.getElementById('title').innerText = el.innerText;
-    }
-
-    function toggleCrime(name, price, time, rowEl) {
-        const idx = selected.findIndex(c => c.name === name);
-        if(idx === -1) {
-            selected.push({name, price, time});
-            rowEl.classList.add('selected');
-        } else {
-            selected.splice(idx, 1);
-            rowEl.classList.remove('selected');
-        }
-        updateCalc();
-    }
-
-    function updateCalc() {
-        let pSum = selected.reduce((a, b) => a + b.price, 0);
-        let tSum = selected.reduce((a, b) => a + b.time, 0);
-        let isBail = document.getElementById('bail-on').checked;
-
-        if(isBail) {
-            // [수정] 경찰서 털이도 필수 구금(10분) 범죄군에 추가
-            let isHeavy = selected.some(c => 
-                c.name.includes("은행") || 
-                c.name.includes("보석상") || 
-                c.name === "저택RP" || 
-                c.name === "경찰서 털이" || 
-                (c.name.includes("즉흥") && !c.name.includes("영장")) || 
-                (c.name.includes("수배") && !c.name.includes("영장"))
-            );
-            
-            if(isHeavy) {
-                pSum += (Math.max(0, tSum - 10) * 5000000);
-                tSum = 10;
-            } else {
-                pSum += (tSum * 5000000);
-                tSum = 0;
-            }
-        }
-        document.getElementById('total-p').innerText = `벌금 ${pSum.toLocaleString()}원`;
-        document.getElementById('total-t').innerText = `구금 ${tSum}분`;
-    }
-
-    function copyRaw(t) {
-        const tempInput = document.createElement("textarea");
-        tempInput.value = t;
-        document.body.appendChild(tempInput);
-        tempInput.select();
-        try {
-            document.execCommand('copy');
-            alert('복사되었습니다! 🚔');
-        } catch (err) {
-            alert('복사 실패!');
-        }
-        document.body.removeChild(tempInput);
-    }
-
-    function copyAttend() {
-        const n = document.getElementById('nick').value || "미입력";
-        const u = document.getElementById('uid').value || "미입력";
-        const r = document.getElementById('reason').value || "미입력";
-        const time = new Date(Date.now() + 5 * 60000).toTimeString().substring(0, 5);
-        copyRaw(`/경찰청 [ 출석요구서 ]\n닉네임 : ${n}\n고유번호 : ${u}\n사유 : ${r}\n${time} 까지 출석바랍니다.\n-『 경찰청 』-`);
-    }
-
-    function copyWanted() {
-        const n = document.getElementById('nick').value || "미입력";
-        const u = document.getElementById('uid').value || "미입력";
-        const now = new Date().toTimeString().substring(0, 5);
-        const limit = new Date(Date.now() + 30 * 60000).toTimeString().substring(0, 5);
-        copyRaw(`/경찰청 [ 수배공지 ]\n닉네임 : ${n}\n고유번호 : ${u}\n${now} ~ ${limit} 수배알피 진행합니다.\n위치추적 시작하겠습니다.\n-『 경찰청 』-`);
-    }
-
-    function copyResult() {
-        if(selected.length === 0) { alert('선택된 항목이 없습니다.'); return; }
-        const res = `[정산 결과]\n죄목: ${selected.map(c => c.name).join(', ')}\n${document.getElementById('total-p').innerText}\n${document.getElementById('total-t').innerText}`;
-        copyRaw(res);
-    }
-
-    function resetCalc() {
-        selected = [];
-        document.querySelectorAll('.crime-row').forEach(row => row.classList.remove('selected'));
-        document.getElementById('bail-on').checked = false;
-        updateCalc();
-    }
-
-    setInterval(() => {
-        document.getElementById('clock').innerText = new Date().toLocaleTimeString('ko-KR', {hour12: false});
-    }, 1000);
-
-    init();
-</script>
+        <tr><td class="code">dirtymoney</td><td>검은돈</td><td class="category-cell"><span class="badge">물품</span></td><td>스토리 RP 검은돈</td></tr>
+        <tr><td class="code">yumi_coin</td><td>신세계팩션코인</td><td class="category-cell"><span class="badge">물품</span></td><td>아직 비활성화</td></tr>
+        <tr><td class="code">enginesound_ticket</td><td>배기음튜닝권</td><td class="category-cell"><span class="badge">물품</span></td><td>신세계렉카 판매물품</td></tr>
+        <tr><td class="code">EXIT_sajung</td><td>사전예약보상</td><td class="category-cell"><span class="badge">물품</span></td><td>사전예약보상지급</td></tr>
+        <tr><td class="code">TURN_meleebox</td><td>근접무기 상자</td><td class="category-cell"><span class="badge">물품</span></td><td>조직사업권</td></tr>
+        <tr><td class="code">TURN_specialbox</td><td>엑시트 스페셜 스킨박스</td><td class="category-cell"><span class="badge">물품</span></td><td>추후 이벤트 혹은 기타 상품에 출시예정</td></tr>
+        <tr><td class="code">musicbox_ticket</td><td>뮤직박스 이용권</td><td class="category-cell"><span class="badge">물품</span></td><td>절대 사용 X 후원자들 등급보상</td></tr>
+        <tr><td class="code">moneybox30709</td><td>초소형 머니박스</td><td class="category-cell"><span class="badge">물품</span></td><td>1만원 ~ 10만원 랜덤박스</td></tr>
+        <tr><td class="code">moneybox10709</td><td>소형 머니박스</td><td class="category-cell"><span class="badge">물품</span></td><td>1~3억 랜덤박스</td></tr>
+        <tr><td class="code">moneybox20709</td><td>중형 머니박스</td><td class="category-cell"><span class="badge">물품</span></td><td>100만원~1억 랜덤박스</td></tr>
+        <tr><td class="code">moneybox50709</td><td>뉴비지원 머니박스</td><td class="category-cell"><span class="badge">물품</span></td><td>10억~50억 랜덤박스</td></tr>
+        <tr><td class="code">special_goldb</td><td>현금다발 상자</td><td class="category-cell"><span class="badge">물품</span></td><td>500만원~5000만원 랜덤박스</td></tr>
+        <tr><td class="code">yumi_goldloot</td><td>신세계 골드 박스</td><td class="category-cell"><span class="badge">물품</span></td><td>신세계코인,파워엘릭서,스킨조각,차량조각 랜덤박스</td></tr>
+        <tr><td class="code">prison_ticket_1</td><td>노역 완료 1분 차감 티켓</td><td class="category-cell"><span class="badge">물품</span></td><td>교도소 사용</td></tr>
+        <tr><td class="code">zombie_ticket_1</td><td>좀비존 입장권 (기본)</td><td class="category-cell"><span class="badge">물품</span></td><td>좀비존 사업권</td></tr>
+        <tr><td class="code">sleepcoin0711</td><td>잠수코인</td><td class="category-cell"><span class="badge">물품</span></td><td>잠수존</td></tr>
+        <tr><td class="code">TURN_COIN</td><td>엑시트 코인</td><td class="category-cell"><span class="badge">물품</span></td><td><span class="empty">-</span></td></tr>
+        <tr><td class="code">jewelry</td><td>보석</td><td class="category-cell"><span class="badge">물품</span></td><td><span class="empty">-</span></td></tr>
+        <tr><td class="code">preminum_keellie</td><td>프리미엄 코인</td><td class="category-cell"><span class="badge">물품</span></td><td>프리미엄 부스 사용</td></tr>
+        <tr><td class="code">sexbox</td><td>설계도</td><td class="category-cell"><span class="badge">물품</span></td><td>제작소 사용</td></tr>
+        <tr><td class="code">bs_mine5</td><td>또또의 눈물</td><td class="category-cell"><span class="badge">물품</span></td><td>제작소 사용</td></tr>
+        <tr><td class="code">TURN_randombox</td><td>랜덤박스 티켓</td><td class="category-cell"><span class="badge">물품</span></td><td>랜덤박스</td></tr>
+        <tr><td class="code">Inchan_sinmon</td><td>신문</td><td class="category-cell"><span class="badge">물품</span></td><td>직업 아이템</td></tr>
+        <tr><td class="code">Inchan_badar</td><td>배달 품목</td><td class="category-cell"><span class="badge">물품</span></td><td>직업 아이템</td></tr>
+        <tr><td class="code">Inchan_kifeed_tieket</td><td>킬피드 등록권</td><td class="category-cell"><span class="badge">물품</span></td><td>킬피드 시스템</td></tr>
+        <tr><td class="code">vehicle_enhance_ticket</td><td>강화의 돌</td><td class="category-cell"><span class="badge">물품</span></td><td>차량강화</td></tr>
+        <tr><td class="code">cosmetic_shard</td><td>치장조각</td><td class="category-cell"><span class="badge">물품</span></td><td>출석체크 보상</td></tr>
+        <tr><td class="code">attend_title</td><td>치장조각</td><td class="category-cell"><span class="badge">물품</span></td><td>개근왕 칭호조각</td></tr>
+        <tr><td class="code">turn_attend_box</td><td>TURN 개근 보상상자</td><td class="category-cell"><span class="badge">물품</span></td><td>개근왕 칭호조각</td></tr>
+        <tr><td class="code">EXIT_elliecashEXIT_elliecash</td><td>엑시트 캐쉬</td><td class="category-cell"><span class="badge">물품</span></td><td>상점에서 사용가능</td></tr>
+        <tr><td class="code">elliecoin</td><td>엘리코인</td><td class="category-cell"><span class="badge">물품</span></td><td>엘리박스 이용권</td></tr>
+        <tr><td class="code">ellie_signiturebox</td><td>엑시트 시그니처 캡슐</td><td class="category-cell"><span class="badge">물품</span></td><td>캡슐 이용권</td></tr>
+        <tr><td class="code">crbox</td><td>일반 박스</td><td class="category-cell"><span class="badge">물품</span></td><td>메인광장 사용</td></tr>
+        <tr><td class="code">spbox</td><td>스패셜 박스</td><td class="category-cell"><span class="badge">물품</span></td><td>메인광장 사용</td></tr>
+        <tr><td class="code">fate_coin</td><td>운명의 코인</td><td class="category-cell"><span class="badge">물품</span></td><td>제작소 사용</td></tr>
+        <tr><td class="code">lowclass_jewel</td><td>하급 보석</td><td class="category-cell"><span class="badge">물품</span></td><td>제작소 사용</td></tr>
+        <tr><td class="code">turn_coin1</td><td>엑시트 코인</td><td class="category-cell"><span class="badge">물품</span></td><td>제작소 보상</td></tr>
+        <tr><td class="code">live_chicken</td><td>생닭</td><td class="category-cell"><span class="badge">물품</span></td><td>닭공장 사용</td></tr>
+        <tr><td class="code">slaughtered_chicken</td><td>1차 가공 닭</td><td class="category-cell"><span class="badge">물품</span></td><td>닭공장 사용</td></tr>
+        <tr><td class="code">processed_chicken</td><td>절단 치킨</td><td class="category-cell"><span class="badge">물품</span></td><td>닭공장 사용</td></tr>
+        <tr><td class="code">packaged_chicken</td><td>포장 치킨</td><td class="category-cell"><span class="badge">물품</span></td><td>닭공장 사용</td></tr>
+        <tr><td class="code">TURN_shipticket</td><td>섬낚시 이용권</td><td class="category-cell"><span class="badge">물품</span></td><td>섬낚시 이용권</td></tr>
+        <tr><td class="code">killfeed1teir1.kiifeed</td><td>이걸죽네</td><td class="category-cell"><span class="badge">킬피드</span></td><td><span class="empty">-</span></td></tr>
+        <tr><td class="code">killfeed1teir2.kiifeed</td><td>사슬</td><td class="category-cell"><span class="badge">킬피드</span></td><td><span class="empty">-</span></td></tr>
+        <tr><td class="code">zamsu.kiifeed</td><td>잠수왕</td><td class="category-cell"><span class="badge">킬피드</span></td><td><span class="empty">-</span></td></tr>
+        <tr><td class="code">warning.kiifeed</td><td>경고</td><td class="category-cell"><span class="badge">킬피드</span></td><td><span class="empty">-</span></td></tr>
+        <tr><td class="code">unicorn.kiifeed</td><td>유니콘</td><td class="category-cell"><span class="badge">킬피드</span></td><td><span class="empty">-</span></td></tr>
+        <tr><td class="code">skeleton.kiifeed</td><td>스켈레톤</td><td class="category-cell"><span class="badge">킬피드</span></td><td><span class="empty">-</span></td></tr>
+        <tr><td class="code">power.kiifeed</td><td>파워</td><td class="category-cell"><span class="badge">킬피드</span></td><td><span class="empty">-</span></td></tr>
+        <tr><td class="code">pig.kiifeed</td><td>돼지</td><td class="category-cell"><span class="badge">킬피드</span></td><td><span class="empty">-</span></td></tr>
+        <tr><td class="code">mymelody.kiifeed</td><td>마이멜로디</td><td class="category-cell"><span class="badge">킬피드</span></td><td><span class="empty">-</span></td></tr>
+        <tr><td class="code">silver.kiifeed</td><td>실버</td><td class="category-cell"><span class="badge">킬피드</span></td><td><span class="empty">-</span></td></tr>
+        <tr><td class="code">gold.kiifeed</td><td>골드</td><td class="category-cell"><span class="badge">킬피드</span></td><td><span class="empty">-</span></td></tr>
+        <tr><td class="code">hongbowin.kiifeed</td><td>홍보왕</td><td class="category-cell"><span class="badge">킬피드</span></td><td><span class="empty">-</span></td></tr>
+        <tr><td class="code">waterfish.kiifeed</td><td>여름여름</td><td class="category-cell"><span class="badge">킬피드</span></td><td><span class="empty">-</span></td></tr>
+        <tr><td class="code">resurrectionking.chattitle</td><td>여름여름</td><td class="category-cell"><span class="badge">채팅칭호</span></td><td><span class="empty">-</span></td></tr>
+        <tr><td class="code">prettiygirl.chattitle</td><td>공주</td><td class="category-cell"><span class="badge">채팅칭호</span></td><td><span class="empty">-</span></td></tr>
+        <tr><td class="code">resurrectionking.aa11</td><td>어형이야</td><td class="category-cell"><span class="badge">채팅칭호</span></td><td><span class="empty">-</span></td></tr>
+        <tr><td class="code">poop.chattitle</td><td>똥범벅</td><td class="category-cell"><span class="badge">채팅칭호</span></td><td><span class="empty">-</span></td></tr>
+        <tr><td class="code">skinbox_1</td><td>미연 스킨 교환권</td><td class="category-cell"><span class="badge">물품</span></td><td>[아이템 설명] 미연스킨 교환권이 들어있습니다!</td></tr>
+        <tr><td class="code">skinbox_2</td><td>장훈 스킨 교환권</td><td class="category-cell"><span class="badge">물품</span></td><td>[아이템 설명] 장훈 스킨 교환권이 들어있습니다!</td></tr>
+        <tr><td class="code">skinbox_3</td><td>장훈 &amp; 미연 스킨 교환권</td><td class="category-cell"><span class="badge">물품</span></td><td>[아이템 설명] 장훈&amp; 미연 스킨 교환권이 들어있습니다!</td></tr>
+        <tr><td class="code">skinbox_4</td><td>서준 스킨 교환권</td><td class="category-cell"><span class="badge">물품</span></td><td>[아이템 설명] 서준 스킨 교환권이 들어있습니다!</td></tr>
+        <tr><td class="code">skinbox_5</td><td>하린 스킨 교환권</td><td class="category-cell"><span class="badge">물품</span></td><td>[아이템 설명] 하린 스킨 교환권이 들어있습니다!</td></tr>
+        <tr><td class="code">skinbox_6</td><td>서준 &amp; 하린 스킨 교환권</td><td class="category-cell"><span class="badge">물품</span></td><td>[아이템 설명] 서준 &amp; 하린 스킨 교환권이 들어있습니다!</td></tr>
+        <tr><td class="code">skinbox_7</td><td>미주 스킨 교환권</td><td class="category-cell"><span class="badge">물품</span></td><td>[아이템 설명] 미주스킨 교환권이 들어있습니다!</td></tr>
+        <tr><td class="code">skinbox_8</td><td>서준 스킨 교환권</td><td class="category-cell"><span class="badge">물품</span></td><td>[아이템 설명] 서준스킨 교환권이 들어있습니다!</td></tr>
+        <tr><td class="code">skinbox_9</td><td>규현 스킨 교환권</td><td class="category-cell"><span class="badge">물품</span></td><td>[아이템 설명] 규현스킨 교환권이 들어있습니다!</td></tr>
+        <tr><td class="code">skinbox_10</td><td>현아 스킨 교환권</td><td class="category-cell"><span class="badge">물품</span></td><td>[아이템 설명] 현아 스킨 교환권이 들어있습니다!</td></tr>
+        <tr><td class="code">girlskin1</td><td>문신여자 교환권</td><td class="category-cell"><span class="badge">물품</span></td><td>관리자를 호출하여 지급받아주세요</td></tr>
+        <tr><td class="code">carbox_a90pit</td><td>쉐도우 펄스 확정 지급권</td><td class="category-cell"><span class="badge">물품</span></td><td>[아이템 설명] 안에 쉐도우 펄스 차량이 들어있습니다.</td></tr>
+        <tr><td class="code">carbox_radisgt</td><td>어비스 비전 GT 확정 지급권</td><td class="category-cell"><span class="badge">물품</span></td><td>[아이템 설명] 안에 어비스 비전 GT 차량이 들어있습니다.</td></tr>
+        <tr><td class="code">carbox_ie</td><td>ie 비전 GT 확정 지급권</td><td class="category-cell"><span class="badge">물품</span></td><td>[아이템 설명] 안에 ie 비전 GT 차량이 들어있습니다.</td></tr>
+        <tr><td class="code">carbox_tachy</td><td>엑시트 비전 확정 지급권</td><td class="category-cell"><span class="badge">물품</span></td><td>[아이템 설명] 안에 엑시트 비전 차량이 들어있습니다.</td></tr>
+        <tr><td class="code">carbox_2018s650p</td><td>노블6 확정 지급권</td><td class="category-cell"><span class="badge">물품</span></td><td>[아이템 설명] 안에 노블 6 차량이 들어있습니다.</td></tr>
+        <tr><td class="code">carbox1591550718</td><td>멕라렌 비전 확정 지급권</td><td class="category-cell"><span class="badge">물품</span></td><td>[아이템 설명] 안에 멕라렌 비전 차량이 들어있습니다.</td></tr>
+        <tr><td class="code">carbox93351303101</td><td>마쯔다 후라이 확정 지급권</td><td class="category-cell"><span class="badge">물품</span></td><td>[아이템 설명] 안에 마쯔다 후라이 차량이 들어있습니다.</td></tr>
+        <tr><td class="code">pistol_m</td><td>피스톨 몸체 상자</td><td class="category-cell"><span class="badge">조직</span></td><td><span class="empty">-</span></td></tr>
+        <tr><td class="code">pistol_t</td><td>피스톨 100발 탄약상자</td><td class="category-cell"><span class="badge">조직</span></td><td><span class="empty">-</span></td></tr>
+        <tr><td class="code">carbin_m</td><td>카빈소총 몸체 상자</td><td class="category-cell"><span class="badge">조직</span></td><td><span class="empty">-</span></td></tr>
+        <tr><td class="code">carbin_t</td><td>카빈소총 100발 탄약상자</td><td class="category-cell"><span class="badge">조직</span></td><td><span class="empty">-</span></td></tr>
+        <tr><td class="code">ak47_m</td><td>어썰트 라이플 몸체 상자</td><td class="category-cell"><span class="badge">조직</span></td><td><span class="empty">-</span></td></tr>
+        <tr><td class="code">ak47_t</td><td>어썰트 라이플 100발 탄약상자</td><td class="category-cell"><span class="badge">조직</span></td><td><span class="empty">-</span></td></tr>
+        <tr><td class="code">smg_m</td><td>마이크로 SMG 몸체 상자</td><td class="category-cell"><span class="badge">조직</span></td><td><span class="empty">-</span></td></tr>
+        <tr><td class="code">smg_t</td><td>마이크로 SMG 100발 탄약상자</td><td class="category-cell"><span class="badge">조직</span></td><td><span class="empty">-</span></td></tr>
+        <tr><td class="code">shotgun_m</td><td>펌프 샷건 몸체 상자</td><td class="category-cell"><span class="badge">조직</span></td><td><span class="empty">-</span></td></tr>
+        <tr><td class="code">shotgun_t</td><td>펌프 샷건 100발 탄약상자</td><td class="category-cell"><span class="badge">조직</span></td><td><span class="empty">-</span></td></tr>
+        <tr><td class="code">bat_1</td><td>배트 몸체 상자</td><td class="category-cell"><span class="badge">조직</span></td><td><span class="empty">-</span></td></tr>
+        <tr><td class="code">knife_1</td><td>나이프 몸체 상자</td><td class="category-cell"><span class="badge">조직</span></td><td><span class="empty">-</span></td></tr>
+        <tr><td class="code">swich_m</td><td>스위치 블레이드 몸체 상자</td><td class="category-cell"><span class="badge">조직</span></td><td><span class="empty">-</span></td></tr>
+        <tr><td class="code">flsh_m</td><td>플래쉬 몸체 상자</td><td class="category-cell"><span class="badge">조직</span></td><td><span class="empty">-</span></td></tr>
+        <tr><td class="code">TURN_meleebox</td><td>근접무기 상자</td><td class="category-cell"><span class="badge">조직</span></td><td><span class="empty">-</span></td></tr>
+        <tr><td class="code">seeds</td><td>대마씨</td><td class="category-cell"><span class="badge">조직</span></td><td>대마의 씨앗.</td></tr>
+        <tr><td class="code">ticket_drug</td><td>마약공장 입장권</td><td class="category-cell"><span class="badge">조직</span></td><td><span class="empty">-</span></td></tr>
+        <tr><td class="code">explosivo_c4</td><td>C4 폭발장치</td><td class="category-cell"><span class="badge">조직</span></td><td>스토리rp사용</td></tr>
+        <tr><td class="code">aw1</td><td>체포 영장</td><td class="category-cell"><span class="badge">물품</span></td><td>엑시트 대검찰청</td></tr>
+        <tr><td class="code">aw2</td><td>구속 영장</td><td class="category-cell"><span class="badge">물품</span></td><td>엑시트 대검찰청</td></tr>
+        <tr><td class="code">aw3</td><td>수색 영장</td><td class="category-cell"><span class="badge">물품</span></td><td>엑시트 대검찰청</td></tr>
+        <tr><td class="code">aw4</td><td>수배 영장</td><td class="category-cell"><span class="badge">물품</span></td><td>엑시트 대검찰청</td></tr>
+        <tr><td class="code">supressor</td><td>소음기</td><td class="category-cell"><span class="badge">다이소</span></td><td>총기파츠</td></tr>
+        <tr><td class="code">flash</td><td>플래쉬</td><td class="category-cell"><span class="badge">다이소</span></td><td>총기파츠</td></tr>
+        <tr><td class="code">grip</td><td>손잡이</td><td class="category-cell"><span class="badge">다이소</span></td><td>총기파츠</td></tr>
+        <tr><td class="code">holografik</td><td>홀로그램 스코프</td><td class="category-cell"><span class="badge">다이소</span></td><td>총기파츠</td></tr>
+        <tr><td class="code">powiekszonymagazynek</td><td>확장탄창</td><td class="category-cell"><span class="badge">다이소</span></td><td>총기파츠</td></tr>
+        <tr><td class="code">eun_packaging_1</td><td>시민,기업 패키징</td><td class="category-cell"><span class="badge">다이소</span></td><td>방탄복 100개, 파츠 종류당 30개, 스킨포장키트 1개</td></tr>
+        <tr><td class="code">eun_packaging_2</td><td>조직,공무원 패키징</td><td class="category-cell"><span class="badge">다이소</span></td><td>방탄복 150개, 파츠 종류당 30개, 스킨포장키트 3개</td></tr>
+        <tr><td class="code">packaging_1</td><td>쥬쥬 풀패키지 1번</td><td class="category-cell"><span class="badge">약국</span></td><td>진통제/비타500/박카스가 들어있습니다.</td></tr>
+        <tr><td class="code">packaging_2</td><td>쥬쥬 식품패키지</td><td class="category-cell"><span class="badge">약국</span></td><td>전투식량/포도당/파워엘릭서/마운자루가 들어있습니다.</td></tr>
+        <tr><td class="code">jtjc</td><td>진통제</td><td class="category-cell"><span class="badge">약국</span></td><td>체력 회복</td></tr>
+        <tr><td class="code">monsterdrug</td><td>박카스</td><td class="category-cell"><span class="badge">약국</span></td><td>슈퍼점프</td></tr>
+        <tr><td class="code">steroiddrugs</td><td>비타500</td><td class="category-cell"><span class="badge">약국</span></td><td>속도버프</td></tr>
+        <tr><td class="code">elixir5</td><td>전투식량</td><td class="category-cell"><span class="badge">약국</span></td><td><span class="empty">-</span></td></tr>
+        <tr><td class="code">icecream</td><td>포도당</td><td class="category-cell"><span class="badge">약국</span></td><td><span class="empty">-</span></td></tr>
+        <tr><td class="code">elixir</td><td>파워엘릭서</td><td class="category-cell"><span class="badge">약국</span></td><td><span class="empty">-</span></td></tr>
+        <tr><td class="code">tofu</td><td>마운자로</td><td class="category-cell"><span class="badge">약국</span></td><td><span class="empty">-</span></td></tr>
+        <tr><td class="code">rakar_1</td><td>센티널렉카 패키지</td><td class="category-cell"><span class="badge">렉카</span></td><td>배기음 튜닝권 3개, 차량포장키트 1개</td></tr>
+        <tr><td class="code">repairkit</td><td>수리도구</td><td class="category-cell"><span class="badge">렉카</span></td><td>택비공에 쓰임</td></tr>
+        <tr><td class="code">fr_repairkit</td><td>특수한 수리도구</td><td class="category-cell"><span class="badge">렉카</span></td><td>센티널렉카 전용도구</td></tr>
+        <tr><td class="code">carbox_return</td><td>차량포장키트</td><td class="category-cell"><span class="badge">렉카</span></td><td>차량 포장</td></tr>
+        <tr><td class="code">exhaust_coupon</td><td>배기음 쿠폰</td><td class="category-cell"><span class="badge">렉카</span></td><td>배기음 튜닝</td></tr>
+        <tr><td class="code">special_paint_coupon</td><td>특수 페인트 쿠폰</td><td class="category-cell"><span class="badge">물품</span></td><td>차량 특수페인트 도색에 사용됩니다.</td></tr>
+        <tr><td class="code">hunter_dead</td><td>사냥개 앞다리</td><td class="category-cell"><span class="badge">좀비존</span></td><td>(50만원)</td></tr>
+        <tr><td class="code">hunter_trash</td><td>누군가 먹다버린 치킨조각</td><td class="category-cell"><span class="badge">좀비존</span></td><td>(15만원)</td></tr>
+        <tr><td class="code">hunter_dead1</td><td>사냥개 뒷다리</td><td class="category-cell"><span class="badge">좀비존</span></td><td>(77만원)</td></tr>
+        <tr><td class="code">hunter_dead_pice</td><td>사냥개 눈알</td><td class="category-cell"><span class="badge">좀비존</span></td><td>180만원)</td></tr>
+        <tr><td class="code">hunter_dead_pice5</td><td>돈봉투</td><td class="category-cell"><span class="badge">좀비존</span></td><td>(270만원)</td></tr>
+        <tr><td class="code">group_ticket</td><td>그룹 생성 아이템</td><td class="category-cell"><span class="badge">물품</span></td><td>그룹 생성</td></tr>
+        <tr><td class="code">group_member</td><td>그룹 최대인원 추가 아이템</td><td class="category-cell"><span class="badge">물품</span></td><td>사용시 최대 인원 10명 증가</td></tr>
+        <tr><td class="code">group_rename</td><td>그룹 상호명 변경 아이템</td><td class="category-cell"><span class="badge">물품</span></td><td>그룹명 변경</td></tr>
+        <tr><td class="code">group_rank</td><td>그룹 추가 직급 아이템</td><td class="category-cell"><span class="badge">물품</span></td><td>직급 추가</td></tr>
+        <tr><td class="code">group_mark</td><td>그룹 표식,로고 변경 아이템</td><td class="category-cell"><span class="badge">물품</span></td><td>로고 변경</td></tr>
+        <tr><td class="code">TURN_fishrod_steel</td><td>강철 낚싯대</td><td class="category-cell"><span class="badge">물품</span></td><td>낚시 Lv.10 이상 사용 가능한 중급 낚싯대.</td></tr>
+        <tr><td class="code">TURN_fishrod_carbon</td><td>카본 낚싯대</td><td class="category-cell"><span class="badge">물품</span></td><td>낚시 Lv.20 이상. 희귀 어종을 노릴 수 있다.</td></tr>
+        <tr><td class="code">TURN_fishrod_titan</td><td>티타늄 낚싯대</td><td class="category-cell"><span class="badge">물품</span></td><td>낚시 Lv.35 이상의 고급 낚싯대.</td></tr>
+        <tr><td class="code">TURN_fishrod_legend</td><td>전설의 낚싯대</td><td class="category-cell"><span class="badge">물품</span></td><td>낚시 Lv.50. 전설급 어종을 낚을 수 있다.</td></tr>
+        <tr><td class="code">TURN_fishbait_prem</td><td>고급 미끼</td><td class="category-cell"><span class="badge">물품</span></td><td>고급 어종을 유인하는 미끼.</td></tr>
+        <tr><td class="code">TURN_fishbait_spec</td><td>특급 미끼</td><td class="category-cell"><span class="badge">물품</span></td><td>희귀·전설 어종 확률을 높이는 미끼.</td></tr>
+        <tr><td class="code">TURN_shiprod_enh</td><td>선상 강화 낚싯대</td><td class="category-cell"><span class="badge">물품</span></td><td>선상 Lv.10 이상의 강화 낚싯대.</td></tr>
+        <tr><td class="code">TURN_shiprod_deep</td><td>선상 심해 낚싯대</td><td class="category-cell"><span class="badge">물품</span></td><td>선상 Lv.20 이상. 심해 어종 대응.</td></tr>
+        <tr><td class="code">TURN_shiprod_legend</td><td>선상 전설 낚싯대</td><td class="category-cell"><span class="badge">물품</span></td><td>선상 Lv.30. 전설급 심해어를 낚는다.</td></tr>
+        <tr><td class="code">TURN_shipbait_spec</td><td>선상 특급 미끼</td><td class="category-cell"><span class="badge">물품</span></td><td>선상 희귀 어종 확률을 높이는 미끼.</td></tr>
+        <tr><td class="code">TURN_shipbait_deep</td><td>선상 심해 미끼</td><td class="category-cell"><span class="badge">물품</span></td><td>선상 전설 어종 확률을 높이는 미끼.</td></tr>
+        <tr><td class="code">o2_tank_s</td><td>소형 산소통</td><td class="category-cell"><span class="badge">물품</span></td><td>스쿠버 잠수용 소형 산소통. 장착 시 약 90초 잠수 가능.</td></tr>
+        <tr><td class="code">o2_tank_m</td><td>중형 산소통</td><td class="category-cell"><span class="badge">물품</span></td><td>스쿠버 잠수용 중형 산소통. 장착 시 약 150초 잠수 가능.</td></tr>
+        <tr><td class="code">o2_tank_l</td><td>대형 산소통</td><td class="category-cell"><span class="badge">물품</span></td><td>스쿠버 잠수용 대형 산소통. 장착 시 약 240초 잠수 가능.</td></tr>
+        <tr><td class="code">summer_ticket</td><td>썸머 이벤트 티켓</td><td class="category-cell"><span class="badge">물품</span></td><td>여름 이벤트 호러게임 입장권</td></tr>
+        <tr><td class="code">summer_coin</td><td>썸머 이벤트 코인</td><td class="category-cell"><span class="badge">물품</span></td><td>여름 이벤트 교환권</td></tr>
+        <tr><td class="code">summer_shard</td><td>여름 치장 조각</td><td class="category-cell"><span class="badge">물품</span></td><td>모으면 여름 치장 세트로 교환할 수 있다</td></tr>
+        <tr><td class="code">ltd_skin_shard</td><td>한정 스킨 조각</td><td class="category-cell"><span class="badge">물품</span></td><td>모으면 한정 스킨으로 교환할 수 있다</td></tr>
+        <tr><td class="code">summer_sunglasses</td><td>여름 선글라스</td><td class="category-cell"><span class="badge">물품</span></td><td>유형 : 치장 여름 이벤트 한정</td></tr>
+        <tr><td class="code">summer_icebar</td><td>아이스바</td><td class="category-cell"><span class="badge">물품</span></td><td>유형 : 치장 여름 이벤트 한정</td></tr>
+        <tr><td class="code">summer_bubbletool</td><td>버블건</td><td class="category-cell"><span class="badge">물품</span></td><td>유형 : 치장 여름 이벤트 한정</td></tr>
+        <tr><td class="code">summer_swimring1</td><td>여름 튜브 A</td><td class="category-cell"><span class="badge">물품</span></td><td>유형 : 치장 여름 이벤트 한정</td></tr>
+        <tr><td class="code">summer_swimring2</td><td>여름 튜브 B</td><td class="category-cell"><span class="badge">물품</span></td><td>유형 : 치장 여름 이벤트 한정</td></tr>
+        <tr><td class="code">metaldetector</td><td>금속 탐지기</td><td class="category-cell"><span class="badge">물품</span></td><td><span class="empty">-</span></td></tr>
+        <tr><td class="code">md_battery</td><td>탐지기 배터리</td><td class="category-cell"><span class="badge">물품</span></td><td>[금속탐지] 금속탐지기 충전용 배터리. 발굴 시 소모되며, 필드에서 R키로 교체한다.</td></tr>
+        <tr><td class="code">md_trash</td><td>잡동사니</td><td class="category-cell"><span class="badge">물품</span></td><td>[금속탐지] 발굴로 나온 고철 쓰레기. 해변 매표소에서 헐값에 판매할 수 있다.</td></tr>
+        <tr><td class="code">md_coin</td><td>오래된 동전</td><td class="category-cell"><span class="badge">물품</span></td><td>[금속탐지] 해변 매표소에서 판매할 수 있다.</td></tr>
+        <tr><td class="code">md_copper</td><td>구리 조각</td><td class="category-cell"><span class="badge">물품</span></td><td>[금속탐지] 판매하거나 탐지기 강화 재료로 쓴다.</td></tr>
+        <tr><td class="code">md_iron</td><td>금속 철</td><td class="category-cell"><span class="badge">물품</span></td><td>[금속탐지] 판매하거나 탐지기 강화 재료로 쓴다.</td></tr>
+        <tr><td class="code">pobie_se1</td><td>포비의 금반지</td><td class="category-cell"><span class="badge">물품</span></td><td>제작소 1시즌아이템</td></tr>
+        <tr><td class="code">kimtasikse1</td><td>김태식의 스팅어 핸들</td><td class="category-cell"><span class="badge">물품</span></td><td>제작소 1시즌아이템</td></tr>
+        <tr><td class="code">md_silver</td><td>은 조각</td><td class="category-cell"><span class="badge">물품</span></td><td>[금속탐지] 판매하거나 탐지기 강화 재료로 쓴다.</td></tr>
+        <tr><td class="code">md_gold</td><td>금 조각</td><td class="category-cell"><span class="badge">물품</span></td><td>[금속탐지] 판매하거나 탐지기 강화 재료로 쓴다.</td></tr>
+        <tr><td class="code">md_watch</td><td>시계</td><td class="category-cell"><span class="badge">물품</span></td><td>[금속탐지] 값나가는 골동 시계. 판매하거나 고급 강화에 쓴다.</td></tr>
+        <tr><td class="code">md_ring</td><td>반지</td><td class="category-cell"><span class="badge">물품</span></td><td>[금속탐지] 보석 박힌 반지. 잭팟! 판매하거나 최고급 강화에 쓴다.</td></tr>
+        <tr><td class="code">ngranturismo</td><td>현대 비전</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
+        <tr><td class="code">nv74</td><td>현대 NV74 비전</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
+        <tr><td class="code">visiongt</td><td>맥라렌 비전</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
+        <tr><td class="code">tachy</td><td>헥시온 비전</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
+        <tr><td class="code">radisgt</td><td>어비스 비전</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
+        <tr><td class="code">ie</td><td>ie 비전 GT</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
+        <tr><td class="code">s1000rrc</td><td>쿠오님 개인차</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
+        <tr><td class="code">BM_alpine</td><td>백곰님 개인차</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
+        <tr><td class="code">bolide</td><td>부가티 볼리드</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
+        <tr><td class="code">develSix</td><td>데빌 식스틴</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
+        <tr><td class="code">ep9</td><td>니오 EP9</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
+        <tr><td class="code">f80</td><td>F80</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
+        <tr><td class="code">gr1</td><td>토마호크</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
+        <tr><td class="code">greengt2h</td><td>그린 GT</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
+        <tr><td class="code">H4REntityMTR</td><td>엔티멕스 GT</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
+        <tr><td class="code">2018s650p</td><td>노블 6</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
+        <tr><td class="code">tachy</td><td>턴 비전</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
+        <tr><td class="code">beetleRWB</td><td>벤틀리 RWB</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
+        <tr><td class="code">a90pit</td><td>쉐도우 펄스</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
+        <tr><td class="code">avtr</td><td>밴츠 비전</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
+        <tr><td class="code">bugatticentodieci</td><td>부가티 센토디에치</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
+        <tr><td class="code">county</td><td>카운티</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
+        <tr><td class="code">essentia</td><td>제네시스 에센시아</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
+        <tr><td class="code">ferrari812super</td><td>페라리 812 슈퍼</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
+        <tr><td class="code">gcram1500</td><td>램 차저 1500</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
+        <tr><td class="code">hellcat</td><td>닷지 챌린저 헬캣</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
+        <tr><td class="code">p900rocket22</td><td>밴츠 P900</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
+        <tr><td class="code">rmodspeed</td><td>맥라렌 스피드테일</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
+        <tr><td class="code">sscts</td><td>SSC 투아타라</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
+        <tr><td class="code">trezor1</td><td>르노 테르조</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
+        <tr><td class="code">urusvennum</td><td>엘리박스1차)람보르기니 우루스</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
+        <tr><td class="code">gts125</td><td>보이져</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
+        <tr><td class="code">vf125</td><td>VF125</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
+        <tr><td class="code">beetleRWB</td><td>비틀 RWB 컨셉트</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
+        <tr><td class="code">ocnrrvn100</td><td>롤스로이스 컨셉트</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
+        <tr><td class="code">s63coupe</td><td>밴츠 컨셉트</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
+        <tr><td class="code">Gyuseok_terzo</td><td>테르조 LED</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
+        <tr><td class="code">impronta4</td><td>임프론타 LED</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
+        <tr><td class="code">scv</td><td>람보르기니 시안 LED 2</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
+        <tr><td class="code">duckcar</td><td>엘리박스1차)오리차</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
+        <tr><td class="code">ppht3</td><td>세이버</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
+        <tr><td class="code">PV_bugatti</td><td>부가티 미니카</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
+        <tr><td class="code">PV_bugvr</td><td>부가티 미니카 2</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
+        <tr><td class="code">PV_dawn</td><td>롤스로이스 미니카</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
+        <tr><td class="code">PV_gtr</td><td>GTR 미니카</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
+        <tr><td class="code">PV_jeep</td><td>지프 미니카</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
+        <tr><td class="code">PV_sianr</td><td>람보르기니 시안 미니카</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
+        <tr><td class="code">PV_rover</td><td>랜드로버 미니카</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
+        <tr><td class="code">speeder</td><td>보트] 스피더</td><td class="category-cell"><span class="badge">차량</span></td><td>보트 / 3,000,000,000원</td></tr>
+        <tr><td class="code">dinghy</td><td>보트] 딩이</td><td class="category-cell"><span class="badge">차량</span></td><td>보트 / 1,000,000,000원</td></tr>
+        <tr><td class="code">seashark</td><td>보트] 씨샤크</td><td class="category-cell"><span class="badge">차량</span></td><td>보트 / 500,000,000원</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 </body>
 </html>
