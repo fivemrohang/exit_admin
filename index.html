@@ -1,360 +1,2220 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="EXIT RP 코드 목록 - 아이템, 차량, 조직, 공무 물품 및 기타 코드">
 <title>EXIT RP 코드표</title>
 <style>
-:root {
-  --border: #e5e7eb;
-  --header: #f8fafc;
-  --section: #f1f5f9;
-  --text: #111827;
-  --muted: #64748b;
-  --code-bg: #f8fafc;
+*{box-sizing:border-box}
+:root{
+  --bg:#0b0d10;--panel:#11151a;--panel2:#171c22;--line:#252c34;
+  --text:#f2f4f6;--muted:#9ba5b1;--accent:#dfe4ea;--accent2:#aeb7c2;
 }
-* { box-sizing: border-box; }
-body {
-  margin: 0;
-  padding: 32px 20px;
-  background: #fff;
-  color: var(--text);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans KR",
-               "Malgun Gothic", Arial, sans-serif;
-}
-.container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-h1 {
-  margin: 0 0 8px;
-  font-size: 28px;
-  font-weight: 800;
-  letter-spacing: -0.5px;
-}
-.description {
-  margin: 0 0 22px;
-  color: var(--muted);
-  font-size: 14px;
-}
-.table-wrap {
-  width: 100%;
-  overflow-x: auto;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-}
-table {
-  width: 100%;
-  min-width: 820px;
-  border-collapse: separate;
-  border-spacing: 0;
-  table-layout: fixed;
-  font-size: 14px;
-}
-col.code { width: 23%; }
-col.name { width: 22%; }
-col.category { width: 12%; }
-col.note { width: 43%; }
-th {
-  padding: 14px 16px;
-  background: var(--header);
-  border-bottom: 1px solid var(--border);
-  text-align: left;
-  font-weight: 700;
-  white-space: nowrap;
-}
-th:not(:last-child), td:not(:last-child) {
-  border-right: 1px solid var(--border);
-}
-td {
-  padding: 12px 16px;
-  border-bottom: 1px solid var(--border);
-  vertical-align: middle;
-  line-height: 1.55;
-  word-break: break-word;
-}
-tbody tr:last-child td { border-bottom: 0; }
-tbody tr:hover td { background: #fafafa; }
-td.code {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
-  font-size: 13px;
-  color: #334155;
-}
-.category-cell {
-  text-align: center;
-}
-.badge {
-  display: inline-block;
-  padding: 4px 9px;
-  border-radius: 999px;
-  background: #f1f5f9;
-  color: #475569;
-  font-size: 12px;
-  font-weight: 700;
-  white-space: nowrap;
-}
-.section-row td {
-  padding: 13px 16px;
-  background: var(--section);
-  color: #1e293b;
-  font-size: 15px;
-  font-weight: 800;
-  border-bottom: 1px solid var(--border);
-}
-.section-row:hover td { background: var(--section); }
-.empty { color: #94a3b8; }
-@media (max-width: 700px) {
-  body { padding: 20px 12px; }
-  h1 { font-size: 23px; }
-  .table-wrap { border-radius: 9px; }
-  table { font-size: 13px; }
-  th, td { padding: 10px 12px; }
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,"Noto Sans KR","Malgun Gothic",system-ui,sans-serif}
+button,input{font:inherit}
+.wrap{width:min(1180px,calc(100% - 32px));margin:auto}
+header{padding:48px 0 28px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;color:#b9c2cc;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px}
+h1{margin:0;font-size:clamp(28px,4vw,42px);letter-spacing:-.04em}
+.sub{margin:10px 0 0;color:var(--muted);font-size:15px}
+.toolbar{position:sticky;top:12px;z-index:20;display:flex;gap:10px;margin:0 0 24px;padding:10px;background:rgba(17,21,26,.88);border:1px solid var(--line);border-radius:14px;backdrop-filter:blur(14px)}
+.search{flex:1;position:relative}
+.search input{width:100%;height:46px;border:1px solid var(--line);border-radius:10px;background:#0d1014;color:var(--text);padding:0 42px 0 14px;outline:none}
+.search input:focus{border-color:#59636e}
+.search span{position:absolute;right:14px;top:50%;transform:translateY(-50%);color:#76818d}
+.toolbtn{height:46px;padding:0 14px;border:1px solid var(--line);border-radius:10px;background:#171c22;color:#dce1e6;cursor:pointer}
+.toolbtn:hover{background:#1d232a}
+.stats{display:flex;gap:8px;align-items:center;padding:0 4px 20px;color:var(--muted);font-size:13px}
+.dot{width:5px;height:5px;border-radius:50%;background:#7e8995;display:inline-block}
+.category{margin:0 0 14px;border:1px solid var(--line);background:var(--panel);border-radius:14px;overflow:hidden}
+.category-head{width:100%;display:flex;justify-content:space-between;align-items:center;padding:17px 18px;border:0;background:transparent;color:var(--text);cursor:pointer;text-align:left}
+.category-head:hover{background:#151a20}
+.cat-title{font-weight:800;font-size:16px;display:flex;align-items:center;gap:10px}
+.cat-icon{width:28px;height:28px;display:grid;place-items:center;border:1px solid var(--line);border-radius:8px;background:#0d1014;font-size:14px}
+.count{font-size:12px;color:var(--muted)}
+.count b{display:inline-block;margin-left:6px;font-size:15px;transition:.2s}
+.category.closed .count b{transform:rotate(-90deg)}
+.items{border-top:1px solid var(--line)}
+.category.closed .items{display:none}
+.item{display:grid;grid-template-columns:minmax(300px,1fr) minmax(260px,1.2fr);gap:18px;padding:14px 18px;border-bottom:1px solid #1d232a}
+.item:last-child{border-bottom:0}
+.item:hover{background:#14191f}
+.item-main{min-width:0}
+.code{display:inline-flex;align-items:center;gap:8px;border:0;background:none;color:#dce2e8;padding:0;cursor:pointer;max-width:100%;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:13px}
+.code span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.code .copy{font-family:inherit;font-size:10px;color:#818b96;border:1px solid var(--line);padding:2px 5px;border-radius:5px;flex:none}
+.code:hover{color:#fff}
+.name{margin-top:6px;font-size:14px;font-weight:700;color:#fff}
+.meta{display:flex;align-items:flex-start;gap:9px;min-width:0}
+.badge{flex:none;font-size:10px;padding:4px 7px;border-radius:6px;border:1px solid #303842;color:#bfc7d0;background:#0d1014}
+.note{color:#a5afb9;font-size:12px;line-height:1.65;word-break:keep-all}
+.empty{display:none;text-align:center;padding:50px 20px;color:var(--muted);border:1px dashed var(--line);border-radius:14px}
+footer{padding:28px 0 50px;color:#69737e;font-size:12px;text-align:center}
+@media(max-width:700px){
+ .wrap{width:min(100% - 20px,1180px)}
+ header{padding:30px 0 20px}
+ .toolbar{top:6px;flex-wrap:wrap}
+ .search{min-width:100%}
+ .toolbtn{flex:1}
+ .item{grid-template-columns:1fr;gap:9px;padding:14px}
+ .meta{display:block}
+ .badge{display:inline-block;margin-bottom:6px}
+ .note{display:block}
+ .category-head{padding:15px 14px}
 }
 </style>
 </head>
 <body>
-<div class="container">
+<main class="wrap">
+<header>
+  <div class="eyebrow">EXIT RP · CODE GUIDE</div>
   <h1>EXIT RP 코드표</h1>
-  <p class="description">서버에서 사용되는 아이템 · 차량 · 기타 코드 목록</p>
-  <div class="table-wrap">
-    <table>
-      <colgroup>
-        <col class="code">
-        <col class="name">
-        <col class="category">
-        <col class="note">
-      </colgroup>
-      <thead>
-        <tr>
-          <th>코드명</th>
-          <th>코드 이름</th>
-          <th>구분</th>
-          <th>비고</th>
-        </tr>
-      </thead>
-      <tbody>
+  <p class="sub">서버에서 사용되는 아이템 · 차량 · 기타 코드 목록</p>
+</header>
 
-        <tr><td class="code">dirtymoney</td><td>검은돈</td><td class="category-cell"><span class="badge">물품</span></td><td>스토리 RP 검은돈</td></tr>
-        <tr><td class="code">yumi_coin</td><td>신세계팩션코인</td><td class="category-cell"><span class="badge">물품</span></td><td>아직 비활성화</td></tr>
-        <tr><td class="code">enginesound_ticket</td><td>배기음튜닝권</td><td class="category-cell"><span class="badge">물품</span></td><td>신세계렉카 판매물품</td></tr>
-        <tr><td class="code">EXIT_sajung</td><td>사전예약보상</td><td class="category-cell"><span class="badge">물품</span></td><td>사전예약보상지급</td></tr>
-        <tr><td class="code">TURN_meleebox</td><td>근접무기 상자</td><td class="category-cell"><span class="badge">물품</span></td><td>조직사업권</td></tr>
-        <tr><td class="code">TURN_specialbox</td><td>엑시트 스페셜 스킨박스</td><td class="category-cell"><span class="badge">물품</span></td><td>추후 이벤트 혹은 기타 상품에 출시예정</td></tr>
-        <tr><td class="code">musicbox_ticket</td><td>뮤직박스 이용권</td><td class="category-cell"><span class="badge">물품</span></td><td>절대 사용 X 후원자들 등급보상</td></tr>
-        <tr><td class="code">moneybox30709</td><td>초소형 머니박스</td><td class="category-cell"><span class="badge">물품</span></td><td>1만원 ~ 10만원 랜덤박스</td></tr>
-        <tr><td class="code">moneybox10709</td><td>소형 머니박스</td><td class="category-cell"><span class="badge">물품</span></td><td>1~3억 랜덤박스</td></tr>
-        <tr><td class="code">moneybox20709</td><td>중형 머니박스</td><td class="category-cell"><span class="badge">물품</span></td><td>100만원~1억 랜덤박스</td></tr>
-        <tr><td class="code">moneybox50709</td><td>뉴비지원 머니박스</td><td class="category-cell"><span class="badge">물품</span></td><td>10억~50억 랜덤박스</td></tr>
-        <tr><td class="code">special_goldb</td><td>현금다발 상자</td><td class="category-cell"><span class="badge">물품</span></td><td>500만원~5000만원 랜덤박스</td></tr>
-        <tr><td class="code">yumi_goldloot</td><td>신세계 골드 박스</td><td class="category-cell"><span class="badge">물품</span></td><td>신세계코인,파워엘릭서,스킨조각,차량조각 랜덤박스</td></tr>
-        <tr><td class="code">prison_ticket_1</td><td>노역 완료 1분 차감 티켓</td><td class="category-cell"><span class="badge">물품</span></td><td>교도소 사용</td></tr>
-        <tr><td class="code">zombie_ticket_1</td><td>좀비존 입장권 (기본)</td><td class="category-cell"><span class="badge">물품</span></td><td>좀비존 사업권</td></tr>
-        <tr><td class="code">sleepcoin0711</td><td>잠수코인</td><td class="category-cell"><span class="badge">물품</span></td><td>잠수존</td></tr>
-        <tr><td class="code">TURN_COIN</td><td>엑시트 코인</td><td class="category-cell"><span class="badge">물품</span></td><td><span class="empty">-</span></td></tr>
-        <tr><td class="code">jewelry</td><td>보석</td><td class="category-cell"><span class="badge">물품</span></td><td><span class="empty">-</span></td></tr>
-        <tr><td class="code">preminum_keellie</td><td>프리미엄 코인</td><td class="category-cell"><span class="badge">물품</span></td><td>프리미엄 부스 사용</td></tr>
-        <tr><td class="code">sexbox</td><td>설계도</td><td class="category-cell"><span class="badge">물품</span></td><td>제작소 사용</td></tr>
-        <tr><td class="code">bs_mine5</td><td>또또의 눈물</td><td class="category-cell"><span class="badge">물품</span></td><td>제작소 사용</td></tr>
-        <tr><td class="code">TURN_randombox</td><td>랜덤박스 티켓</td><td class="category-cell"><span class="badge">물품</span></td><td>랜덤박스</td></tr>
-        <tr><td class="code">Inchan_sinmon</td><td>신문</td><td class="category-cell"><span class="badge">물품</span></td><td>직업 아이템</td></tr>
-        <tr><td class="code">Inchan_badar</td><td>배달 품목</td><td class="category-cell"><span class="badge">물품</span></td><td>직업 아이템</td></tr>
-        <tr><td class="code">Inchan_kifeed_tieket</td><td>킬피드 등록권</td><td class="category-cell"><span class="badge">물품</span></td><td>킬피드 시스템</td></tr>
-        <tr><td class="code">vehicle_enhance_ticket</td><td>강화의 돌</td><td class="category-cell"><span class="badge">물품</span></td><td>차량강화</td></tr>
-        <tr><td class="code">cosmetic_shard</td><td>치장조각</td><td class="category-cell"><span class="badge">물품</span></td><td>출석체크 보상</td></tr>
-        <tr><td class="code">attend_title</td><td>치장조각</td><td class="category-cell"><span class="badge">물품</span></td><td>개근왕 칭호조각</td></tr>
-        <tr><td class="code">turn_attend_box</td><td>TURN 개근 보상상자</td><td class="category-cell"><span class="badge">물품</span></td><td>개근왕 칭호조각</td></tr>
-        <tr><td class="code">EXIT_elliecashEXIT_elliecash</td><td>엑시트 캐쉬</td><td class="category-cell"><span class="badge">물품</span></td><td>상점에서 사용가능</td></tr>
-        <tr><td class="code">elliecoin</td><td>엘리코인</td><td class="category-cell"><span class="badge">물품</span></td><td>엘리박스 이용권</td></tr>
-        <tr><td class="code">ellie_signiturebox</td><td>엑시트 시그니처 캡슐</td><td class="category-cell"><span class="badge">물품</span></td><td>캡슐 이용권</td></tr>
-        <tr><td class="code">crbox</td><td>일반 박스</td><td class="category-cell"><span class="badge">물품</span></td><td>메인광장 사용</td></tr>
-        <tr><td class="code">spbox</td><td>스패셜 박스</td><td class="category-cell"><span class="badge">물품</span></td><td>메인광장 사용</td></tr>
-        <tr><td class="code">fate_coin</td><td>운명의 코인</td><td class="category-cell"><span class="badge">물품</span></td><td>제작소 사용</td></tr>
-        <tr><td class="code">lowclass_jewel</td><td>하급 보석</td><td class="category-cell"><span class="badge">물품</span></td><td>제작소 사용</td></tr>
-        <tr><td class="code">turn_coin1</td><td>엑시트 코인</td><td class="category-cell"><span class="badge">물품</span></td><td>제작소 보상</td></tr>
-        <tr><td class="code">live_chicken</td><td>생닭</td><td class="category-cell"><span class="badge">물품</span></td><td>닭공장 사용</td></tr>
-        <tr><td class="code">slaughtered_chicken</td><td>1차 가공 닭</td><td class="category-cell"><span class="badge">물품</span></td><td>닭공장 사용</td></tr>
-        <tr><td class="code">processed_chicken</td><td>절단 치킨</td><td class="category-cell"><span class="badge">물품</span></td><td>닭공장 사용</td></tr>
-        <tr><td class="code">packaged_chicken</td><td>포장 치킨</td><td class="category-cell"><span class="badge">물품</span></td><td>닭공장 사용</td></tr>
-        <tr><td class="code">TURN_shipticket</td><td>섬낚시 이용권</td><td class="category-cell"><span class="badge">물품</span></td><td>섬낚시 이용권</td></tr>
-        <tr><td class="code">killfeed1teir1.kiifeed</td><td>이걸죽네</td><td class="category-cell"><span class="badge">킬피드</span></td><td><span class="empty">-</span></td></tr>
-        <tr><td class="code">killfeed1teir2.kiifeed</td><td>사슬</td><td class="category-cell"><span class="badge">킬피드</span></td><td><span class="empty">-</span></td></tr>
-        <tr><td class="code">zamsu.kiifeed</td><td>잠수왕</td><td class="category-cell"><span class="badge">킬피드</span></td><td><span class="empty">-</span></td></tr>
-        <tr><td class="code">warning.kiifeed</td><td>경고</td><td class="category-cell"><span class="badge">킬피드</span></td><td><span class="empty">-</span></td></tr>
-        <tr><td class="code">unicorn.kiifeed</td><td>유니콘</td><td class="category-cell"><span class="badge">킬피드</span></td><td><span class="empty">-</span></td></tr>
-        <tr><td class="code">skeleton.kiifeed</td><td>스켈레톤</td><td class="category-cell"><span class="badge">킬피드</span></td><td><span class="empty">-</span></td></tr>
-        <tr><td class="code">power.kiifeed</td><td>파워</td><td class="category-cell"><span class="badge">킬피드</span></td><td><span class="empty">-</span></td></tr>
-        <tr><td class="code">pig.kiifeed</td><td>돼지</td><td class="category-cell"><span class="badge">킬피드</span></td><td><span class="empty">-</span></td></tr>
-        <tr><td class="code">mymelody.kiifeed</td><td>마이멜로디</td><td class="category-cell"><span class="badge">킬피드</span></td><td><span class="empty">-</span></td></tr>
-        <tr><td class="code">silver.kiifeed</td><td>실버</td><td class="category-cell"><span class="badge">킬피드</span></td><td><span class="empty">-</span></td></tr>
-        <tr><td class="code">gold.kiifeed</td><td>골드</td><td class="category-cell"><span class="badge">킬피드</span></td><td><span class="empty">-</span></td></tr>
-        <tr><td class="code">hongbowin.kiifeed</td><td>홍보왕</td><td class="category-cell"><span class="badge">킬피드</span></td><td><span class="empty">-</span></td></tr>
-        <tr><td class="code">waterfish.kiifeed</td><td>여름여름</td><td class="category-cell"><span class="badge">킬피드</span></td><td><span class="empty">-</span></td></tr>
-        <tr><td class="code">resurrectionking.chattitle</td><td>여름여름</td><td class="category-cell"><span class="badge">채팅칭호</span></td><td><span class="empty">-</span></td></tr>
-        <tr><td class="code">prettiygirl.chattitle</td><td>공주</td><td class="category-cell"><span class="badge">채팅칭호</span></td><td><span class="empty">-</span></td></tr>
-        <tr><td class="code">resurrectionking.aa11</td><td>어형이야</td><td class="category-cell"><span class="badge">채팅칭호</span></td><td><span class="empty">-</span></td></tr>
-        <tr><td class="code">poop.chattitle</td><td>똥범벅</td><td class="category-cell"><span class="badge">채팅칭호</span></td><td><span class="empty">-</span></td></tr>
-        <tr><td class="code">skinbox_1</td><td>미연 스킨 교환권</td><td class="category-cell"><span class="badge">물품</span></td><td>[아이템 설명] 미연스킨 교환권이 들어있습니다!</td></tr>
-        <tr><td class="code">skinbox_2</td><td>장훈 스킨 교환권</td><td class="category-cell"><span class="badge">물품</span></td><td>[아이템 설명] 장훈 스킨 교환권이 들어있습니다!</td></tr>
-        <tr><td class="code">skinbox_3</td><td>장훈 &amp; 미연 스킨 교환권</td><td class="category-cell"><span class="badge">물품</span></td><td>[아이템 설명] 장훈&amp; 미연 스킨 교환권이 들어있습니다!</td></tr>
-        <tr><td class="code">skinbox_4</td><td>서준 스킨 교환권</td><td class="category-cell"><span class="badge">물품</span></td><td>[아이템 설명] 서준 스킨 교환권이 들어있습니다!</td></tr>
-        <tr><td class="code">skinbox_5</td><td>하린 스킨 교환권</td><td class="category-cell"><span class="badge">물품</span></td><td>[아이템 설명] 하린 스킨 교환권이 들어있습니다!</td></tr>
-        <tr><td class="code">skinbox_6</td><td>서준 &amp; 하린 스킨 교환권</td><td class="category-cell"><span class="badge">물품</span></td><td>[아이템 설명] 서준 &amp; 하린 스킨 교환권이 들어있습니다!</td></tr>
-        <tr><td class="code">skinbox_7</td><td>미주 스킨 교환권</td><td class="category-cell"><span class="badge">물품</span></td><td>[아이템 설명] 미주스킨 교환권이 들어있습니다!</td></tr>
-        <tr><td class="code">skinbox_8</td><td>서준 스킨 교환권</td><td class="category-cell"><span class="badge">물품</span></td><td>[아이템 설명] 서준스킨 교환권이 들어있습니다!</td></tr>
-        <tr><td class="code">skinbox_9</td><td>규현 스킨 교환권</td><td class="category-cell"><span class="badge">물품</span></td><td>[아이템 설명] 규현스킨 교환권이 들어있습니다!</td></tr>
-        <tr><td class="code">skinbox_10</td><td>현아 스킨 교환권</td><td class="category-cell"><span class="badge">물품</span></td><td>[아이템 설명] 현아 스킨 교환권이 들어있습니다!</td></tr>
-        <tr><td class="code">girlskin1</td><td>문신여자 교환권</td><td class="category-cell"><span class="badge">물품</span></td><td>관리자를 호출하여 지급받아주세요</td></tr>
-        <tr><td class="code">carbox_a90pit</td><td>쉐도우 펄스 확정 지급권</td><td class="category-cell"><span class="badge">물품</span></td><td>[아이템 설명] 안에 쉐도우 펄스 차량이 들어있습니다.</td></tr>
-        <tr><td class="code">carbox_radisgt</td><td>어비스 비전 GT 확정 지급권</td><td class="category-cell"><span class="badge">물품</span></td><td>[아이템 설명] 안에 어비스 비전 GT 차량이 들어있습니다.</td></tr>
-        <tr><td class="code">carbox_ie</td><td>ie 비전 GT 확정 지급권</td><td class="category-cell"><span class="badge">물품</span></td><td>[아이템 설명] 안에 ie 비전 GT 차량이 들어있습니다.</td></tr>
-        <tr><td class="code">carbox_tachy</td><td>엑시트 비전 확정 지급권</td><td class="category-cell"><span class="badge">물품</span></td><td>[아이템 설명] 안에 엑시트 비전 차량이 들어있습니다.</td></tr>
-        <tr><td class="code">carbox_2018s650p</td><td>노블6 확정 지급권</td><td class="category-cell"><span class="badge">물품</span></td><td>[아이템 설명] 안에 노블 6 차량이 들어있습니다.</td></tr>
-        <tr><td class="code">carbox1591550718</td><td>멕라렌 비전 확정 지급권</td><td class="category-cell"><span class="badge">물품</span></td><td>[아이템 설명] 안에 멕라렌 비전 차량이 들어있습니다.</td></tr>
-        <tr><td class="code">carbox93351303101</td><td>마쯔다 후라이 확정 지급권</td><td class="category-cell"><span class="badge">물품</span></td><td>[아이템 설명] 안에 마쯔다 후라이 차량이 들어있습니다.</td></tr>
-        <tr><td class="code">pistol_m</td><td>피스톨 몸체 상자</td><td class="category-cell"><span class="badge">조직</span></td><td><span class="empty">-</span></td></tr>
-        <tr><td class="code">pistol_t</td><td>피스톨 100발 탄약상자</td><td class="category-cell"><span class="badge">조직</span></td><td><span class="empty">-</span></td></tr>
-        <tr><td class="code">carbin_m</td><td>카빈소총 몸체 상자</td><td class="category-cell"><span class="badge">조직</span></td><td><span class="empty">-</span></td></tr>
-        <tr><td class="code">carbin_t</td><td>카빈소총 100발 탄약상자</td><td class="category-cell"><span class="badge">조직</span></td><td><span class="empty">-</span></td></tr>
-        <tr><td class="code">ak47_m</td><td>어썰트 라이플 몸체 상자</td><td class="category-cell"><span class="badge">조직</span></td><td><span class="empty">-</span></td></tr>
-        <tr><td class="code">ak47_t</td><td>어썰트 라이플 100발 탄약상자</td><td class="category-cell"><span class="badge">조직</span></td><td><span class="empty">-</span></td></tr>
-        <tr><td class="code">smg_m</td><td>마이크로 SMG 몸체 상자</td><td class="category-cell"><span class="badge">조직</span></td><td><span class="empty">-</span></td></tr>
-        <tr><td class="code">smg_t</td><td>마이크로 SMG 100발 탄약상자</td><td class="category-cell"><span class="badge">조직</span></td><td><span class="empty">-</span></td></tr>
-        <tr><td class="code">shotgun_m</td><td>펌프 샷건 몸체 상자</td><td class="category-cell"><span class="badge">조직</span></td><td><span class="empty">-</span></td></tr>
-        <tr><td class="code">shotgun_t</td><td>펌프 샷건 100발 탄약상자</td><td class="category-cell"><span class="badge">조직</span></td><td><span class="empty">-</span></td></tr>
-        <tr><td class="code">bat_1</td><td>배트 몸체 상자</td><td class="category-cell"><span class="badge">조직</span></td><td><span class="empty">-</span></td></tr>
-        <tr><td class="code">knife_1</td><td>나이프 몸체 상자</td><td class="category-cell"><span class="badge">조직</span></td><td><span class="empty">-</span></td></tr>
-        <tr><td class="code">swich_m</td><td>스위치 블레이드 몸체 상자</td><td class="category-cell"><span class="badge">조직</span></td><td><span class="empty">-</span></td></tr>
-        <tr><td class="code">flsh_m</td><td>플래쉬 몸체 상자</td><td class="category-cell"><span class="badge">조직</span></td><td><span class="empty">-</span></td></tr>
-        <tr><td class="code">TURN_meleebox</td><td>근접무기 상자</td><td class="category-cell"><span class="badge">조직</span></td><td><span class="empty">-</span></td></tr>
-        <tr><td class="code">seeds</td><td>대마씨</td><td class="category-cell"><span class="badge">조직</span></td><td>대마의 씨앗.</td></tr>
-        <tr><td class="code">ticket_drug</td><td>마약공장 입장권</td><td class="category-cell"><span class="badge">조직</span></td><td><span class="empty">-</span></td></tr>
-        <tr><td class="code">explosivo_c4</td><td>C4 폭발장치</td><td class="category-cell"><span class="badge">조직</span></td><td>스토리rp사용</td></tr>
-        <tr><td class="code">aw1</td><td>체포 영장</td><td class="category-cell"><span class="badge">물품</span></td><td>엑시트 대검찰청</td></tr>
-        <tr><td class="code">aw2</td><td>구속 영장</td><td class="category-cell"><span class="badge">물품</span></td><td>엑시트 대검찰청</td></tr>
-        <tr><td class="code">aw3</td><td>수색 영장</td><td class="category-cell"><span class="badge">물품</span></td><td>엑시트 대검찰청</td></tr>
-        <tr><td class="code">aw4</td><td>수배 영장</td><td class="category-cell"><span class="badge">물품</span></td><td>엑시트 대검찰청</td></tr>
-        <tr><td class="code">supressor</td><td>소음기</td><td class="category-cell"><span class="badge">다이소</span></td><td>총기파츠</td></tr>
-        <tr><td class="code">flash</td><td>플래쉬</td><td class="category-cell"><span class="badge">다이소</span></td><td>총기파츠</td></tr>
-        <tr><td class="code">grip</td><td>손잡이</td><td class="category-cell"><span class="badge">다이소</span></td><td>총기파츠</td></tr>
-        <tr><td class="code">holografik</td><td>홀로그램 스코프</td><td class="category-cell"><span class="badge">다이소</span></td><td>총기파츠</td></tr>
-        <tr><td class="code">powiekszonymagazynek</td><td>확장탄창</td><td class="category-cell"><span class="badge">다이소</span></td><td>총기파츠</td></tr>
-        <tr><td class="code">eun_packaging_1</td><td>시민,기업 패키징</td><td class="category-cell"><span class="badge">다이소</span></td><td>방탄복 100개, 파츠 종류당 30개, 스킨포장키트 1개</td></tr>
-        <tr><td class="code">eun_packaging_2</td><td>조직,공무원 패키징</td><td class="category-cell"><span class="badge">다이소</span></td><td>방탄복 150개, 파츠 종류당 30개, 스킨포장키트 3개</td></tr>
-        <tr><td class="code">packaging_1</td><td>쥬쥬 풀패키지 1번</td><td class="category-cell"><span class="badge">약국</span></td><td>진통제/비타500/박카스가 들어있습니다.</td></tr>
-        <tr><td class="code">packaging_2</td><td>쥬쥬 식품패키지</td><td class="category-cell"><span class="badge">약국</span></td><td>전투식량/포도당/파워엘릭서/마운자루가 들어있습니다.</td></tr>
-        <tr><td class="code">jtjc</td><td>진통제</td><td class="category-cell"><span class="badge">약국</span></td><td>체력 회복</td></tr>
-        <tr><td class="code">monsterdrug</td><td>박카스</td><td class="category-cell"><span class="badge">약국</span></td><td>슈퍼점프</td></tr>
-        <tr><td class="code">steroiddrugs</td><td>비타500</td><td class="category-cell"><span class="badge">약국</span></td><td>속도버프</td></tr>
-        <tr><td class="code">elixir5</td><td>전투식량</td><td class="category-cell"><span class="badge">약국</span></td><td><span class="empty">-</span></td></tr>
-        <tr><td class="code">icecream</td><td>포도당</td><td class="category-cell"><span class="badge">약국</span></td><td><span class="empty">-</span></td></tr>
-        <tr><td class="code">elixir</td><td>파워엘릭서</td><td class="category-cell"><span class="badge">약국</span></td><td><span class="empty">-</span></td></tr>
-        <tr><td class="code">tofu</td><td>마운자로</td><td class="category-cell"><span class="badge">약국</span></td><td><span class="empty">-</span></td></tr>
-        <tr><td class="code">rakar_1</td><td>센티널렉카 패키지</td><td class="category-cell"><span class="badge">렉카</span></td><td>배기음 튜닝권 3개, 차량포장키트 1개</td></tr>
-        <tr><td class="code">repairkit</td><td>수리도구</td><td class="category-cell"><span class="badge">렉카</span></td><td>택비공에 쓰임</td></tr>
-        <tr><td class="code">fr_repairkit</td><td>특수한 수리도구</td><td class="category-cell"><span class="badge">렉카</span></td><td>센티널렉카 전용도구</td></tr>
-        <tr><td class="code">carbox_return</td><td>차량포장키트</td><td class="category-cell"><span class="badge">렉카</span></td><td>차량 포장</td></tr>
-        <tr><td class="code">exhaust_coupon</td><td>배기음 쿠폰</td><td class="category-cell"><span class="badge">렉카</span></td><td>배기음 튜닝</td></tr>
-        <tr><td class="code">special_paint_coupon</td><td>특수 페인트 쿠폰</td><td class="category-cell"><span class="badge">물품</span></td><td>차량 특수페인트 도색에 사용됩니다.</td></tr>
-        <tr><td class="code">hunter_dead</td><td>사냥개 앞다리</td><td class="category-cell"><span class="badge">좀비존</span></td><td>(50만원)</td></tr>
-        <tr><td class="code">hunter_trash</td><td>누군가 먹다버린 치킨조각</td><td class="category-cell"><span class="badge">좀비존</span></td><td>(15만원)</td></tr>
-        <tr><td class="code">hunter_dead1</td><td>사냥개 뒷다리</td><td class="category-cell"><span class="badge">좀비존</span></td><td>(77만원)</td></tr>
-        <tr><td class="code">hunter_dead_pice</td><td>사냥개 눈알</td><td class="category-cell"><span class="badge">좀비존</span></td><td>180만원)</td></tr>
-        <tr><td class="code">hunter_dead_pice5</td><td>돈봉투</td><td class="category-cell"><span class="badge">좀비존</span></td><td>(270만원)</td></tr>
-        <tr><td class="code">group_ticket</td><td>그룹 생성 아이템</td><td class="category-cell"><span class="badge">물품</span></td><td>그룹 생성</td></tr>
-        <tr><td class="code">group_member</td><td>그룹 최대인원 추가 아이템</td><td class="category-cell"><span class="badge">물품</span></td><td>사용시 최대 인원 10명 증가</td></tr>
-        <tr><td class="code">group_rename</td><td>그룹 상호명 변경 아이템</td><td class="category-cell"><span class="badge">물품</span></td><td>그룹명 변경</td></tr>
-        <tr><td class="code">group_rank</td><td>그룹 추가 직급 아이템</td><td class="category-cell"><span class="badge">물품</span></td><td>직급 추가</td></tr>
-        <tr><td class="code">group_mark</td><td>그룹 표식,로고 변경 아이템</td><td class="category-cell"><span class="badge">물품</span></td><td>로고 변경</td></tr>
-        <tr><td class="code">TURN_fishrod_steel</td><td>강철 낚싯대</td><td class="category-cell"><span class="badge">물품</span></td><td>낚시 Lv.10 이상 사용 가능한 중급 낚싯대.</td></tr>
-        <tr><td class="code">TURN_fishrod_carbon</td><td>카본 낚싯대</td><td class="category-cell"><span class="badge">물품</span></td><td>낚시 Lv.20 이상. 희귀 어종을 노릴 수 있다.</td></tr>
-        <tr><td class="code">TURN_fishrod_titan</td><td>티타늄 낚싯대</td><td class="category-cell"><span class="badge">물품</span></td><td>낚시 Lv.35 이상의 고급 낚싯대.</td></tr>
-        <tr><td class="code">TURN_fishrod_legend</td><td>전설의 낚싯대</td><td class="category-cell"><span class="badge">물품</span></td><td>낚시 Lv.50. 전설급 어종을 낚을 수 있다.</td></tr>
-        <tr><td class="code">TURN_fishbait_prem</td><td>고급 미끼</td><td class="category-cell"><span class="badge">물품</span></td><td>고급 어종을 유인하는 미끼.</td></tr>
-        <tr><td class="code">TURN_fishbait_spec</td><td>특급 미끼</td><td class="category-cell"><span class="badge">물품</span></td><td>희귀·전설 어종 확률을 높이는 미끼.</td></tr>
-        <tr><td class="code">TURN_shiprod_enh</td><td>선상 강화 낚싯대</td><td class="category-cell"><span class="badge">물품</span></td><td>선상 Lv.10 이상의 강화 낚싯대.</td></tr>
-        <tr><td class="code">TURN_shiprod_deep</td><td>선상 심해 낚싯대</td><td class="category-cell"><span class="badge">물품</span></td><td>선상 Lv.20 이상. 심해 어종 대응.</td></tr>
-        <tr><td class="code">TURN_shiprod_legend</td><td>선상 전설 낚싯대</td><td class="category-cell"><span class="badge">물품</span></td><td>선상 Lv.30. 전설급 심해어를 낚는다.</td></tr>
-        <tr><td class="code">TURN_shipbait_spec</td><td>선상 특급 미끼</td><td class="category-cell"><span class="badge">물품</span></td><td>선상 희귀 어종 확률을 높이는 미끼.</td></tr>
-        <tr><td class="code">TURN_shipbait_deep</td><td>선상 심해 미끼</td><td class="category-cell"><span class="badge">물품</span></td><td>선상 전설 어종 확률을 높이는 미끼.</td></tr>
-        <tr><td class="code">o2_tank_s</td><td>소형 산소통</td><td class="category-cell"><span class="badge">물품</span></td><td>스쿠버 잠수용 소형 산소통. 장착 시 약 90초 잠수 가능.</td></tr>
-        <tr><td class="code">o2_tank_m</td><td>중형 산소통</td><td class="category-cell"><span class="badge">물품</span></td><td>스쿠버 잠수용 중형 산소통. 장착 시 약 150초 잠수 가능.</td></tr>
-        <tr><td class="code">o2_tank_l</td><td>대형 산소통</td><td class="category-cell"><span class="badge">물품</span></td><td>스쿠버 잠수용 대형 산소통. 장착 시 약 240초 잠수 가능.</td></tr>
-        <tr><td class="code">summer_ticket</td><td>썸머 이벤트 티켓</td><td class="category-cell"><span class="badge">물품</span></td><td>여름 이벤트 호러게임 입장권</td></tr>
-        <tr><td class="code">summer_coin</td><td>썸머 이벤트 코인</td><td class="category-cell"><span class="badge">물품</span></td><td>여름 이벤트 교환권</td></tr>
-        <tr><td class="code">summer_shard</td><td>여름 치장 조각</td><td class="category-cell"><span class="badge">물품</span></td><td>모으면 여름 치장 세트로 교환할 수 있다</td></tr>
-        <tr><td class="code">ltd_skin_shard</td><td>한정 스킨 조각</td><td class="category-cell"><span class="badge">물품</span></td><td>모으면 한정 스킨으로 교환할 수 있다</td></tr>
-        <tr><td class="code">summer_sunglasses</td><td>여름 선글라스</td><td class="category-cell"><span class="badge">물품</span></td><td>유형 : 치장 여름 이벤트 한정</td></tr>
-        <tr><td class="code">summer_icebar</td><td>아이스바</td><td class="category-cell"><span class="badge">물품</span></td><td>유형 : 치장 여름 이벤트 한정</td></tr>
-        <tr><td class="code">summer_bubbletool</td><td>버블건</td><td class="category-cell"><span class="badge">물품</span></td><td>유형 : 치장 여름 이벤트 한정</td></tr>
-        <tr><td class="code">summer_swimring1</td><td>여름 튜브 A</td><td class="category-cell"><span class="badge">물품</span></td><td>유형 : 치장 여름 이벤트 한정</td></tr>
-        <tr><td class="code">summer_swimring2</td><td>여름 튜브 B</td><td class="category-cell"><span class="badge">물품</span></td><td>유형 : 치장 여름 이벤트 한정</td></tr>
-        <tr><td class="code">metaldetector</td><td>금속 탐지기</td><td class="category-cell"><span class="badge">물품</span></td><td><span class="empty">-</span></td></tr>
-        <tr><td class="code">md_battery</td><td>탐지기 배터리</td><td class="category-cell"><span class="badge">물품</span></td><td>[금속탐지] 금속탐지기 충전용 배터리. 발굴 시 소모되며, 필드에서 R키로 교체한다.</td></tr>
-        <tr><td class="code">md_trash</td><td>잡동사니</td><td class="category-cell"><span class="badge">물품</span></td><td>[금속탐지] 발굴로 나온 고철 쓰레기. 해변 매표소에서 헐값에 판매할 수 있다.</td></tr>
-        <tr><td class="code">md_coin</td><td>오래된 동전</td><td class="category-cell"><span class="badge">물품</span></td><td>[금속탐지] 해변 매표소에서 판매할 수 있다.</td></tr>
-        <tr><td class="code">md_copper</td><td>구리 조각</td><td class="category-cell"><span class="badge">물품</span></td><td>[금속탐지] 판매하거나 탐지기 강화 재료로 쓴다.</td></tr>
-        <tr><td class="code">md_iron</td><td>금속 철</td><td class="category-cell"><span class="badge">물품</span></td><td>[금속탐지] 판매하거나 탐지기 강화 재료로 쓴다.</td></tr>
-        <tr><td class="code">pobie_se1</td><td>포비의 금반지</td><td class="category-cell"><span class="badge">물품</span></td><td>제작소 1시즌아이템</td></tr>
-        <tr><td class="code">kimtasikse1</td><td>김태식의 스팅어 핸들</td><td class="category-cell"><span class="badge">물품</span></td><td>제작소 1시즌아이템</td></tr>
-        <tr><td class="code">md_silver</td><td>은 조각</td><td class="category-cell"><span class="badge">물품</span></td><td>[금속탐지] 판매하거나 탐지기 강화 재료로 쓴다.</td></tr>
-        <tr><td class="code">md_gold</td><td>금 조각</td><td class="category-cell"><span class="badge">물품</span></td><td>[금속탐지] 판매하거나 탐지기 강화 재료로 쓴다.</td></tr>
-        <tr><td class="code">md_watch</td><td>시계</td><td class="category-cell"><span class="badge">물품</span></td><td>[금속탐지] 값나가는 골동 시계. 판매하거나 고급 강화에 쓴다.</td></tr>
-        <tr><td class="code">md_ring</td><td>반지</td><td class="category-cell"><span class="badge">물품</span></td><td>[금속탐지] 보석 박힌 반지. 잭팟! 판매하거나 최고급 강화에 쓴다.</td></tr>
-        <tr><td class="code">ngranturismo</td><td>현대 비전</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
-        <tr><td class="code">nv74</td><td>현대 NV74 비전</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
-        <tr><td class="code">visiongt</td><td>맥라렌 비전</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
-        <tr><td class="code">tachy</td><td>헥시온 비전</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
-        <tr><td class="code">radisgt</td><td>어비스 비전</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
-        <tr><td class="code">ie</td><td>ie 비전 GT</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
-        <tr><td class="code">s1000rrc</td><td>쿠오님 개인차</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
-        <tr><td class="code">BM_alpine</td><td>백곰님 개인차</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
-        <tr><td class="code">bolide</td><td>부가티 볼리드</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
-        <tr><td class="code">develSix</td><td>데빌 식스틴</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
-        <tr><td class="code">ep9</td><td>니오 EP9</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
-        <tr><td class="code">f80</td><td>F80</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
-        <tr><td class="code">gr1</td><td>토마호크</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
-        <tr><td class="code">greengt2h</td><td>그린 GT</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
-        <tr><td class="code">H4REntityMTR</td><td>엔티멕스 GT</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
-        <tr><td class="code">2018s650p</td><td>노블 6</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
-        <tr><td class="code">tachy</td><td>턴 비전</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
-        <tr><td class="code">beetleRWB</td><td>벤틀리 RWB</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
-        <tr><td class="code">a90pit</td><td>쉐도우 펄스</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
-        <tr><td class="code">avtr</td><td>밴츠 비전</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
-        <tr><td class="code">bugatticentodieci</td><td>부가티 센토디에치</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
-        <tr><td class="code">county</td><td>카운티</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
-        <tr><td class="code">essentia</td><td>제네시스 에센시아</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
-        <tr><td class="code">ferrari812super</td><td>페라리 812 슈퍼</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
-        <tr><td class="code">gcram1500</td><td>램 차저 1500</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
-        <tr><td class="code">hellcat</td><td>닷지 챌린저 헬캣</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
-        <tr><td class="code">p900rocket22</td><td>밴츠 P900</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
-        <tr><td class="code">rmodspeed</td><td>맥라렌 스피드테일</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
-        <tr><td class="code">sscts</td><td>SSC 투아타라</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
-        <tr><td class="code">trezor1</td><td>르노 테르조</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
-        <tr><td class="code">urusvennum</td><td>엘리박스1차)람보르기니 우루스</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
-        <tr><td class="code">gts125</td><td>보이져</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
-        <tr><td class="code">vf125</td><td>VF125</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
-        <tr><td class="code">beetleRWB</td><td>비틀 RWB 컨셉트</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
-        <tr><td class="code">ocnrrvn100</td><td>롤스로이스 컨셉트</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
-        <tr><td class="code">s63coupe</td><td>밴츠 컨셉트</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
-        <tr><td class="code">Gyuseok_terzo</td><td>테르조 LED</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
-        <tr><td class="code">impronta4</td><td>임프론타 LED</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
-        <tr><td class="code">scv</td><td>람보르기니 시안 LED 2</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
-        <tr><td class="code">duckcar</td><td>엘리박스1차)오리차</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
-        <tr><td class="code">ppht3</td><td>세이버</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
-        <tr><td class="code">PV_bugatti</td><td>부가티 미니카</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
-        <tr><td class="code">PV_bugvr</td><td>부가티 미니카 2</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
-        <tr><td class="code">PV_dawn</td><td>롤스로이스 미니카</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
-        <tr><td class="code">PV_gtr</td><td>GTR 미니카</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
-        <tr><td class="code">PV_jeep</td><td>지프 미니카</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
-        <tr><td class="code">PV_sianr</td><td>람보르기니 시안 미니카</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
-        <tr><td class="code">PV_rover</td><td>랜드로버 미니카</td><td class="category-cell"><span class="badge">차량</span></td><td>한정</td></tr>
-        <tr><td class="code">speeder</td><td>보트] 스피더</td><td class="category-cell"><span class="badge">차량</span></td><td>보트 / 3,000,000,000원</td></tr>
-        <tr><td class="code">dinghy</td><td>보트] 딩이</td><td class="category-cell"><span class="badge">차량</span></td><td>보트 / 1,000,000,000원</td></tr>
-        <tr><td class="code">seashark</td><td>보트] 씨샤크</td><td class="category-cell"><span class="badge">차량</span></td><td>보트 / 500,000,000원</td></tr>
-      </tbody>
-    </table>
+<div class="toolbar">
+  <div class="search">
+    <input id="search" type="search" placeholder="코드명, 코드 이름, 비고 검색..." autocomplete="off">
+    <span>⌕</span>
   </div>
+  <button class="toolbtn" onclick="openAll()">전체 펼치기</button>
+  <button class="toolbtn" onclick="closeAll()">전체 접기</button>
 </div>
+
+<div class="stats">
+  <span id="resultText">전체 217개</span><span class="dot"></span><span>18개 분류</span>
+</div>
+
+<div id="list">
+
+    <section class="category" data-category="물품">
+      <button class="category-head" type="button" onclick="toggleCategory(this)">
+        <span class="cat-title"><span class="cat-icon">📦</span>물품</span>
+        <span class="count">42개 <b>⌄</b></span>
+      </button>
+      <div class="items">
+        <article class="item" data-search="dirtymoney 검은돈 물품 스토리 rp 검은돈">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "dirtymoney")">
+              <span>dirtymoney</span><span class="copy">복사</span>
+            </button>
+            <div class="name">검은돈</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">스토리 RP 검은돈</span></div>
+        </article>
+        <article class="item" data-search="yumi_coin 신세계팩션코인 물품 아직 비활성화">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "yumi_coin")">
+              <span>yumi_coin</span><span class="copy">복사</span>
+            </button>
+            <div class="name">신세계팩션코인</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">아직 비활성화</span></div>
+        </article>
+        <article class="item" data-search="enginesound_ticket 배기음튜닝권 물품 신세계렉카 판매물품">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "enginesound_ticket")">
+              <span>enginesound_ticket</span><span class="copy">복사</span>
+            </button>
+            <div class="name">배기음튜닝권</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">신세계렉카 판매물품</span></div>
+        </article>
+        <article class="item" data-search="exit_sajung 사전예약보상 물품 사전예약보상지급">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "EXIT_sajung")">
+              <span>EXIT_sajung</span><span class="copy">복사</span>
+            </button>
+            <div class="name">사전예약보상</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">사전예약보상지급</span></div>
+        </article>
+        <article class="item" data-search="turn_meleebox 근접무기 상자 물품 조직사업권">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "TURN_meleebox")">
+              <span>TURN_meleebox</span><span class="copy">복사</span>
+            </button>
+            <div class="name">근접무기 상자</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">조직사업권</span></div>
+        </article>
+        <article class="item" data-search="turn_specialbox 엑시트 스페셜 스킨박스 물품 추후 이벤트 혹은 기타 상품에 출시예정">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "TURN_specialbox")">
+              <span>TURN_specialbox</span><span class="copy">복사</span>
+            </button>
+            <div class="name">엑시트 스페셜 스킨박스</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">추후 이벤트 혹은 기타 상품에 출시예정</span></div>
+        </article>
+        <article class="item" data-search="musicbox_ticket 뮤직박스 이용권 물품 절대 사용 x 후원자들 등급보상">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "musicbox_ticket")">
+              <span>musicbox_ticket</span><span class="copy">복사</span>
+            </button>
+            <div class="name">뮤직박스 이용권</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">절대 사용 X 후원자들 등급보상</span></div>
+        </article>
+        <article class="item" data-search="moneybox30709 초소형 머니박스 물품 1만원 ~ 10만원 랜덤박스">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "moneybox30709")">
+              <span>moneybox30709</span><span class="copy">복사</span>
+            </button>
+            <div class="name">초소형 머니박스</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">1만원 ~ 10만원 랜덤박스</span></div>
+        </article>
+        <article class="item" data-search="moneybox10709 소형 머니박스 물품 1~3억 랜덤박스">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "moneybox10709")">
+              <span>moneybox10709</span><span class="copy">복사</span>
+            </button>
+            <div class="name">소형 머니박스</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">1~3억 랜덤박스</span></div>
+        </article>
+        <article class="item" data-search="moneybox20709 중형 머니박스 물품 100만원~1억 랜덤박스">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "moneybox20709")">
+              <span>moneybox20709</span><span class="copy">복사</span>
+            </button>
+            <div class="name">중형 머니박스</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">100만원~1억 랜덤박스</span></div>
+        </article>
+        <article class="item" data-search="moneybox50709 뉴비지원 머니박스 물품 10억~50억 랜덤박스">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "moneybox50709")">
+              <span>moneybox50709</span><span class="copy">복사</span>
+            </button>
+            <div class="name">뉴비지원 머니박스</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">10억~50억 랜덤박스</span></div>
+        </article>
+        <article class="item" data-search="special_goldb 현금다발 상자 물품 500만원~5000만원 랜덤박스">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "special_goldb")">
+              <span>special_goldb</span><span class="copy">복사</span>
+            </button>
+            <div class="name">현금다발 상자</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">500만원~5000만원 랜덤박스</span></div>
+        </article>
+        <article class="item" data-search="yumi_goldloot 신세계 골드 박스 물품 신세계코인,파워엘릭서,스킨조각,차량조각 랜덤박스">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "yumi_goldloot")">
+              <span>yumi_goldloot</span><span class="copy">복사</span>
+            </button>
+            <div class="name">신세계 골드 박스</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">신세계코인,파워엘릭서,스킨조각,차량조각 랜덤박스</span></div>
+        </article>
+        <article class="item" data-search="prison_ticket_1 노역 완료 1분 차감 티켓 물품 교도소 사용">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "prison_ticket_1")">
+              <span>prison_ticket_1</span><span class="copy">복사</span>
+            </button>
+            <div class="name">노역 완료 1분 차감 티켓</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">교도소 사용</span></div>
+        </article>
+        <article class="item" data-search="zombie_ticket_1 좀비존 입장권 (기본) 물품 좀비존 사업권">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "zombie_ticket_1")">
+              <span>zombie_ticket_1</span><span class="copy">복사</span>
+            </button>
+            <div class="name">좀비존 입장권 (기본)</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">좀비존 사업권</span></div>
+        </article>
+        <article class="item" data-search="sleepcoin0711 잠수코인 물품 잠수존">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "sleepcoin0711")">
+              <span>sleepcoin0711</span><span class="copy">복사</span>
+            </button>
+            <div class="name">잠수코인</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">잠수존</span></div>
+        </article>
+        <article class="item" data-search="turn_coin 엑시트 코인 물품 ">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "TURN_COIN")">
+              <span>TURN_COIN</span><span class="copy">복사</span>
+            </button>
+            <div class="name">엑시트 코인</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">—</span></div>
+        </article>
+        <article class="item" data-search="jewelry 보석 물품 ">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "jewelry")">
+              <span>jewelry</span><span class="copy">복사</span>
+            </button>
+            <div class="name">보석</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">—</span></div>
+        </article>
+        <article class="item" data-search="preminum_keellie 프리미엄 코인 물품 프리미엄 부스 사용">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "preminum_keellie")">
+              <span>preminum_keellie</span><span class="copy">복사</span>
+            </button>
+            <div class="name">프리미엄 코인</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">프리미엄 부스 사용</span></div>
+        </article>
+        <article class="item" data-search="sexbox 설계도 물품 제작소 사용">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "sexbox")">
+              <span>sexbox</span><span class="copy">복사</span>
+            </button>
+            <div class="name">설계도</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">제작소 사용</span></div>
+        </article>
+        <article class="item" data-search="bs_mine5 또또의 눈물 물품 제작소 사용">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "bs_mine5")">
+              <span>bs_mine5</span><span class="copy">복사</span>
+            </button>
+            <div class="name">또또의 눈물</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">제작소 사용</span></div>
+        </article>
+        <article class="item" data-search="turn_randombox 랜덤박스 티켓 물품 랜덤박스">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "TURN_randombox")">
+              <span>TURN_randombox</span><span class="copy">복사</span>
+            </button>
+            <div class="name">랜덤박스 티켓</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">랜덤박스</span></div>
+        </article>
+        <article class="item" data-search="inchan_sinmon 신문 물품 직업 아이템">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "Inchan_sinmon")">
+              <span>Inchan_sinmon</span><span class="copy">복사</span>
+            </button>
+            <div class="name">신문</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">직업 아이템</span></div>
+        </article>
+        <article class="item" data-search="inchan_badar 배달 품목 물품 직업 아이템">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "Inchan_badar")">
+              <span>Inchan_badar</span><span class="copy">복사</span>
+            </button>
+            <div class="name">배달 품목</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">직업 아이템</span></div>
+        </article>
+        <article class="item" data-search="inchan_kifeed_tieket 킬피드 등록권 물품 킬피드 시스템">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "Inchan_kifeed_tieket")">
+              <span>Inchan_kifeed_tieket</span><span class="copy">복사</span>
+            </button>
+            <div class="name">킬피드 등록권</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">킬피드 시스템</span></div>
+        </article>
+        <article class="item" data-search="vehicle_enhance_ticket 강화의 돌 물품 차량강화">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "vehicle_enhance_ticket")">
+              <span>vehicle_enhance_ticket</span><span class="copy">복사</span>
+            </button>
+            <div class="name">강화의 돌</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">차량강화</span></div>
+        </article>
+        <article class="item" data-search="cosmetic_shard 치장조각 물품 출석체크 보상">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "cosmetic_shard")">
+              <span>cosmetic_shard</span><span class="copy">복사</span>
+            </button>
+            <div class="name">치장조각</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">출석체크 보상</span></div>
+        </article>
+        <article class="item" data-search="attend_title 치장조각 물품 개근왕 칭호조각">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "attend_title")">
+              <span>attend_title</span><span class="copy">복사</span>
+            </button>
+            <div class="name">치장조각</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">개근왕 칭호조각</span></div>
+        </article>
+        <article class="item" data-search="turn_attend_box turn 개근 보상상자 물품 개근왕 칭호조각">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "turn_attend_box")">
+              <span>turn_attend_box</span><span class="copy">복사</span>
+            </button>
+            <div class="name">TURN 개근 보상상자</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">개근왕 칭호조각</span></div>
+        </article>
+        <article class="item" data-search="exit_elliecashexit_elliecash 엑시트 캐쉬 물품 상점에서 사용가능">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "EXIT_elliecashEXIT_elliecash")">
+              <span>EXIT_elliecashEXIT_elliecash</span><span class="copy">복사</span>
+            </button>
+            <div class="name">엑시트 캐쉬</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">상점에서 사용가능</span></div>
+        </article>
+        <article class="item" data-search="elliecoin 엘리코인 물품 엘리박스 이용권">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "elliecoin")">
+              <span>elliecoin</span><span class="copy">복사</span>
+            </button>
+            <div class="name">엘리코인</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">엘리박스 이용권</span></div>
+        </article>
+        <article class="item" data-search="ellie_signiturebox 엑시트 시그니처 캡슐 물품 캡슐 이용권">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "ellie_signiturebox")">
+              <span>ellie_signiturebox</span><span class="copy">복사</span>
+            </button>
+            <div class="name">엑시트 시그니처 캡슐</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">캡슐 이용권</span></div>
+        </article>
+        <article class="item" data-search="crbox 일반 박스 물품 메인광장 사용">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "crbox")">
+              <span>crbox</span><span class="copy">복사</span>
+            </button>
+            <div class="name">일반 박스</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">메인광장 사용</span></div>
+        </article>
+        <article class="item" data-search="spbox 스패셜 박스 물품 메인광장 사용">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "spbox")">
+              <span>spbox</span><span class="copy">복사</span>
+            </button>
+            <div class="name">스패셜 박스</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">메인광장 사용</span></div>
+        </article>
+        <article class="item" data-search="fate_coin 운명의 코인 물품 제작소 사용">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "fate_coin")">
+              <span>fate_coin</span><span class="copy">복사</span>
+            </button>
+            <div class="name">운명의 코인</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">제작소 사용</span></div>
+        </article>
+        <article class="item" data-search="lowclass_jewel 하급 보석 물품 제작소 사용">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "lowclass_jewel")">
+              <span>lowclass_jewel</span><span class="copy">복사</span>
+            </button>
+            <div class="name">하급 보석</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">제작소 사용</span></div>
+        </article>
+        <article class="item" data-search="turn_coin1 엑시트 코인 물품 제작소 보상">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "turn_coin1")">
+              <span>turn_coin1</span><span class="copy">복사</span>
+            </button>
+            <div class="name">엑시트 코인</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">제작소 보상</span></div>
+        </article>
+        <article class="item" data-search="live_chicken 생닭 물품 닭공장 사용">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "live_chicken")">
+              <span>live_chicken</span><span class="copy">복사</span>
+            </button>
+            <div class="name">생닭</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">닭공장 사용</span></div>
+        </article>
+        <article class="item" data-search="slaughtered_chicken 1차 가공 닭 물품 닭공장 사용">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "slaughtered_chicken")">
+              <span>slaughtered_chicken</span><span class="copy">복사</span>
+            </button>
+            <div class="name">1차 가공 닭</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">닭공장 사용</span></div>
+        </article>
+        <article class="item" data-search="processed_chicken 절단 치킨 물품 닭공장 사용">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "processed_chicken")">
+              <span>processed_chicken</span><span class="copy">복사</span>
+            </button>
+            <div class="name">절단 치킨</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">닭공장 사용</span></div>
+        </article>
+        <article class="item" data-search="packaged_chicken 포장 치킨 물품 닭공장 사용">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "packaged_chicken")">
+              <span>packaged_chicken</span><span class="copy">복사</span>
+            </button>
+            <div class="name">포장 치킨</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">닭공장 사용</span></div>
+        </article>
+        <article class="item" data-search="turn_shipticket 섬낚시 이용권 물품 섬낚시 이용권">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "TURN_shipticket")">
+              <span>TURN_shipticket</span><span class="copy">복사</span>
+            </button>
+            <div class="name">섬낚시 이용권</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">섬낚시 이용권</span></div>
+        </article></div>
+    </section>
+    <section class="category" data-category="킬피드">
+      <button class="category-head" type="button" onclick="toggleCategory(this)">
+        <span class="cat-title"><span class="cat-icon">⚔️</span>킬피드</span>
+        <span class="count">13개 <b>⌄</b></span>
+      </button>
+      <div class="items">
+        <article class="item" data-search="killfeed1teir1.kiifeed 이걸죽네 킬피드 ">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "killfeed1teir1.kiifeed")">
+              <span>killfeed1teir1.kiifeed</span><span class="copy">복사</span>
+            </button>
+            <div class="name">이걸죽네</div>
+          </div>
+          <div class="meta"><span class="badge">킬피드</span><span class="note">—</span></div>
+        </article>
+        <article class="item" data-search="killfeed1teir2.kiifeed 사슬 킬피드 ">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "killfeed1teir2.kiifeed")">
+              <span>killfeed1teir2.kiifeed</span><span class="copy">복사</span>
+            </button>
+            <div class="name">사슬</div>
+          </div>
+          <div class="meta"><span class="badge">킬피드</span><span class="note">—</span></div>
+        </article>
+        <article class="item" data-search="zamsu.kiifeed 잠수왕 킬피드 ">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "zamsu.kiifeed")">
+              <span>zamsu.kiifeed</span><span class="copy">복사</span>
+            </button>
+            <div class="name">잠수왕</div>
+          </div>
+          <div class="meta"><span class="badge">킬피드</span><span class="note">—</span></div>
+        </article>
+        <article class="item" data-search="warning.kiifeed 경고 킬피드 ">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "warning.kiifeed")">
+              <span>warning.kiifeed</span><span class="copy">복사</span>
+            </button>
+            <div class="name">경고</div>
+          </div>
+          <div class="meta"><span class="badge">킬피드</span><span class="note">—</span></div>
+        </article>
+        <article class="item" data-search="unicorn.kiifeed 유니콘 킬피드 ">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "unicorn.kiifeed")">
+              <span>unicorn.kiifeed</span><span class="copy">복사</span>
+            </button>
+            <div class="name">유니콘</div>
+          </div>
+          <div class="meta"><span class="badge">킬피드</span><span class="note">—</span></div>
+        </article>
+        <article class="item" data-search="skeleton.kiifeed 스켈레톤 킬피드 ">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "skeleton.kiifeed")">
+              <span>skeleton.kiifeed</span><span class="copy">복사</span>
+            </button>
+            <div class="name">스켈레톤</div>
+          </div>
+          <div class="meta"><span class="badge">킬피드</span><span class="note">—</span></div>
+        </article>
+        <article class="item" data-search="power.kiifeed 파워 킬피드 ">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "power.kiifeed")">
+              <span>power.kiifeed</span><span class="copy">복사</span>
+            </button>
+            <div class="name">파워</div>
+          </div>
+          <div class="meta"><span class="badge">킬피드</span><span class="note">—</span></div>
+        </article>
+        <article class="item" data-search="pig.kiifeed 돼지 킬피드 ">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "pig.kiifeed")">
+              <span>pig.kiifeed</span><span class="copy">복사</span>
+            </button>
+            <div class="name">돼지</div>
+          </div>
+          <div class="meta"><span class="badge">킬피드</span><span class="note">—</span></div>
+        </article>
+        <article class="item" data-search="mymelody.kiifeed 마이멜로디 킬피드 ">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "mymelody.kiifeed")">
+              <span>mymelody.kiifeed</span><span class="copy">복사</span>
+            </button>
+            <div class="name">마이멜로디</div>
+          </div>
+          <div class="meta"><span class="badge">킬피드</span><span class="note">—</span></div>
+        </article>
+        <article class="item" data-search="silver.kiifeed 실버 킬피드 ">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "silver.kiifeed")">
+              <span>silver.kiifeed</span><span class="copy">복사</span>
+            </button>
+            <div class="name">실버</div>
+          </div>
+          <div class="meta"><span class="badge">킬피드</span><span class="note">—</span></div>
+        </article>
+        <article class="item" data-search="gold.kiifeed 골드 킬피드 ">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "gold.kiifeed")">
+              <span>gold.kiifeed</span><span class="copy">복사</span>
+            </button>
+            <div class="name">골드</div>
+          </div>
+          <div class="meta"><span class="badge">킬피드</span><span class="note">—</span></div>
+        </article>
+        <article class="item" data-search="hongbowin.kiifeed 홍보왕 킬피드 ">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "hongbowin.kiifeed")">
+              <span>hongbowin.kiifeed</span><span class="copy">복사</span>
+            </button>
+            <div class="name">홍보왕</div>
+          </div>
+          <div class="meta"><span class="badge">킬피드</span><span class="note">—</span></div>
+        </article>
+        <article class="item" data-search="waterfish.kiifeed 여름여름 킬피드 ">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "waterfish.kiifeed")">
+              <span>waterfish.kiifeed</span><span class="copy">복사</span>
+            </button>
+            <div class="name">여름여름</div>
+          </div>
+          <div class="meta"><span class="badge">킬피드</span><span class="note">—</span></div>
+        </article></div>
+    </section>
+    <section class="category" data-category="채팅칭호">
+      <button class="category-head" type="button" onclick="toggleCategory(this)">
+        <span class="cat-title"><span class="cat-icon">💬</span>채팅칭호</span>
+        <span class="count">4개 <b>⌄</b></span>
+      </button>
+      <div class="items">
+        <article class="item" data-search="resurrectionking.chattitle 여름여름 채팅칭호 ">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "resurrectionking.chattitle")">
+              <span>resurrectionking.chattitle</span><span class="copy">복사</span>
+            </button>
+            <div class="name">여름여름</div>
+          </div>
+          <div class="meta"><span class="badge">채팅칭호</span><span class="note">—</span></div>
+        </article>
+        <article class="item" data-search="prettiygirl.chattitle 공주 채팅칭호 ">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "prettiygirl.chattitle")">
+              <span>prettiygirl.chattitle</span><span class="copy">복사</span>
+            </button>
+            <div class="name">공주</div>
+          </div>
+          <div class="meta"><span class="badge">채팅칭호</span><span class="note">—</span></div>
+        </article>
+        <article class="item" data-search="resurrectionking.aa11 어형이야 채팅칭호 ">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "resurrectionking.aa11")">
+              <span>resurrectionking.aa11</span><span class="copy">복사</span>
+            </button>
+            <div class="name">어형이야</div>
+          </div>
+          <div class="meta"><span class="badge">채팅칭호</span><span class="note">—</span></div>
+        </article>
+        <article class="item" data-search="poop.chattitle 똥범벅 채팅칭호 ">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "poop.chattitle")">
+              <span>poop.chattitle</span><span class="copy">복사</span>
+            </button>
+            <div class="name">똥범벅</div>
+          </div>
+          <div class="meta"><span class="badge">채팅칭호</span><span class="note">—</span></div>
+        </article></div>
+    </section>
+    <section class="category" data-category="스킨 교환권">
+      <button class="category-head" type="button" onclick="toggleCategory(this)">
+        <span class="cat-title"><span class="cat-icon">🎟️</span>스킨 교환권</span>
+        <span class="count">11개 <b>⌄</b></span>
+      </button>
+      <div class="items">
+        <article class="item" data-search="skinbox_1 미연 스킨 교환권 물품 [아이템 설명] 미연스킨 교환권이 들어있습니다!">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "skinbox_1")">
+              <span>skinbox_1</span><span class="copy">복사</span>
+            </button>
+            <div class="name">미연 스킨 교환권</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">[아이템 설명] 미연스킨 교환권이 들어있습니다!</span></div>
+        </article>
+        <article class="item" data-search="skinbox_2 장훈 스킨 교환권 물품 [아이템 설명] 장훈 스킨 교환권이 들어있습니다!">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "skinbox_2")">
+              <span>skinbox_2</span><span class="copy">복사</span>
+            </button>
+            <div class="name">장훈 스킨 교환권</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">[아이템 설명] 장훈 스킨 교환권이 들어있습니다!</span></div>
+        </article>
+        <article class="item" data-search="skinbox_3 장훈 &amp; 미연 스킨 교환권 물품 [아이템 설명] 장훈&amp; 미연 스킨 교환권이 들어있습니다!">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "skinbox_3")">
+              <span>skinbox_3</span><span class="copy">복사</span>
+            </button>
+            <div class="name">장훈 &amp; 미연 스킨 교환권</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">[아이템 설명] 장훈&amp; 미연 스킨 교환권이 들어있습니다!</span></div>
+        </article>
+        <article class="item" data-search="skinbox_4 서준 스킨 교환권 물품 [아이템 설명] 서준 스킨 교환권이 들어있습니다!">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "skinbox_4")">
+              <span>skinbox_4</span><span class="copy">복사</span>
+            </button>
+            <div class="name">서준 스킨 교환권</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">[아이템 설명] 서준 스킨 교환권이 들어있습니다!</span></div>
+        </article>
+        <article class="item" data-search="skinbox_5 하린 스킨 교환권 물품 [아이템 설명] 하린 스킨 교환권이 들어있습니다!">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "skinbox_5")">
+              <span>skinbox_5</span><span class="copy">복사</span>
+            </button>
+            <div class="name">하린 스킨 교환권</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">[아이템 설명] 하린 스킨 교환권이 들어있습니다!</span></div>
+        </article>
+        <article class="item" data-search="skinbox_6 서준 &amp; 하린 스킨 교환권 물품 [아이템 설명] 서준 &amp; 하린 스킨 교환권이 들어있습니다!">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "skinbox_6")">
+              <span>skinbox_6</span><span class="copy">복사</span>
+            </button>
+            <div class="name">서준 &amp; 하린 스킨 교환권</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">[아이템 설명] 서준 &amp; 하린 스킨 교환권이 들어있습니다!</span></div>
+        </article>
+        <article class="item" data-search="skinbox_7 미주 스킨 교환권 물품 [아이템 설명] 미주스킨 교환권이 들어있습니다!">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "skinbox_7")">
+              <span>skinbox_7</span><span class="copy">복사</span>
+            </button>
+            <div class="name">미주 스킨 교환권</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">[아이템 설명] 미주스킨 교환권이 들어있습니다!</span></div>
+        </article>
+        <article class="item" data-search="skinbox_8 서준 스킨 교환권 물품 [아이템 설명] 서준스킨 교환권이 들어있습니다!">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "skinbox_8")">
+              <span>skinbox_8</span><span class="copy">복사</span>
+            </button>
+            <div class="name">서준 스킨 교환권</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">[아이템 설명] 서준스킨 교환권이 들어있습니다!</span></div>
+        </article>
+        <article class="item" data-search="skinbox_9 규현 스킨 교환권 물품 [아이템 설명] 규현스킨 교환권이 들어있습니다!">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "skinbox_9")">
+              <span>skinbox_9</span><span class="copy">복사</span>
+            </button>
+            <div class="name">규현 스킨 교환권</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">[아이템 설명] 규현스킨 교환권이 들어있습니다!</span></div>
+        </article>
+        <article class="item" data-search="skinbox_10 현아 스킨 교환권 물품 [아이템 설명] 현아 스킨 교환권이 들어있습니다!">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "skinbox_10")">
+              <span>skinbox_10</span><span class="copy">복사</span>
+            </button>
+            <div class="name">현아 스킨 교환권</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">[아이템 설명] 현아 스킨 교환권이 들어있습니다!</span></div>
+        </article>
+        <article class="item" data-search="girlskin1 문신여자 교환권 물품 관리자를 호출하여 지급받아주세요">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "girlskin1")">
+              <span>girlskin1</span><span class="copy">복사</span>
+            </button>
+            <div class="name">문신여자 교환권</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">관리자를 호출하여 지급받아주세요</span></div>
+        </article></div>
+    </section>
+    <section class="category" data-category="차량 확정 지급권">
+      <button class="category-head" type="button" onclick="toggleCategory(this)">
+        <span class="cat-title"><span class="cat-icon">🚘</span>차량 확정 지급권</span>
+        <span class="count">7개 <b>⌄</b></span>
+      </button>
+      <div class="items">
+        <article class="item" data-search="carbox_a90pit 쉐도우 펄스 확정 지급권 물품 [아이템 설명] 안에 쉐도우 펄스 차량이 들어있습니다.">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "carbox_a90pit")">
+              <span>carbox_a90pit</span><span class="copy">복사</span>
+            </button>
+            <div class="name">쉐도우 펄스 확정 지급권</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">[아이템 설명] 안에 쉐도우 펄스 차량이 들어있습니다.</span></div>
+        </article>
+        <article class="item" data-search="carbox_radisgt 어비스 비전 gt 확정 지급권 물품 [아이템 설명] 안에 어비스 비전 gt 차량이 들어있습니다.">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "carbox_radisgt")">
+              <span>carbox_radisgt</span><span class="copy">복사</span>
+            </button>
+            <div class="name">어비스 비전 GT 확정 지급권</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">[아이템 설명] 안에 어비스 비전 GT 차량이 들어있습니다.</span></div>
+        </article>
+        <article class="item" data-search="carbox_ie ie 비전 gt 확정 지급권 물품 [아이템 설명] 안에 ie 비전 gt 차량이 들어있습니다.">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "carbox_ie")">
+              <span>carbox_ie</span><span class="copy">복사</span>
+            </button>
+            <div class="name">ie 비전 GT 확정 지급권</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">[아이템 설명] 안에 ie 비전 GT 차량이 들어있습니다.</span></div>
+        </article>
+        <article class="item" data-search="carbox_tachy 엑시트 비전 확정 지급권 물품 [아이템 설명] 안에 엑시트 비전 차량이 들어있습니다.">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "carbox_tachy")">
+              <span>carbox_tachy</span><span class="copy">복사</span>
+            </button>
+            <div class="name">엑시트 비전 확정 지급권</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">[아이템 설명] 안에 엑시트 비전 차량이 들어있습니다.</span></div>
+        </article>
+        <article class="item" data-search="carbox_2018s650p 노블6 확정 지급권 물품 [아이템 설명] 안에 노블 6 차량이 들어있습니다.">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "carbox_2018s650p")">
+              <span>carbox_2018s650p</span><span class="copy">복사</span>
+            </button>
+            <div class="name">노블6 확정 지급권</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">[아이템 설명] 안에 노블 6 차량이 들어있습니다.</span></div>
+        </article>
+        <article class="item" data-search="carbox1591550718 멕라렌 비전 확정 지급권 물품 [아이템 설명] 안에 멕라렌 비전 차량이 들어있습니다.">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "carbox1591550718")">
+              <span>carbox1591550718</span><span class="copy">복사</span>
+            </button>
+            <div class="name">멕라렌 비전 확정 지급권</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">[아이템 설명] 안에 멕라렌 비전 차량이 들어있습니다.</span></div>
+        </article>
+        <article class="item" data-search="carbox93351303101 마쯔다 후라이 확정 지급권 물품 [아이템 설명] 안에 마쯔다 후라이 차량이 들어있습니다.">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "carbox93351303101")">
+              <span>carbox93351303101</span><span class="copy">복사</span>
+            </button>
+            <div class="name">마쯔다 후라이 확정 지급권</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">[아이템 설명] 안에 마쯔다 후라이 차량이 들어있습니다.</span></div>
+        </article></div>
+    </section>
+    <section class="category" data-category="조직">
+      <button class="category-head" type="button" onclick="toggleCategory(this)">
+        <span class="cat-title"><span class="cat-icon">🔫</span>조직</span>
+        <span class="count">18개 <b>⌄</b></span>
+      </button>
+      <div class="items">
+        <article class="item" data-search="pistol_m 피스톨 몸체 상자 조직 ">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "pistol_m")">
+              <span>pistol_m</span><span class="copy">복사</span>
+            </button>
+            <div class="name">피스톨 몸체 상자</div>
+          </div>
+          <div class="meta"><span class="badge">조직</span><span class="note">—</span></div>
+        </article>
+        <article class="item" data-search="pistol_t 피스톨 100발 탄약상자 조직 ">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "pistol_t")">
+              <span>pistol_t</span><span class="copy">복사</span>
+            </button>
+            <div class="name">피스톨 100발 탄약상자</div>
+          </div>
+          <div class="meta"><span class="badge">조직</span><span class="note">—</span></div>
+        </article>
+        <article class="item" data-search="carbin_m 카빈소총 몸체 상자 조직 ">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "carbin_m")">
+              <span>carbin_m</span><span class="copy">복사</span>
+            </button>
+            <div class="name">카빈소총 몸체 상자</div>
+          </div>
+          <div class="meta"><span class="badge">조직</span><span class="note">—</span></div>
+        </article>
+        <article class="item" data-search="carbin_t 카빈소총 100발 탄약상자 조직 ">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "carbin_t")">
+              <span>carbin_t</span><span class="copy">복사</span>
+            </button>
+            <div class="name">카빈소총 100발 탄약상자</div>
+          </div>
+          <div class="meta"><span class="badge">조직</span><span class="note">—</span></div>
+        </article>
+        <article class="item" data-search="ak47_m 어썰트 라이플 몸체 상자 조직 ">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "ak47_m")">
+              <span>ak47_m</span><span class="copy">복사</span>
+            </button>
+            <div class="name">어썰트 라이플 몸체 상자</div>
+          </div>
+          <div class="meta"><span class="badge">조직</span><span class="note">—</span></div>
+        </article>
+        <article class="item" data-search="ak47_t 어썰트 라이플 100발 탄약상자 조직 ">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "ak47_t")">
+              <span>ak47_t</span><span class="copy">복사</span>
+            </button>
+            <div class="name">어썰트 라이플 100발 탄약상자</div>
+          </div>
+          <div class="meta"><span class="badge">조직</span><span class="note">—</span></div>
+        </article>
+        <article class="item" data-search="smg_m 마이크로 smg 몸체 상자 조직 ">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "smg_m")">
+              <span>smg_m</span><span class="copy">복사</span>
+            </button>
+            <div class="name">마이크로 SMG 몸체 상자</div>
+          </div>
+          <div class="meta"><span class="badge">조직</span><span class="note">—</span></div>
+        </article>
+        <article class="item" data-search="smg_t 마이크로 smg 100발 탄약상자 조직 ">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "smg_t")">
+              <span>smg_t</span><span class="copy">복사</span>
+            </button>
+            <div class="name">마이크로 SMG 100발 탄약상자</div>
+          </div>
+          <div class="meta"><span class="badge">조직</span><span class="note">—</span></div>
+        </article>
+        <article class="item" data-search="shotgun_m 펌프 샷건 몸체 상자 조직 ">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "shotgun_m")">
+              <span>shotgun_m</span><span class="copy">복사</span>
+            </button>
+            <div class="name">펌프 샷건 몸체 상자</div>
+          </div>
+          <div class="meta"><span class="badge">조직</span><span class="note">—</span></div>
+        </article>
+        <article class="item" data-search="shotgun_t 펌프 샷건 100발 탄약상자 조직 ">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "shotgun_t")">
+              <span>shotgun_t</span><span class="copy">복사</span>
+            </button>
+            <div class="name">펌프 샷건 100발 탄약상자</div>
+          </div>
+          <div class="meta"><span class="badge">조직</span><span class="note">—</span></div>
+        </article>
+        <article class="item" data-search="bat_1 배트 몸체 상자 조직 ">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "bat_1")">
+              <span>bat_1</span><span class="copy">복사</span>
+            </button>
+            <div class="name">배트 몸체 상자</div>
+          </div>
+          <div class="meta"><span class="badge">조직</span><span class="note">—</span></div>
+        </article>
+        <article class="item" data-search="knife_1 나이프 몸체 상자 조직 ">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "knife_1")">
+              <span>knife_1</span><span class="copy">복사</span>
+            </button>
+            <div class="name">나이프 몸체 상자</div>
+          </div>
+          <div class="meta"><span class="badge">조직</span><span class="note">—</span></div>
+        </article>
+        <article class="item" data-search="swich_m 스위치 블레이드 몸체 상자 조직 ">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "swich_m")">
+              <span>swich_m</span><span class="copy">복사</span>
+            </button>
+            <div class="name">스위치 블레이드 몸체 상자</div>
+          </div>
+          <div class="meta"><span class="badge">조직</span><span class="note">—</span></div>
+        </article>
+        <article class="item" data-search="flsh_m 플래쉬 몸체 상자 조직 ">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "flsh_m")">
+              <span>flsh_m</span><span class="copy">복사</span>
+            </button>
+            <div class="name">플래쉬 몸체 상자</div>
+          </div>
+          <div class="meta"><span class="badge">조직</span><span class="note">—</span></div>
+        </article>
+        <article class="item" data-search="turn_meleebox 근접무기 상자 조직 ">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "TURN_meleebox")">
+              <span>TURN_meleebox</span><span class="copy">복사</span>
+            </button>
+            <div class="name">근접무기 상자</div>
+          </div>
+          <div class="meta"><span class="badge">조직</span><span class="note">—</span></div>
+        </article>
+        <article class="item" data-search="seeds 대마씨 조직 대마의 씨앗.">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "seeds")">
+              <span>seeds</span><span class="copy">복사</span>
+            </button>
+            <div class="name">대마씨</div>
+          </div>
+          <div class="meta"><span class="badge">조직</span><span class="note">대마의 씨앗.</span></div>
+        </article>
+        <article class="item" data-search="ticket_drug 마약공장 입장권 조직 ">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "ticket_drug")">
+              <span>ticket_drug</span><span class="copy">복사</span>
+            </button>
+            <div class="name">마약공장 입장권</div>
+          </div>
+          <div class="meta"><span class="badge">조직</span><span class="note">—</span></div>
+        </article>
+        <article class="item" data-search="explosivo_c4 c4 폭발장치 조직 스토리rp사용">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "explosivo_c4")">
+              <span>explosivo_c4</span><span class="copy">복사</span>
+            </button>
+            <div class="name">C4 폭발장치</div>
+          </div>
+          <div class="meta"><span class="badge">조직</span><span class="note">스토리rp사용</span></div>
+        </article></div>
+    </section>
+    <section class="category" data-category="공무 물품">
+      <button class="category-head" type="button" onclick="toggleCategory(this)">
+        <span class="cat-title"><span class="cat-icon">📋</span>공무 물품</span>
+        <span class="count">4개 <b>⌄</b></span>
+      </button>
+      <div class="items">
+        <article class="item" data-search="aw1 체포 영장 물품 엑시트 대검찰청">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "aw1")">
+              <span>aw1</span><span class="copy">복사</span>
+            </button>
+            <div class="name">체포 영장</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">엑시트 대검찰청</span></div>
+        </article>
+        <article class="item" data-search="aw2 구속 영장 물품 엑시트 대검찰청">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "aw2")">
+              <span>aw2</span><span class="copy">복사</span>
+            </button>
+            <div class="name">구속 영장</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">엑시트 대검찰청</span></div>
+        </article>
+        <article class="item" data-search="aw3 수색 영장 물품 엑시트 대검찰청">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "aw3")">
+              <span>aw3</span><span class="copy">복사</span>
+            </button>
+            <div class="name">수색 영장</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">엑시트 대검찰청</span></div>
+        </article>
+        <article class="item" data-search="aw4 수배 영장 물품 엑시트 대검찰청">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "aw4")">
+              <span>aw4</span><span class="copy">복사</span>
+            </button>
+            <div class="name">수배 영장</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">엑시트 대검찰청</span></div>
+        </article></div>
+    </section>
+    <section class="category" data-category="다이소">
+      <button class="category-head" type="button" onclick="toggleCategory(this)">
+        <span class="cat-title"><span class="cat-icon">🛠️</span>다이소</span>
+        <span class="count">7개 <b>⌄</b></span>
+      </button>
+      <div class="items">
+        <article class="item" data-search="supressor 소음기 다이소 총기파츠">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "supressor")">
+              <span>supressor</span><span class="copy">복사</span>
+            </button>
+            <div class="name">소음기</div>
+          </div>
+          <div class="meta"><span class="badge">다이소</span><span class="note">총기파츠</span></div>
+        </article>
+        <article class="item" data-search="flash 플래쉬 다이소 총기파츠">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "flash")">
+              <span>flash</span><span class="copy">복사</span>
+            </button>
+            <div class="name">플래쉬</div>
+          </div>
+          <div class="meta"><span class="badge">다이소</span><span class="note">총기파츠</span></div>
+        </article>
+        <article class="item" data-search="grip 손잡이 다이소 총기파츠">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "grip")">
+              <span>grip</span><span class="copy">복사</span>
+            </button>
+            <div class="name">손잡이</div>
+          </div>
+          <div class="meta"><span class="badge">다이소</span><span class="note">총기파츠</span></div>
+        </article>
+        <article class="item" data-search="holografik 홀로그램 스코프 다이소 총기파츠">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "holografik")">
+              <span>holografik</span><span class="copy">복사</span>
+            </button>
+            <div class="name">홀로그램 스코프</div>
+          </div>
+          <div class="meta"><span class="badge">다이소</span><span class="note">총기파츠</span></div>
+        </article>
+        <article class="item" data-search="powiekszonymagazynek 확장탄창 다이소 총기파츠">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "powiekszonymagazynek")">
+              <span>powiekszonymagazynek</span><span class="copy">복사</span>
+            </button>
+            <div class="name">확장탄창</div>
+          </div>
+          <div class="meta"><span class="badge">다이소</span><span class="note">총기파츠</span></div>
+        </article>
+        <article class="item" data-search="eun_packaging_1 시민,기업 패키징 다이소 방탄복 100개, 파츠 종류당 30개, 스킨포장키트 1개">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "eun_packaging_1")">
+              <span>eun_packaging_1</span><span class="copy">복사</span>
+            </button>
+            <div class="name">시민,기업 패키징</div>
+          </div>
+          <div class="meta"><span class="badge">다이소</span><span class="note">방탄복 100개, 파츠 종류당 30개, 스킨포장키트 1개</span></div>
+        </article>
+        <article class="item" data-search="eun_packaging_2 조직,공무원 패키징 다이소 방탄복 150개, 파츠 종류당 30개, 스킨포장키트 3개">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "eun_packaging_2")">
+              <span>eun_packaging_2</span><span class="copy">복사</span>
+            </button>
+            <div class="name">조직,공무원 패키징</div>
+          </div>
+          <div class="meta"><span class="badge">다이소</span><span class="note">방탄복 150개, 파츠 종류당 30개, 스킨포장키트 3개</span></div>
+        </article></div>
+    </section>
+    <section class="category" data-category="약국">
+      <button class="category-head" type="button" onclick="toggleCategory(this)">
+        <span class="cat-title"><span class="cat-icon">💊</span>약국</span>
+        <span class="count">9개 <b>⌄</b></span>
+      </button>
+      <div class="items">
+        <article class="item" data-search="packaging_1 쥬쥬 풀패키지 1번 약국 진통제/비타500/박카스가 들어있습니다.">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "packaging_1")">
+              <span>packaging_1</span><span class="copy">복사</span>
+            </button>
+            <div class="name">쥬쥬 풀패키지 1번</div>
+          </div>
+          <div class="meta"><span class="badge">약국</span><span class="note">진통제/비타500/박카스가 들어있습니다.</span></div>
+        </article>
+        <article class="item" data-search="packaging_2 쥬쥬 식품패키지 약국 전투식량/포도당/파워엘릭서/마운자루가 들어있습니다.">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "packaging_2")">
+              <span>packaging_2</span><span class="copy">복사</span>
+            </button>
+            <div class="name">쥬쥬 식품패키지</div>
+          </div>
+          <div class="meta"><span class="badge">약국</span><span class="note">전투식량/포도당/파워엘릭서/마운자루가 들어있습니다.</span></div>
+        </article>
+        <article class="item" data-search="jtjc 진통제 약국 체력 회복">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "jtjc")">
+              <span>jtjc</span><span class="copy">복사</span>
+            </button>
+            <div class="name">진통제</div>
+          </div>
+          <div class="meta"><span class="badge">약국</span><span class="note">체력 회복</span></div>
+        </article>
+        <article class="item" data-search="monsterdrug 박카스 약국 슈퍼점프">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "monsterdrug")">
+              <span>monsterdrug</span><span class="copy">복사</span>
+            </button>
+            <div class="name">박카스</div>
+          </div>
+          <div class="meta"><span class="badge">약국</span><span class="note">슈퍼점프</span></div>
+        </article>
+        <article class="item" data-search="steroiddrugs 비타500 약국 속도버프">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "steroiddrugs")">
+              <span>steroiddrugs</span><span class="copy">복사</span>
+            </button>
+            <div class="name">비타500</div>
+          </div>
+          <div class="meta"><span class="badge">약국</span><span class="note">속도버프</span></div>
+        </article>
+        <article class="item" data-search="elixir5 전투식량 약국 ">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "elixir5")">
+              <span>elixir5</span><span class="copy">복사</span>
+            </button>
+            <div class="name">전투식량</div>
+          </div>
+          <div class="meta"><span class="badge">약국</span><span class="note">—</span></div>
+        </article>
+        <article class="item" data-search="icecream 포도당 약국 ">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "icecream")">
+              <span>icecream</span><span class="copy">복사</span>
+            </button>
+            <div class="name">포도당</div>
+          </div>
+          <div class="meta"><span class="badge">약국</span><span class="note">—</span></div>
+        </article>
+        <article class="item" data-search="elixir 파워엘릭서 약국 ">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "elixir")">
+              <span>elixir</span><span class="copy">복사</span>
+            </button>
+            <div class="name">파워엘릭서</div>
+          </div>
+          <div class="meta"><span class="badge">약국</span><span class="note">—</span></div>
+        </article>
+        <article class="item" data-search="tofu 마운자로 약국 ">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "tofu")">
+              <span>tofu</span><span class="copy">복사</span>
+            </button>
+            <div class="name">마운자로</div>
+          </div>
+          <div class="meta"><span class="badge">약국</span><span class="note">—</span></div>
+        </article></div>
+    </section>
+    <section class="category" data-category="렉카">
+      <button class="category-head" type="button" onclick="toggleCategory(this)">
+        <span class="cat-title"><span class="cat-icon">🔧</span>렉카</span>
+        <span class="count">6개 <b>⌄</b></span>
+      </button>
+      <div class="items">
+        <article class="item" data-search="rakar_1 센티널렉카 패키지 렉카 배기음 튜닝권 3개, 차량포장키트 1개">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "rakar_1")">
+              <span>rakar_1</span><span class="copy">복사</span>
+            </button>
+            <div class="name">센티널렉카 패키지</div>
+          </div>
+          <div class="meta"><span class="badge">렉카</span><span class="note">배기음 튜닝권 3개, 차량포장키트 1개</span></div>
+        </article>
+        <article class="item" data-search="repairkit 수리도구 렉카 택비공에 쓰임">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "repairkit")">
+              <span>repairkit</span><span class="copy">복사</span>
+            </button>
+            <div class="name">수리도구</div>
+          </div>
+          <div class="meta"><span class="badge">렉카</span><span class="note">택비공에 쓰임</span></div>
+        </article>
+        <article class="item" data-search="fr_repairkit 특수한 수리도구 렉카 센티널렉카 전용도구">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "fr_repairkit")">
+              <span>fr_repairkit</span><span class="copy">복사</span>
+            </button>
+            <div class="name">특수한 수리도구</div>
+          </div>
+          <div class="meta"><span class="badge">렉카</span><span class="note">센티널렉카 전용도구</span></div>
+        </article>
+        <article class="item" data-search="carbox_return 차량포장키트 렉카 차량 포장">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "carbox_return")">
+              <span>carbox_return</span><span class="copy">복사</span>
+            </button>
+            <div class="name">차량포장키트</div>
+          </div>
+          <div class="meta"><span class="badge">렉카</span><span class="note">차량 포장</span></div>
+        </article>
+        <article class="item" data-search="exhaust_coupon 배기음 쿠폰 렉카 배기음 튜닝">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "exhaust_coupon")">
+              <span>exhaust_coupon</span><span class="copy">복사</span>
+            </button>
+            <div class="name">배기음 쿠폰</div>
+          </div>
+          <div class="meta"><span class="badge">렉카</span><span class="note">배기음 튜닝</span></div>
+        </article>
+        <article class="item" data-search="special_paint_coupon 특수 페인트 쿠폰 물품 차량 특수페인트 도색에 사용됩니다.">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "special_paint_coupon")">
+              <span>special_paint_coupon</span><span class="copy">복사</span>
+            </button>
+            <div class="name">특수 페인트 쿠폰</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">차량 특수페인트 도색에 사용됩니다.</span></div>
+        </article></div>
+    </section>
+    <section class="category" data-category="좀비존">
+      <button class="category-head" type="button" onclick="toggleCategory(this)">
+        <span class="cat-title"><span class="cat-icon">🧟</span>좀비존</span>
+        <span class="count">5개 <b>⌄</b></span>
+      </button>
+      <div class="items">
+        <article class="item" data-search="hunter_dead 사냥개 앞다리 좀비존 (50만원)">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "hunter_dead")">
+              <span>hunter_dead</span><span class="copy">복사</span>
+            </button>
+            <div class="name">사냥개 앞다리</div>
+          </div>
+          <div class="meta"><span class="badge">좀비존</span><span class="note">(50만원)</span></div>
+        </article>
+        <article class="item" data-search="hunter_trash 누군가 먹다버린 치킨조각 좀비존 (15만원)">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "hunter_trash")">
+              <span>hunter_trash</span><span class="copy">복사</span>
+            </button>
+            <div class="name">누군가 먹다버린 치킨조각</div>
+          </div>
+          <div class="meta"><span class="badge">좀비존</span><span class="note">(15만원)</span></div>
+        </article>
+        <article class="item" data-search="hunter_dead1 사냥개 뒷다리 좀비존 (77만원)">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "hunter_dead1")">
+              <span>hunter_dead1</span><span class="copy">복사</span>
+            </button>
+            <div class="name">사냥개 뒷다리</div>
+          </div>
+          <div class="meta"><span class="badge">좀비존</span><span class="note">(77만원)</span></div>
+        </article>
+        <article class="item" data-search="hunter_dead_pice 사냥개 눈알 좀비존 180만원)">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "hunter_dead_pice")">
+              <span>hunter_dead_pice</span><span class="copy">복사</span>
+            </button>
+            <div class="name">사냥개 눈알</div>
+          </div>
+          <div class="meta"><span class="badge">좀비존</span><span class="note">180만원)</span></div>
+        </article>
+        <article class="item" data-search="hunter_dead_pice5 돈봉투 좀비존 (270만원)">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "hunter_dead_pice5")">
+              <span>hunter_dead_pice5</span><span class="copy">복사</span>
+            </button>
+            <div class="name">돈봉투</div>
+          </div>
+          <div class="meta"><span class="badge">좀비존</span><span class="note">(270만원)</span></div>
+        </article></div>
+    </section>
+    <section class="category" data-category="그룹">
+      <button class="category-head" type="button" onclick="toggleCategory(this)">
+        <span class="cat-title"><span class="cat-icon">👥</span>그룹</span>
+        <span class="count">5개 <b>⌄</b></span>
+      </button>
+      <div class="items">
+        <article class="item" data-search="group_ticket 그룹 생성 아이템 물품 그룹 생성">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "group_ticket")">
+              <span>group_ticket</span><span class="copy">복사</span>
+            </button>
+            <div class="name">그룹 생성 아이템</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">그룹 생성</span></div>
+        </article>
+        <article class="item" data-search="group_member 그룹 최대인원 추가 아이템 물품 사용시 최대 인원 10명 증가">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "group_member")">
+              <span>group_member</span><span class="copy">복사</span>
+            </button>
+            <div class="name">그룹 최대인원 추가 아이템</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">사용시 최대 인원 10명 증가</span></div>
+        </article>
+        <article class="item" data-search="group_rename 그룹 상호명 변경 아이템 물품 그룹명 변경">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "group_rename")">
+              <span>group_rename</span><span class="copy">복사</span>
+            </button>
+            <div class="name">그룹 상호명 변경 아이템</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">그룹명 변경</span></div>
+        </article>
+        <article class="item" data-search="group_rank 그룹 추가 직급 아이템 물품 직급 추가">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "group_rank")">
+              <span>group_rank</span><span class="copy">복사</span>
+            </button>
+            <div class="name">그룹 추가 직급 아이템</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">직급 추가</span></div>
+        </article>
+        <article class="item" data-search="group_mark 그룹 표식,로고 변경 아이템 물품 로고 변경">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "group_mark")">
+              <span>group_mark</span><span class="copy">복사</span>
+            </button>
+            <div class="name">그룹 표식,로고 변경 아이템</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">로고 변경</span></div>
+        </article></div>
+    </section>
+    <section class="category" data-category="낚시">
+      <button class="category-head" type="button" onclick="toggleCategory(this)">
+        <span class="cat-title"><span class="cat-icon">🎣</span>낚시</span>
+        <span class="count">11개 <b>⌄</b></span>
+      </button>
+      <div class="items">
+        <article class="item" data-search="turn_fishrod_steel 강철 낚싯대 물품 낚시 lv.10 이상 사용 가능한 중급 낚싯대.">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "TURN_fishrod_steel")">
+              <span>TURN_fishrod_steel</span><span class="copy">복사</span>
+            </button>
+            <div class="name">강철 낚싯대</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">낚시 Lv.10 이상 사용 가능한 중급 낚싯대.</span></div>
+        </article>
+        <article class="item" data-search="turn_fishrod_carbon 카본 낚싯대 물품 낚시 lv.20 이상. 희귀 어종을 노릴 수 있다.">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "TURN_fishrod_carbon")">
+              <span>TURN_fishrod_carbon</span><span class="copy">복사</span>
+            </button>
+            <div class="name">카본 낚싯대</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">낚시 Lv.20 이상. 희귀 어종을 노릴 수 있다.</span></div>
+        </article>
+        <article class="item" data-search="turn_fishrod_titan 티타늄 낚싯대 물품 낚시 lv.35 이상의 고급 낚싯대.">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "TURN_fishrod_titan")">
+              <span>TURN_fishrod_titan</span><span class="copy">복사</span>
+            </button>
+            <div class="name">티타늄 낚싯대</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">낚시 Lv.35 이상의 고급 낚싯대.</span></div>
+        </article>
+        <article class="item" data-search="turn_fishrod_legend 전설의 낚싯대 물품 낚시 lv.50. 전설급 어종을 낚을 수 있다.">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "TURN_fishrod_legend")">
+              <span>TURN_fishrod_legend</span><span class="copy">복사</span>
+            </button>
+            <div class="name">전설의 낚싯대</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">낚시 Lv.50. 전설급 어종을 낚을 수 있다.</span></div>
+        </article>
+        <article class="item" data-search="turn_fishbait_prem 고급 미끼 물품 고급 어종을 유인하는 미끼.">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "TURN_fishbait_prem")">
+              <span>TURN_fishbait_prem</span><span class="copy">복사</span>
+            </button>
+            <div class="name">고급 미끼</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">고급 어종을 유인하는 미끼.</span></div>
+        </article>
+        <article class="item" data-search="turn_fishbait_spec 특급 미끼 물품 희귀·전설 어종 확률을 높이는 미끼.">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "TURN_fishbait_spec")">
+              <span>TURN_fishbait_spec</span><span class="copy">복사</span>
+            </button>
+            <div class="name">특급 미끼</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">희귀·전설 어종 확률을 높이는 미끼.</span></div>
+        </article>
+        <article class="item" data-search="turn_shiprod_enh 선상 강화 낚싯대 물품 선상 lv.10 이상의 강화 낚싯대.">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "TURN_shiprod_enh")">
+              <span>TURN_shiprod_enh</span><span class="copy">복사</span>
+            </button>
+            <div class="name">선상 강화 낚싯대</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">선상 Lv.10 이상의 강화 낚싯대.</span></div>
+        </article>
+        <article class="item" data-search="turn_shiprod_deep 선상 심해 낚싯대 물품 선상 lv.20 이상. 심해 어종 대응.">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "TURN_shiprod_deep")">
+              <span>TURN_shiprod_deep</span><span class="copy">복사</span>
+            </button>
+            <div class="name">선상 심해 낚싯대</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">선상 Lv.20 이상. 심해 어종 대응.</span></div>
+        </article>
+        <article class="item" data-search="turn_shiprod_legend 선상 전설 낚싯대 물품 선상 lv.30. 전설급 심해어를 낚는다.">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "TURN_shiprod_legend")">
+              <span>TURN_shiprod_legend</span><span class="copy">복사</span>
+            </button>
+            <div class="name">선상 전설 낚싯대</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">선상 Lv.30. 전설급 심해어를 낚는다.</span></div>
+        </article>
+        <article class="item" data-search="turn_shipbait_spec 선상 특급 미끼 물품 선상 희귀 어종 확률을 높이는 미끼.">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "TURN_shipbait_spec")">
+              <span>TURN_shipbait_spec</span><span class="copy">복사</span>
+            </button>
+            <div class="name">선상 특급 미끼</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">선상 희귀 어종 확률을 높이는 미끼.</span></div>
+        </article>
+        <article class="item" data-search="turn_shipbait_deep 선상 심해 미끼 물품 선상 전설 어종 확률을 높이는 미끼.">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "TURN_shipbait_deep")">
+              <span>TURN_shipbait_deep</span><span class="copy">복사</span>
+            </button>
+            <div class="name">선상 심해 미끼</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">선상 전설 어종 확률을 높이는 미끼.</span></div>
+        </article></div>
+    </section>
+    <section class="category" data-category="스쿠버">
+      <button class="category-head" type="button" onclick="toggleCategory(this)">
+        <span class="cat-title"><span class="cat-icon">🤿</span>스쿠버</span>
+        <span class="count">3개 <b>⌄</b></span>
+      </button>
+      <div class="items">
+        <article class="item" data-search="o2_tank_s 소형 산소통 물품 스쿠버 잠수용 소형 산소통. 장착 시 약 90초 잠수 가능.">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "o2_tank_s")">
+              <span>o2_tank_s</span><span class="copy">복사</span>
+            </button>
+            <div class="name">소형 산소통</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">스쿠버 잠수용 소형 산소통. 장착 시 약 90초 잠수 가능.</span></div>
+        </article>
+        <article class="item" data-search="o2_tank_m 중형 산소통 물품 스쿠버 잠수용 중형 산소통. 장착 시 약 150초 잠수 가능.">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "o2_tank_m")">
+              <span>o2_tank_m</span><span class="copy">복사</span>
+            </button>
+            <div class="name">중형 산소통</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">스쿠버 잠수용 중형 산소통. 장착 시 약 150초 잠수 가능.</span></div>
+        </article>
+        <article class="item" data-search="o2_tank_l 대형 산소통 물품 스쿠버 잠수용 대형 산소통. 장착 시 약 240초 잠수 가능.">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "o2_tank_l")">
+              <span>o2_tank_l</span><span class="copy">복사</span>
+            </button>
+            <div class="name">대형 산소통</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">스쿠버 잠수용 대형 산소통. 장착 시 약 240초 잠수 가능.</span></div>
+        </article></div>
+    </section>
+    <section class="category" data-category="썸머 호러">
+      <button class="category-head" type="button" onclick="toggleCategory(this)">
+        <span class="cat-title"><span class="cat-icon">☀️</span>썸머 호러</span>
+        <span class="count">9개 <b>⌄</b></span>
+      </button>
+      <div class="items">
+        <article class="item" data-search="summer_ticket 썸머 이벤트 티켓 물품 여름 이벤트 호러게임 입장권">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "summer_ticket")">
+              <span>summer_ticket</span><span class="copy">복사</span>
+            </button>
+            <div class="name">썸머 이벤트 티켓</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">여름 이벤트 호러게임 입장권</span></div>
+        </article>
+        <article class="item" data-search="summer_coin 썸머 이벤트 코인 물품 여름 이벤트 교환권">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "summer_coin")">
+              <span>summer_coin</span><span class="copy">복사</span>
+            </button>
+            <div class="name">썸머 이벤트 코인</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">여름 이벤트 교환권</span></div>
+        </article>
+        <article class="item" data-search="summer_shard 여름 치장 조각 물품 모으면 여름 치장 세트로 교환할 수 있다">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "summer_shard")">
+              <span>summer_shard</span><span class="copy">복사</span>
+            </button>
+            <div class="name">여름 치장 조각</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">모으면 여름 치장 세트로 교환할 수 있다</span></div>
+        </article>
+        <article class="item" data-search="ltd_skin_shard 한정 스킨 조각 물품 모으면 한정 스킨으로 교환할 수 있다">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "ltd_skin_shard")">
+              <span>ltd_skin_shard</span><span class="copy">복사</span>
+            </button>
+            <div class="name">한정 스킨 조각</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">모으면 한정 스킨으로 교환할 수 있다</span></div>
+        </article>
+        <article class="item" data-search="summer_sunglasses 여름 선글라스 물품 유형 : 치장 여름 이벤트 한정">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "summer_sunglasses")">
+              <span>summer_sunglasses</span><span class="copy">복사</span>
+            </button>
+            <div class="name">여름 선글라스</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">유형 : 치장 여름 이벤트 한정</span></div>
+        </article>
+        <article class="item" data-search="summer_icebar 아이스바 물품 유형 : 치장 여름 이벤트 한정">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "summer_icebar")">
+              <span>summer_icebar</span><span class="copy">복사</span>
+            </button>
+            <div class="name">아이스바</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">유형 : 치장 여름 이벤트 한정</span></div>
+        </article>
+        <article class="item" data-search="summer_bubbletool 버블건 물품 유형 : 치장 여름 이벤트 한정">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "summer_bubbletool")">
+              <span>summer_bubbletool</span><span class="copy">복사</span>
+            </button>
+            <div class="name">버블건</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">유형 : 치장 여름 이벤트 한정</span></div>
+        </article>
+        <article class="item" data-search="summer_swimring1 여름 튜브 a 물품 유형 : 치장 여름 이벤트 한정">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "summer_swimring1")">
+              <span>summer_swimring1</span><span class="copy">복사</span>
+            </button>
+            <div class="name">여름 튜브 A</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">유형 : 치장 여름 이벤트 한정</span></div>
+        </article>
+        <article class="item" data-search="summer_swimring2 여름 튜브 b 물품 유형 : 치장 여름 이벤트 한정">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "summer_swimring2")">
+              <span>summer_swimring2</span><span class="copy">복사</span>
+            </button>
+            <div class="name">여름 튜브 B</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">유형 : 치장 여름 이벤트 한정</span></div>
+        </article></div>
+    </section>
+    <section class="category" data-category="금속탐지">
+      <button class="category-head" type="button" onclick="toggleCategory(this)">
+        <span class="cat-title"><span class="cat-icon">🔎</span>금속탐지</span>
+        <span class="count">12개 <b>⌄</b></span>
+      </button>
+      <div class="items">
+        <article class="item" data-search="metaldetector 금속 탐지기 물품 ">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "metaldetector")">
+              <span>metaldetector</span><span class="copy">복사</span>
+            </button>
+            <div class="name">금속 탐지기</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">—</span></div>
+        </article>
+        <article class="item" data-search="md_battery 탐지기 배터리 물품 [금속탐지] 금속탐지기 충전용 배터리. 발굴 시 소모되며, 필드에서 r키로 교체한다.">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "md_battery")">
+              <span>md_battery</span><span class="copy">복사</span>
+            </button>
+            <div class="name">탐지기 배터리</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">[금속탐지] 금속탐지기 충전용 배터리. 발굴 시 소모되며, 필드에서 R키로 교체한다.</span></div>
+        </article>
+        <article class="item" data-search="md_trash 잡동사니 물품 [금속탐지] 발굴로 나온 고철 쓰레기. 해변 매표소에서 헐값에 판매할 수 있다.">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "md_trash")">
+              <span>md_trash</span><span class="copy">복사</span>
+            </button>
+            <div class="name">잡동사니</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">[금속탐지] 발굴로 나온 고철 쓰레기. 해변 매표소에서 헐값에 판매할 수 있다.</span></div>
+        </article>
+        <article class="item" data-search="md_coin 오래된 동전 물품 [금속탐지] 해변 매표소에서 판매할 수 있다.">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "md_coin")">
+              <span>md_coin</span><span class="copy">복사</span>
+            </button>
+            <div class="name">오래된 동전</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">[금속탐지] 해변 매표소에서 판매할 수 있다.</span></div>
+        </article>
+        <article class="item" data-search="md_copper 구리 조각 물품 [금속탐지] 판매하거나 탐지기 강화 재료로 쓴다.">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "md_copper")">
+              <span>md_copper</span><span class="copy">복사</span>
+            </button>
+            <div class="name">구리 조각</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">[금속탐지] 판매하거나 탐지기 강화 재료로 쓴다.</span></div>
+        </article>
+        <article class="item" data-search="md_iron 금속 철 물품 [금속탐지] 판매하거나 탐지기 강화 재료로 쓴다.">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "md_iron")">
+              <span>md_iron</span><span class="copy">복사</span>
+            </button>
+            <div class="name">금속 철</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">[금속탐지] 판매하거나 탐지기 강화 재료로 쓴다.</span></div>
+        </article>
+        <article class="item" data-search="pobie_se1 포비의 금반지 물품 제작소 1시즌아이템">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "pobie_se1")">
+              <span>pobie_se1</span><span class="copy">복사</span>
+            </button>
+            <div class="name">포비의 금반지</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">제작소 1시즌아이템</span></div>
+        </article>
+        <article class="item" data-search="kimtasikse1 김태식의 스팅어 핸들 물품 제작소 1시즌아이템">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "kimtasikse1")">
+              <span>kimtasikse1</span><span class="copy">복사</span>
+            </button>
+            <div class="name">김태식의 스팅어 핸들</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">제작소 1시즌아이템</span></div>
+        </article>
+        <article class="item" data-search="md_silver 은 조각 물품 [금속탐지] 판매하거나 탐지기 강화 재료로 쓴다.">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "md_silver")">
+              <span>md_silver</span><span class="copy">복사</span>
+            </button>
+            <div class="name">은 조각</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">[금속탐지] 판매하거나 탐지기 강화 재료로 쓴다.</span></div>
+        </article>
+        <article class="item" data-search="md_gold 금 조각 물품 [금속탐지] 판매하거나 탐지기 강화 재료로 쓴다.">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "md_gold")">
+              <span>md_gold</span><span class="copy">복사</span>
+            </button>
+            <div class="name">금 조각</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">[금속탐지] 판매하거나 탐지기 강화 재료로 쓴다.</span></div>
+        </article>
+        <article class="item" data-search="md_watch 시계 물품 [금속탐지] 값나가는 골동 시계. 판매하거나 고급 강화에 쓴다.">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "md_watch")">
+              <span>md_watch</span><span class="copy">복사</span>
+            </button>
+            <div class="name">시계</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">[금속탐지] 값나가는 골동 시계. 판매하거나 고급 강화에 쓴다.</span></div>
+        </article>
+        <article class="item" data-search="md_ring 반지 물품 [금속탐지] 보석 박힌 반지. 잭팟! 판매하거나 최고급 강화에 쓴다.">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "md_ring")">
+              <span>md_ring</span><span class="copy">복사</span>
+            </button>
+            <div class="name">반지</div>
+          </div>
+          <div class="meta"><span class="badge">물품</span><span class="note">[금속탐지] 보석 박힌 반지. 잭팟! 판매하거나 최고급 강화에 쓴다.</span></div>
+        </article></div>
+    </section>
+    <section class="category" data-category="차량코드">
+      <button class="category-head" type="button" onclick="toggleCategory(this)">
+        <span class="cat-title"><span class="cat-icon">🚗</span>차량코드</span>
+        <span class="count">48개 <b>⌄</b></span>
+      </button>
+      <div class="items">
+        <article class="item" data-search="ngranturismo 현대 비전 차량 한정">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "ngranturismo")">
+              <span>ngranturismo</span><span class="copy">복사</span>
+            </button>
+            <div class="name">현대 비전</div>
+          </div>
+          <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
+        </article>
+        <article class="item" data-search="nv74 현대 nv74 비전 차량 한정">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "nv74")">
+              <span>nv74</span><span class="copy">복사</span>
+            </button>
+            <div class="name">현대 NV74 비전</div>
+          </div>
+          <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
+        </article>
+        <article class="item" data-search="visiongt 맥라렌 비전 차량 한정">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "visiongt")">
+              <span>visiongt</span><span class="copy">복사</span>
+            </button>
+            <div class="name">맥라렌 비전</div>
+          </div>
+          <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
+        </article>
+        <article class="item" data-search="tachy 헥시온 비전 차량 한정">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "tachy")">
+              <span>tachy</span><span class="copy">복사</span>
+            </button>
+            <div class="name">헥시온 비전</div>
+          </div>
+          <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
+        </article>
+        <article class="item" data-search="radisgt 어비스 비전 차량 한정">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "radisgt")">
+              <span>radisgt</span><span class="copy">복사</span>
+            </button>
+            <div class="name">어비스 비전</div>
+          </div>
+          <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
+        </article>
+        <article class="item" data-search="ie ie 비전 gt 차량 한정">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "ie")">
+              <span>ie</span><span class="copy">복사</span>
+            </button>
+            <div class="name">ie 비전 GT</div>
+          </div>
+          <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
+        </article>
+        <article class="item" data-search="s1000rrc 쿠오님 개인차 차량 한정">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "s1000rrc")">
+              <span>s1000rrc</span><span class="copy">복사</span>
+            </button>
+            <div class="name">쿠오님 개인차</div>
+          </div>
+          <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
+        </article>
+        <article class="item" data-search="bm_alpine 백곰님 개인차 차량 한정">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "BM_alpine")">
+              <span>BM_alpine</span><span class="copy">복사</span>
+            </button>
+            <div class="name">백곰님 개인차</div>
+          </div>
+          <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
+        </article>
+        <article class="item" data-search="bolide 부가티 볼리드 차량 한정">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "bolide")">
+              <span>bolide</span><span class="copy">복사</span>
+            </button>
+            <div class="name">부가티 볼리드</div>
+          </div>
+          <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
+        </article>
+        <article class="item" data-search="develsix 데빌 식스틴 차량 한정">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "develSix")">
+              <span>develSix</span><span class="copy">복사</span>
+            </button>
+            <div class="name">데빌 식스틴</div>
+          </div>
+          <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
+        </article>
+        <article class="item" data-search="ep9 니오 ep9 차량 한정">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "ep9")">
+              <span>ep9</span><span class="copy">복사</span>
+            </button>
+            <div class="name">니오 EP9</div>
+          </div>
+          <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
+        </article>
+        <article class="item" data-search="f80 f80 차량 한정">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "f80")">
+              <span>f80</span><span class="copy">복사</span>
+            </button>
+            <div class="name">F80</div>
+          </div>
+          <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
+        </article>
+        <article class="item" data-search="gr1 토마호크 차량 한정">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "gr1")">
+              <span>gr1</span><span class="copy">복사</span>
+            </button>
+            <div class="name">토마호크</div>
+          </div>
+          <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
+        </article>
+        <article class="item" data-search="greengt2h 그린 gt 차량 한정">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "greengt2h")">
+              <span>greengt2h</span><span class="copy">복사</span>
+            </button>
+            <div class="name">그린 GT</div>
+          </div>
+          <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
+        </article>
+        <article class="item" data-search="h4rentitymtr 엔티멕스 gt 차량 한정">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "H4REntityMTR")">
+              <span>H4REntityMTR</span><span class="copy">복사</span>
+            </button>
+            <div class="name">엔티멕스 GT</div>
+          </div>
+          <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
+        </article>
+        <article class="item" data-search="2018s650p 노블 6 차량 한정">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "2018s650p")">
+              <span>2018s650p</span><span class="copy">복사</span>
+            </button>
+            <div class="name">노블 6</div>
+          </div>
+          <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
+        </article>
+        <article class="item" data-search="tachy 턴 비전 차량 한정">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "tachy")">
+              <span>tachy</span><span class="copy">복사</span>
+            </button>
+            <div class="name">턴 비전</div>
+          </div>
+          <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
+        </article>
+        <article class="item" data-search="beetlerwb 벤틀리 rwb 차량 한정">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "beetleRWB")">
+              <span>beetleRWB</span><span class="copy">복사</span>
+            </button>
+            <div class="name">벤틀리 RWB</div>
+          </div>
+          <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
+        </article>
+        <article class="item" data-search="a90pit 쉐도우 펄스 차량 한정">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "a90pit")">
+              <span>a90pit</span><span class="copy">복사</span>
+            </button>
+            <div class="name">쉐도우 펄스</div>
+          </div>
+          <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
+        </article>
+        <article class="item" data-search="avtr 밴츠 비전 차량 한정">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "avtr")">
+              <span>avtr</span><span class="copy">복사</span>
+            </button>
+            <div class="name">밴츠 비전</div>
+          </div>
+          <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
+        </article>
+        <article class="item" data-search="bugatticentodieci 부가티 센토디에치 차량 한정">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "bugatticentodieci")">
+              <span>bugatticentodieci</span><span class="copy">복사</span>
+            </button>
+            <div class="name">부가티 센토디에치</div>
+          </div>
+          <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
+        </article>
+        <article class="item" data-search="county 카운티 차량 한정">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "county")">
+              <span>county</span><span class="copy">복사</span>
+            </button>
+            <div class="name">카운티</div>
+          </div>
+          <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
+        </article>
+        <article class="item" data-search="essentia 제네시스 에센시아 차량 한정">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "essentia")">
+              <span>essentia</span><span class="copy">복사</span>
+            </button>
+            <div class="name">제네시스 에센시아</div>
+          </div>
+          <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
+        </article>
+        <article class="item" data-search="ferrari812super 페라리 812 슈퍼 차량 한정">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "ferrari812super")">
+              <span>ferrari812super</span><span class="copy">복사</span>
+            </button>
+            <div class="name">페라리 812 슈퍼</div>
+          </div>
+          <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
+        </article>
+        <article class="item" data-search="gcram1500 램 차저 1500 차량 한정">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "gcram1500")">
+              <span>gcram1500</span><span class="copy">복사</span>
+            </button>
+            <div class="name">램 차저 1500</div>
+          </div>
+          <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
+        </article>
+        <article class="item" data-search="hellcat 닷지 챌린저 헬캣 차량 한정">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "hellcat")">
+              <span>hellcat</span><span class="copy">복사</span>
+            </button>
+            <div class="name">닷지 챌린저 헬캣</div>
+          </div>
+          <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
+        </article>
+        <article class="item" data-search="p900rocket22 밴츠 p900 차량 한정">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "p900rocket22")">
+              <span>p900rocket22</span><span class="copy">복사</span>
+            </button>
+            <div class="name">밴츠 P900</div>
+          </div>
+          <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
+        </article>
+        <article class="item" data-search="rmodspeed 맥라렌 스피드테일 차량 한정">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "rmodspeed")">
+              <span>rmodspeed</span><span class="copy">복사</span>
+            </button>
+            <div class="name">맥라렌 스피드테일</div>
+          </div>
+          <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
+        </article>
+        <article class="item" data-search="sscts ssc 투아타라 차량 한정">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "sscts")">
+              <span>sscts</span><span class="copy">복사</span>
+            </button>
+            <div class="name">SSC 투아타라</div>
+          </div>
+          <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
+        </article>
+        <article class="item" data-search="trezor1 르노 테르조 차량 한정">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "trezor1")">
+              <span>trezor1</span><span class="copy">복사</span>
+            </button>
+            <div class="name">르노 테르조</div>
+          </div>
+          <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
+        </article>
+        <article class="item" data-search="urusvennum 엘리박스1차)람보르기니 우루스 차량 한정">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "urusvennum")">
+              <span>urusvennum</span><span class="copy">복사</span>
+            </button>
+            <div class="name">엘리박스1차)람보르기니 우루스</div>
+          </div>
+          <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
+        </article>
+        <article class="item" data-search="gts125 보이져 차량 한정">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "gts125")">
+              <span>gts125</span><span class="copy">복사</span>
+            </button>
+            <div class="name">보이져</div>
+          </div>
+          <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
+        </article>
+        <article class="item" data-search="vf125 vf125 차량 한정">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "vf125")">
+              <span>vf125</span><span class="copy">복사</span>
+            </button>
+            <div class="name">VF125</div>
+          </div>
+          <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
+        </article>
+        <article class="item" data-search="beetlerwb 비틀 rwb 컨셉트 차량 한정">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "beetleRWB")">
+              <span>beetleRWB</span><span class="copy">복사</span>
+            </button>
+            <div class="name">비틀 RWB 컨셉트</div>
+          </div>
+          <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
+        </article>
+        <article class="item" data-search="ocnrrvn100 롤스로이스 컨셉트 차량 한정">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "ocnrrvn100")">
+              <span>ocnrrvn100</span><span class="copy">복사</span>
+            </button>
+            <div class="name">롤스로이스 컨셉트</div>
+          </div>
+          <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
+        </article>
+        <article class="item" data-search="s63coupe 밴츠 컨셉트 차량 한정">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "s63coupe")">
+              <span>s63coupe</span><span class="copy">복사</span>
+            </button>
+            <div class="name">밴츠 컨셉트</div>
+          </div>
+          <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
+        </article>
+        <article class="item" data-search="gyuseok_terzo 테르조 led 차량 한정">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "Gyuseok_terzo")">
+              <span>Gyuseok_terzo</span><span class="copy">복사</span>
+            </button>
+            <div class="name">테르조 LED</div>
+          </div>
+          <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
+        </article>
+        <article class="item" data-search="impronta4 임프론타 led 차량 한정">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "impronta4")">
+              <span>impronta4</span><span class="copy">복사</span>
+            </button>
+            <div class="name">임프론타 LED</div>
+          </div>
+          <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
+        </article>
+        <article class="item" data-search="scv 람보르기니 시안 led 2 차량 한정">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "scv")">
+              <span>scv</span><span class="copy">복사</span>
+            </button>
+            <div class="name">람보르기니 시안 LED 2</div>
+          </div>
+          <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
+        </article>
+        <article class="item" data-search="duckcar 엘리박스1차)오리차 차량 한정">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "duckcar")">
+              <span>duckcar</span><span class="copy">복사</span>
+            </button>
+            <div class="name">엘리박스1차)오리차</div>
+          </div>
+          <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
+        </article>
+        <article class="item" data-search="ppht3 세이버 차량 한정">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "ppht3")">
+              <span>ppht3</span><span class="copy">복사</span>
+            </button>
+            <div class="name">세이버</div>
+          </div>
+          <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
+        </article>
+        <article class="item" data-search="pv_bugatti 부가티 미니카 차량 한정">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "PV_bugatti")">
+              <span>PV_bugatti</span><span class="copy">복사</span>
+            </button>
+            <div class="name">부가티 미니카</div>
+          </div>
+          <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
+        </article>
+        <article class="item" data-search="pv_bugvr 부가티 미니카 2 차량 한정">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "PV_bugvr")">
+              <span>PV_bugvr</span><span class="copy">복사</span>
+            </button>
+            <div class="name">부가티 미니카 2</div>
+          </div>
+          <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
+        </article>
+        <article class="item" data-search="pv_dawn 롤스로이스 미니카 차량 한정">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "PV_dawn")">
+              <span>PV_dawn</span><span class="copy">복사</span>
+            </button>
+            <div class="name">롤스로이스 미니카</div>
+          </div>
+          <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
+        </article>
+        <article class="item" data-search="pv_gtr gtr 미니카 차량 한정">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "PV_gtr")">
+              <span>PV_gtr</span><span class="copy">복사</span>
+            </button>
+            <div class="name">GTR 미니카</div>
+          </div>
+          <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
+        </article>
+        <article class="item" data-search="pv_jeep 지프 미니카 차량 한정">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "PV_jeep")">
+              <span>PV_jeep</span><span class="copy">복사</span>
+            </button>
+            <div class="name">지프 미니카</div>
+          </div>
+          <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
+        </article>
+        <article class="item" data-search="pv_sianr 람보르기니 시안 미니카 차량 한정">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "PV_sianr")">
+              <span>PV_sianr</span><span class="copy">복사</span>
+            </button>
+            <div class="name">람보르기니 시안 미니카</div>
+          </div>
+          <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
+        </article>
+        <article class="item" data-search="pv_rover 랜드로버 미니카 차량 한정">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "PV_rover")">
+              <span>PV_rover</span><span class="copy">복사</span>
+            </button>
+            <div class="name">랜드로버 미니카</div>
+          </div>
+          <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
+        </article></div>
+    </section>
+    <section class="category" data-category="보트">
+      <button class="category-head" type="button" onclick="toggleCategory(this)">
+        <span class="cat-title"><span class="cat-icon">🚤</span>보트</span>
+        <span class="count">3개 <b>⌄</b></span>
+      </button>
+      <div class="items">
+        <article class="item" data-search="speeder 보트] 스피더 차량 보트 / 3,000,000,000원">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "speeder")">
+              <span>speeder</span><span class="copy">복사</span>
+            </button>
+            <div class="name">보트] 스피더</div>
+          </div>
+          <div class="meta"><span class="badge">차량</span><span class="note">보트 / 3,000,000,000원</span></div>
+        </article>
+        <article class="item" data-search="dinghy 보트] 딩이 차량 보트 / 1,000,000,000원">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "dinghy")">
+              <span>dinghy</span><span class="copy">복사</span>
+            </button>
+            <div class="name">보트] 딩이</div>
+          </div>
+          <div class="meta"><span class="badge">차량</span><span class="note">보트 / 1,000,000,000원</span></div>
+        </article>
+        <article class="item" data-search="seashark 보트] 씨샤크 차량 보트 / 500,000,000원">
+          <div class="item-main">
+            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "seashark")">
+              <span>seashark</span><span class="copy">복사</span>
+            </button>
+            <div class="name">보트] 씨샤크</div>
+          </div>
+          <div class="meta"><span class="badge">차량</span><span class="note">보트 / 500,000,000원</span></div>
+        </article></div>
+    </section>
+</div>
+<div id="empty" class="empty">검색 결과가 없습니다.</div>
+
+<footer>EXIT RP CODE GUIDE</footer>
+</main>
+
+<script>
+const input=document.getElementById('search');
+const categories=[...document.querySelectorAll('.category')];
+const items=[...document.querySelectorAll('.item')];
+
+function toggleCategory(btn){
+  btn.closest('.category').classList.toggle('closed');
+}
+function openAll(){categories.forEach(c=>c.classList.remove('closed'))}
+function closeAll(){categories.forEach(c=>c.classList.add('closed'))}
+
+function filter(){
+  const q=input.value.trim().toLowerCase();
+  let shown=0;
+  categories.forEach(cat=>{
+    let n=0;
+    cat.querySelectorAll('.item').forEach(item=>{
+      const ok=!q || item.dataset.search.includes(q);
+      item.style.display=ok?'grid':'none';
+      if(ok)n++;
+    });
+    cat.style.display=n?'':'none';
+    if(q && n)cat.classList.remove('closed');
+    shown+=n;
+  });
+  document.getElementById('resultText').textContent=q ? `검색 결과 ${shown}개` : '전체 217개';
+  document.getElementById('empty').style.display=shown?'none':'block';
+}
+input.addEventListener('input',filter);
+
+async function copyCode(btn,code){
+  try{
+    await navigator.clipboard.writeText(code);
+    const label=btn.querySelector('.copy');
+    const old=label.textContent; label.textContent='복사됨';
+    setTimeout(()=>label.textContent=old,900);
+  }catch(e){
+    const ta=document.createElement('textarea');ta.value=code;document.body.appendChild(ta);
+    ta.select();document.execCommand('copy');ta.remove();
+  }
+}
+</script>
 </body>
 </html>
