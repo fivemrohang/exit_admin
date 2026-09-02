@@ -65,6 +65,79 @@ footer{padding:28px 0 50px;color:#69737e;font-size:12px;text-align:center}
  .category-head{padding:15px 14px}
 }
 </style>
+
+<style id="copy-fallback-css">
+.copy-fallback{
+  position:fixed;
+  inset:0;
+  z-index:99999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:rgba(0,0,0,.72);
+}
+.copy-fallback-box{
+  width:min(520px,100%);
+  padding:22px;
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:14px;
+  background:#171717;
+  box-shadow:0 20px 60px rgba(0,0,0,.45);
+}
+.copy-fallback-title{
+  font-size:18px;
+  font-weight:700;
+  margin-bottom:8px;
+}
+.copy-fallback-desc{
+  color:#aaa;
+  font-size:13px;
+  line-height:1.6;
+  margin-bottom:14px;
+}
+.copy-fallback input{
+  width:100%;
+  box-sizing:border-box;
+  padding:12px 13px;
+  border:1px solid #3a3a3a;
+  border-radius:9px;
+  background:#0f0f0f;
+  color:#fff;
+  outline:none;
+  user-select:text;
+  -webkit-user-select:text;
+}
+.copy-fallback-actions{
+  display:flex;
+  justify-content:flex-end;
+  gap:8px;
+  margin-top:12px;
+}
+.copy-fallback-actions button{
+  border:1px solid #3a3a3a;
+  border-radius:8px;
+  padding:8px 12px;
+  background:#222;
+  color:#fff;
+  cursor:pointer;
+}
+</style>
+
+<style id="code-click-style">
+.code-text{
+  cursor:pointer;
+  user-select:text;
+  -webkit-user-select:text;
+}
+.code-text:hover{
+  text-decoration:underline;
+  text-underline-offset:3px;
+}
+.code-text.code-copied{
+  text-decoration:underline;
+}
+</style>
 </head>
 <body>
 <main class="wrap">
@@ -97,378 +170,294 @@ footer{padding:28px 0 50px;color:#69737e;font-size:12px;text-align:center}
       <div class="items">
         <article class="item" data-search="dirtymoney 검은돈 물품 스토리 rp 검은돈">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "dirtymoney")">
-              <span>dirtymoney</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'dirtymoney')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'dirtymoney')}">dirtymoney</span></div>
             <div class="name">검은돈</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">스토리 RP 검은돈</span></div>
         </article>
         <article class="item" data-search="yumi_coin 신세계팩션코인 물품 아직 비활성화">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "yumi_coin")">
-              <span>yumi_coin</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'yumi_coin')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'yumi_coin')}">yumi_coin</span></div>
             <div class="name">신세계팩션코인</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">아직 비활성화</span></div>
         </article>
         <article class="item" data-search="enginesound_ticket 배기음튜닝권 물품 신세계렉카 판매물품">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "enginesound_ticket")">
-              <span>enginesound_ticket</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'enginesound_ticket')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'enginesound_ticket')}">enginesound_ticket</span></div>
             <div class="name">배기음튜닝권</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">신세계렉카 판매물품</span></div>
         </article>
         <article class="item" data-search="exit_sajung 사전예약보상 물품 사전예약보상지급">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "EXIT_sajung")">
-              <span>EXIT_sajung</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'EXIT_sajung')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'EXIT_sajung')}">EXIT_sajung</span></div>
             <div class="name">사전예약보상</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">사전예약보상지급</span></div>
         </article>
         <article class="item" data-search="turn_meleebox 근접무기 상자 물품 조직사업권">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "TURN_meleebox")">
-              <span>TURN_meleebox</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'TURN_meleebox')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'TURN_meleebox')}">TURN_meleebox</span></div>
             <div class="name">근접무기 상자</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">조직사업권</span></div>
         </article>
         <article class="item" data-search="turn_specialbox 엑시트 스페셜 스킨박스 물품 추후 이벤트 혹은 기타 상품에 출시예정">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "TURN_specialbox")">
-              <span>TURN_specialbox</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'TURN_specialbox')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'TURN_specialbox')}">TURN_specialbox</span></div>
             <div class="name">엑시트 스페셜 스킨박스</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">추후 이벤트 혹은 기타 상품에 출시예정</span></div>
         </article>
         <article class="item" data-search="musicbox_ticket 뮤직박스 이용권 물품 절대 사용 x 후원자들 등급보상">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "musicbox_ticket")">
-              <span>musicbox_ticket</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'musicbox_ticket')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'musicbox_ticket')}">musicbox_ticket</span></div>
             <div class="name">뮤직박스 이용권</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">절대 사용 X 후원자들 등급보상</span></div>
         </article>
         <article class="item" data-search="moneybox30709 초소형 머니박스 물품 1만원 ~ 10만원 랜덤박스">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "moneybox30709")">
-              <span>moneybox30709</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'moneybox30709')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'moneybox30709')}">moneybox30709</span></div>
             <div class="name">초소형 머니박스</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">1만원 ~ 10만원 랜덤박스</span></div>
         </article>
         <article class="item" data-search="moneybox10709 소형 머니박스 물품 1~3억 랜덤박스">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "moneybox10709")">
-              <span>moneybox10709</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'moneybox10709')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'moneybox10709')}">moneybox10709</span></div>
             <div class="name">소형 머니박스</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">1~3억 랜덤박스</span></div>
         </article>
         <article class="item" data-search="moneybox20709 중형 머니박스 물품 100만원~1억 랜덤박스">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "moneybox20709")">
-              <span>moneybox20709</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'moneybox20709')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'moneybox20709')}">moneybox20709</span></div>
             <div class="name">중형 머니박스</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">100만원~1억 랜덤박스</span></div>
         </article>
         <article class="item" data-search="moneybox50709 뉴비지원 머니박스 물품 10억~50억 랜덤박스">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "moneybox50709")">
-              <span>moneybox50709</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'moneybox50709')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'moneybox50709')}">moneybox50709</span></div>
             <div class="name">뉴비지원 머니박스</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">10억~50억 랜덤박스</span></div>
         </article>
         <article class="item" data-search="special_goldb 현금다발 상자 물품 500만원~5000만원 랜덤박스">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "special_goldb")">
-              <span>special_goldb</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'special_goldb')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'special_goldb')}">special_goldb</span></div>
             <div class="name">현금다발 상자</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">500만원~5000만원 랜덤박스</span></div>
         </article>
         <article class="item" data-search="yumi_goldloot 신세계 골드 박스 물품 신세계코인,파워엘릭서,스킨조각,차량조각 랜덤박스">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "yumi_goldloot")">
-              <span>yumi_goldloot</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'yumi_goldloot')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'yumi_goldloot')}">yumi_goldloot</span></div>
             <div class="name">신세계 골드 박스</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">신세계코인,파워엘릭서,스킨조각,차량조각 랜덤박스</span></div>
         </article>
         <article class="item" data-search="prison_ticket_1 노역 완료 1분 차감 티켓 물품 교도소 사용">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "prison_ticket_1")">
-              <span>prison_ticket_1</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'prison_ticket_1')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'prison_ticket_1')}">prison_ticket_1</span></div>
             <div class="name">노역 완료 1분 차감 티켓</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">교도소 사용</span></div>
         </article>
         <article class="item" data-search="zombie_ticket_1 좀비존 입장권 (기본) 물품 좀비존 사업권">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "zombie_ticket_1")">
-              <span>zombie_ticket_1</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'zombie_ticket_1')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'zombie_ticket_1')}">zombie_ticket_1</span></div>
             <div class="name">좀비존 입장권 (기본)</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">좀비존 사업권</span></div>
         </article>
         <article class="item" data-search="sleepcoin0711 잠수코인 물품 잠수존">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "sleepcoin0711")">
-              <span>sleepcoin0711</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'sleepcoin0711')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'sleepcoin0711')}">sleepcoin0711</span></div>
             <div class="name">잠수코인</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">잠수존</span></div>
         </article>
         <article class="item" data-search="turn_coin 엑시트 코인 물품 ">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "TURN_COIN")">
-              <span>TURN_COIN</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'TURN_COIN')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'TURN_COIN')}">TURN_COIN</span></div>
             <div class="name">엑시트 코인</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">—</span></div>
         </article>
         <article class="item" data-search="jewelry 보석 물품 ">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "jewelry")">
-              <span>jewelry</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'jewelry')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'jewelry')}">jewelry</span></div>
             <div class="name">보석</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">—</span></div>
         </article>
         <article class="item" data-search="preminum_keellie 프리미엄 코인 물품 프리미엄 부스 사용">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "preminum_keellie")">
-              <span>preminum_keellie</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'preminum_keellie')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'preminum_keellie')}">preminum_keellie</span></div>
             <div class="name">프리미엄 코인</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">프리미엄 부스 사용</span></div>
         </article>
         <article class="item" data-search="sexbox 설계도 물품 제작소 사용">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "sexbox")">
-              <span>sexbox</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'sexbox')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'sexbox')}">sexbox</span></div>
             <div class="name">설계도</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">제작소 사용</span></div>
         </article>
         <article class="item" data-search="bs_mine5 또또의 눈물 물품 제작소 사용">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "bs_mine5")">
-              <span>bs_mine5</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'bs_mine5')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'bs_mine5')}">bs_mine5</span></div>
             <div class="name">또또의 눈물</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">제작소 사용</span></div>
         </article>
         <article class="item" data-search="turn_randombox 랜덤박스 티켓 물품 랜덤박스">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "TURN_randombox")">
-              <span>TURN_randombox</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'TURN_randombox')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'TURN_randombox')}">TURN_randombox</span></div>
             <div class="name">랜덤박스 티켓</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">랜덤박스</span></div>
         </article>
         <article class="item" data-search="inchan_sinmon 신문 물품 직업 아이템">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "Inchan_sinmon")">
-              <span>Inchan_sinmon</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'Inchan_sinmon')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'Inchan_sinmon')}">Inchan_sinmon</span></div>
             <div class="name">신문</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">직업 아이템</span></div>
         </article>
         <article class="item" data-search="inchan_badar 배달 품목 물품 직업 아이템">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "Inchan_badar")">
-              <span>Inchan_badar</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'Inchan_badar')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'Inchan_badar')}">Inchan_badar</span></div>
             <div class="name">배달 품목</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">직업 아이템</span></div>
         </article>
         <article class="item" data-search="inchan_kifeed_tieket 킬피드 등록권 물품 킬피드 시스템">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "Inchan_kifeed_tieket")">
-              <span>Inchan_kifeed_tieket</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'Inchan_kifeed_tieket')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'Inchan_kifeed_tieket')}">Inchan_kifeed_tieket</span></div>
             <div class="name">킬피드 등록권</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">킬피드 시스템</span></div>
         </article>
         <article class="item" data-search="vehicle_enhance_ticket 강화의 돌 물품 차량강화">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "vehicle_enhance_ticket")">
-              <span>vehicle_enhance_ticket</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'vehicle_enhance_ticket')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'vehicle_enhance_ticket')}">vehicle_enhance_ticket</span></div>
             <div class="name">강화의 돌</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">차량강화</span></div>
         </article>
         <article class="item" data-search="cosmetic_shard 치장조각 물품 출석체크 보상">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "cosmetic_shard")">
-              <span>cosmetic_shard</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'cosmetic_shard')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'cosmetic_shard')}">cosmetic_shard</span></div>
             <div class="name">치장조각</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">출석체크 보상</span></div>
         </article>
         <article class="item" data-search="attend_title 치장조각 물품 개근왕 칭호조각">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "attend_title")">
-              <span>attend_title</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'attend_title')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'attend_title')}">attend_title</span></div>
             <div class="name">치장조각</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">개근왕 칭호조각</span></div>
         </article>
         <article class="item" data-search="turn_attend_box turn 개근 보상상자 물품 개근왕 칭호조각">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "turn_attend_box")">
-              <span>turn_attend_box</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'turn_attend_box')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'turn_attend_box')}">turn_attend_box</span></div>
             <div class="name">TURN 개근 보상상자</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">개근왕 칭호조각</span></div>
         </article>
         <article class="item" data-search="exit_elliecashexit_elliecash 엑시트 캐쉬 물품 상점에서 사용가능">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "EXIT_elliecashEXIT_elliecash")">
-              <span>EXIT_elliecashEXIT_elliecash</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'EXIT_elliecashEXIT_elliecash')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'EXIT_elliecashEXIT_elliecash')}">EXIT_elliecashEXIT_elliecash</span></div>
             <div class="name">엑시트 캐쉬</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">상점에서 사용가능</span></div>
         </article>
         <article class="item" data-search="elliecoin 엘리코인 물품 엘리박스 이용권">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "elliecoin")">
-              <span>elliecoin</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'elliecoin')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'elliecoin')}">elliecoin</span></div>
             <div class="name">엘리코인</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">엘리박스 이용권</span></div>
         </article>
         <article class="item" data-search="ellie_signiturebox 엑시트 시그니처 캡슐 물품 캡슐 이용권">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "ellie_signiturebox")">
-              <span>ellie_signiturebox</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'ellie_signiturebox')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'ellie_signiturebox')}">ellie_signiturebox</span></div>
             <div class="name">엑시트 시그니처 캡슐</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">캡슐 이용권</span></div>
         </article>
         <article class="item" data-search="crbox 일반 박스 물품 메인광장 사용">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "crbox")">
-              <span>crbox</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'crbox')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'crbox')}">crbox</span></div>
             <div class="name">일반 박스</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">메인광장 사용</span></div>
         </article>
         <article class="item" data-search="spbox 스패셜 박스 물품 메인광장 사용">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "spbox")">
-              <span>spbox</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'spbox')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'spbox')}">spbox</span></div>
             <div class="name">스패셜 박스</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">메인광장 사용</span></div>
         </article>
         <article class="item" data-search="fate_coin 운명의 코인 물품 제작소 사용">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "fate_coin")">
-              <span>fate_coin</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'fate_coin')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'fate_coin')}">fate_coin</span></div>
             <div class="name">운명의 코인</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">제작소 사용</span></div>
         </article>
         <article class="item" data-search="lowclass_jewel 하급 보석 물품 제작소 사용">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "lowclass_jewel")">
-              <span>lowclass_jewel</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'lowclass_jewel')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'lowclass_jewel')}">lowclass_jewel</span></div>
             <div class="name">하급 보석</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">제작소 사용</span></div>
         </article>
         <article class="item" data-search="turn_coin1 엑시트 코인 물품 제작소 보상">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "turn_coin1")">
-              <span>turn_coin1</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'turn_coin1')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'turn_coin1')}">turn_coin1</span></div>
             <div class="name">엑시트 코인</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">제작소 보상</span></div>
         </article>
         <article class="item" data-search="live_chicken 생닭 물품 닭공장 사용">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "live_chicken")">
-              <span>live_chicken</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'live_chicken')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'live_chicken')}">live_chicken</span></div>
             <div class="name">생닭</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">닭공장 사용</span></div>
         </article>
         <article class="item" data-search="slaughtered_chicken 1차 가공 닭 물품 닭공장 사용">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "slaughtered_chicken")">
-              <span>slaughtered_chicken</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'slaughtered_chicken')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'slaughtered_chicken')}">slaughtered_chicken</span></div>
             <div class="name">1차 가공 닭</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">닭공장 사용</span></div>
         </article>
         <article class="item" data-search="processed_chicken 절단 치킨 물품 닭공장 사용">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "processed_chicken")">
-              <span>processed_chicken</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'processed_chicken')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'processed_chicken')}">processed_chicken</span></div>
             <div class="name">절단 치킨</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">닭공장 사용</span></div>
         </article>
         <article class="item" data-search="packaged_chicken 포장 치킨 물품 닭공장 사용">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "packaged_chicken")">
-              <span>packaged_chicken</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'packaged_chicken')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'packaged_chicken')}">packaged_chicken</span></div>
             <div class="name">포장 치킨</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">닭공장 사용</span></div>
         </article>
         <article class="item" data-search="turn_shipticket 섬낚시 이용권 물품 섬낚시 이용권">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "TURN_shipticket")">
-              <span>TURN_shipticket</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'TURN_shipticket')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'TURN_shipticket')}">TURN_shipticket</span></div>
             <div class="name">섬낚시 이용권</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">섬낚시 이용권</span></div>
@@ -482,117 +471,91 @@ footer{padding:28px 0 50px;color:#69737e;font-size:12px;text-align:center}
       <div class="items">
         <article class="item" data-search="killfeed1teir1.kiifeed 이걸죽네 킬피드 ">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "killfeed1teir1.kiifeed")">
-              <span>killfeed1teir1.kiifeed</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'killfeed1teir1.kiifeed')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'killfeed1teir1.kiifeed')}">killfeed1teir1.kiifeed</span></div>
             <div class="name">이걸죽네</div>
           </div>
           <div class="meta"><span class="badge">킬피드</span><span class="note">—</span></div>
         </article>
         <article class="item" data-search="killfeed1teir2.kiifeed 사슬 킬피드 ">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "killfeed1teir2.kiifeed")">
-              <span>killfeed1teir2.kiifeed</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'killfeed1teir2.kiifeed')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'killfeed1teir2.kiifeed')}">killfeed1teir2.kiifeed</span></div>
             <div class="name">사슬</div>
           </div>
           <div class="meta"><span class="badge">킬피드</span><span class="note">—</span></div>
         </article>
         <article class="item" data-search="zamsu.kiifeed 잠수왕 킬피드 ">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "zamsu.kiifeed")">
-              <span>zamsu.kiifeed</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'zamsu.kiifeed')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'zamsu.kiifeed')}">zamsu.kiifeed</span></div>
             <div class="name">잠수왕</div>
           </div>
           <div class="meta"><span class="badge">킬피드</span><span class="note">—</span></div>
         </article>
         <article class="item" data-search="warning.kiifeed 경고 킬피드 ">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "warning.kiifeed")">
-              <span>warning.kiifeed</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'warning.kiifeed')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'warning.kiifeed')}">warning.kiifeed</span></div>
             <div class="name">경고</div>
           </div>
           <div class="meta"><span class="badge">킬피드</span><span class="note">—</span></div>
         </article>
         <article class="item" data-search="unicorn.kiifeed 유니콘 킬피드 ">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "unicorn.kiifeed")">
-              <span>unicorn.kiifeed</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'unicorn.kiifeed')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'unicorn.kiifeed')}">unicorn.kiifeed</span></div>
             <div class="name">유니콘</div>
           </div>
           <div class="meta"><span class="badge">킬피드</span><span class="note">—</span></div>
         </article>
         <article class="item" data-search="skeleton.kiifeed 스켈레톤 킬피드 ">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "skeleton.kiifeed")">
-              <span>skeleton.kiifeed</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'skeleton.kiifeed')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'skeleton.kiifeed')}">skeleton.kiifeed</span></div>
             <div class="name">스켈레톤</div>
           </div>
           <div class="meta"><span class="badge">킬피드</span><span class="note">—</span></div>
         </article>
         <article class="item" data-search="power.kiifeed 파워 킬피드 ">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "power.kiifeed")">
-              <span>power.kiifeed</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'power.kiifeed')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'power.kiifeed')}">power.kiifeed</span></div>
             <div class="name">파워</div>
           </div>
           <div class="meta"><span class="badge">킬피드</span><span class="note">—</span></div>
         </article>
         <article class="item" data-search="pig.kiifeed 돼지 킬피드 ">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "pig.kiifeed")">
-              <span>pig.kiifeed</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'pig.kiifeed')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'pig.kiifeed')}">pig.kiifeed</span></div>
             <div class="name">돼지</div>
           </div>
           <div class="meta"><span class="badge">킬피드</span><span class="note">—</span></div>
         </article>
         <article class="item" data-search="mymelody.kiifeed 마이멜로디 킬피드 ">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "mymelody.kiifeed")">
-              <span>mymelody.kiifeed</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'mymelody.kiifeed')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'mymelody.kiifeed')}">mymelody.kiifeed</span></div>
             <div class="name">마이멜로디</div>
           </div>
           <div class="meta"><span class="badge">킬피드</span><span class="note">—</span></div>
         </article>
         <article class="item" data-search="silver.kiifeed 실버 킬피드 ">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "silver.kiifeed")">
-              <span>silver.kiifeed</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'silver.kiifeed')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'silver.kiifeed')}">silver.kiifeed</span></div>
             <div class="name">실버</div>
           </div>
           <div class="meta"><span class="badge">킬피드</span><span class="note">—</span></div>
         </article>
         <article class="item" data-search="gold.kiifeed 골드 킬피드 ">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "gold.kiifeed")">
-              <span>gold.kiifeed</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'gold.kiifeed')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'gold.kiifeed')}">gold.kiifeed</span></div>
             <div class="name">골드</div>
           </div>
           <div class="meta"><span class="badge">킬피드</span><span class="note">—</span></div>
         </article>
         <article class="item" data-search="hongbowin.kiifeed 홍보왕 킬피드 ">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "hongbowin.kiifeed")">
-              <span>hongbowin.kiifeed</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'hongbowin.kiifeed')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'hongbowin.kiifeed')}">hongbowin.kiifeed</span></div>
             <div class="name">홍보왕</div>
           </div>
           <div class="meta"><span class="badge">킬피드</span><span class="note">—</span></div>
         </article>
         <article class="item" data-search="waterfish.kiifeed 여름여름 킬피드 ">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "waterfish.kiifeed")">
-              <span>waterfish.kiifeed</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'waterfish.kiifeed')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'waterfish.kiifeed')}">waterfish.kiifeed</span></div>
             <div class="name">여름여름</div>
           </div>
           <div class="meta"><span class="badge">킬피드</span><span class="note">—</span></div>
@@ -606,36 +569,28 @@ footer{padding:28px 0 50px;color:#69737e;font-size:12px;text-align:center}
       <div class="items">
         <article class="item" data-search="resurrectionking.chattitle 여름여름 채팅칭호 ">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "resurrectionking.chattitle")">
-              <span>resurrectionking.chattitle</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'resurrectionking.chattitle')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'resurrectionking.chattitle')}">resurrectionking.chattitle</span></div>
             <div class="name">여름여름</div>
           </div>
           <div class="meta"><span class="badge">채팅칭호</span><span class="note">—</span></div>
         </article>
         <article class="item" data-search="prettiygirl.chattitle 공주 채팅칭호 ">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "prettiygirl.chattitle")">
-              <span>prettiygirl.chattitle</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'prettiygirl.chattitle')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'prettiygirl.chattitle')}">prettiygirl.chattitle</span></div>
             <div class="name">공주</div>
           </div>
           <div class="meta"><span class="badge">채팅칭호</span><span class="note">—</span></div>
         </article>
         <article class="item" data-search="resurrectionking.aa11 어형이야 채팅칭호 ">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "resurrectionking.aa11")">
-              <span>resurrectionking.aa11</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'resurrectionking.aa11')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'resurrectionking.aa11')}">resurrectionking.aa11</span></div>
             <div class="name">어형이야</div>
           </div>
           <div class="meta"><span class="badge">채팅칭호</span><span class="note">—</span></div>
         </article>
         <article class="item" data-search="poop.chattitle 똥범벅 채팅칭호 ">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "poop.chattitle")">
-              <span>poop.chattitle</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'poop.chattitle')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'poop.chattitle')}">poop.chattitle</span></div>
             <div class="name">똥범벅</div>
           </div>
           <div class="meta"><span class="badge">채팅칭호</span><span class="note">—</span></div>
@@ -649,99 +604,77 @@ footer{padding:28px 0 50px;color:#69737e;font-size:12px;text-align:center}
       <div class="items">
         <article class="item" data-search="skinbox_1 미연 스킨 교환권 물품 [아이템 설명] 미연스킨 교환권이 들어있습니다!">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "skinbox_1")">
-              <span>skinbox_1</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'skinbox_1')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'skinbox_1')}">skinbox_1</span></div>
             <div class="name">미연 스킨 교환권</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">[아이템 설명] 미연스킨 교환권이 들어있습니다!</span></div>
         </article>
         <article class="item" data-search="skinbox_2 장훈 스킨 교환권 물품 [아이템 설명] 장훈 스킨 교환권이 들어있습니다!">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "skinbox_2")">
-              <span>skinbox_2</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'skinbox_2')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'skinbox_2')}">skinbox_2</span></div>
             <div class="name">장훈 스킨 교환권</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">[아이템 설명] 장훈 스킨 교환권이 들어있습니다!</span></div>
         </article>
         <article class="item" data-search="skinbox_3 장훈 &amp; 미연 스킨 교환권 물품 [아이템 설명] 장훈&amp; 미연 스킨 교환권이 들어있습니다!">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "skinbox_3")">
-              <span>skinbox_3</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'skinbox_3')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'skinbox_3')}">skinbox_3</span></div>
             <div class="name">장훈 &amp; 미연 스킨 교환권</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">[아이템 설명] 장훈&amp; 미연 스킨 교환권이 들어있습니다!</span></div>
         </article>
         <article class="item" data-search="skinbox_4 서준 스킨 교환권 물품 [아이템 설명] 서준 스킨 교환권이 들어있습니다!">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "skinbox_4")">
-              <span>skinbox_4</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'skinbox_4')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'skinbox_4')}">skinbox_4</span></div>
             <div class="name">서준 스킨 교환권</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">[아이템 설명] 서준 스킨 교환권이 들어있습니다!</span></div>
         </article>
         <article class="item" data-search="skinbox_5 하린 스킨 교환권 물품 [아이템 설명] 하린 스킨 교환권이 들어있습니다!">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "skinbox_5")">
-              <span>skinbox_5</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'skinbox_5')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'skinbox_5')}">skinbox_5</span></div>
             <div class="name">하린 스킨 교환권</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">[아이템 설명] 하린 스킨 교환권이 들어있습니다!</span></div>
         </article>
         <article class="item" data-search="skinbox_6 서준 &amp; 하린 스킨 교환권 물품 [아이템 설명] 서준 &amp; 하린 스킨 교환권이 들어있습니다!">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "skinbox_6")">
-              <span>skinbox_6</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'skinbox_6')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'skinbox_6')}">skinbox_6</span></div>
             <div class="name">서준 &amp; 하린 스킨 교환권</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">[아이템 설명] 서준 &amp; 하린 스킨 교환권이 들어있습니다!</span></div>
         </article>
         <article class="item" data-search="skinbox_7 미주 스킨 교환권 물품 [아이템 설명] 미주스킨 교환권이 들어있습니다!">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "skinbox_7")">
-              <span>skinbox_7</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'skinbox_7')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'skinbox_7')}">skinbox_7</span></div>
             <div class="name">미주 스킨 교환권</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">[아이템 설명] 미주스킨 교환권이 들어있습니다!</span></div>
         </article>
         <article class="item" data-search="skinbox_8 서준 스킨 교환권 물품 [아이템 설명] 서준스킨 교환권이 들어있습니다!">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "skinbox_8")">
-              <span>skinbox_8</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'skinbox_8')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'skinbox_8')}">skinbox_8</span></div>
             <div class="name">서준 스킨 교환권</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">[아이템 설명] 서준스킨 교환권이 들어있습니다!</span></div>
         </article>
         <article class="item" data-search="skinbox_9 규현 스킨 교환권 물품 [아이템 설명] 규현스킨 교환권이 들어있습니다!">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "skinbox_9")">
-              <span>skinbox_9</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'skinbox_9')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'skinbox_9')}">skinbox_9</span></div>
             <div class="name">규현 스킨 교환권</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">[아이템 설명] 규현스킨 교환권이 들어있습니다!</span></div>
         </article>
         <article class="item" data-search="skinbox_10 현아 스킨 교환권 물품 [아이템 설명] 현아 스킨 교환권이 들어있습니다!">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "skinbox_10")">
-              <span>skinbox_10</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'skinbox_10')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'skinbox_10')}">skinbox_10</span></div>
             <div class="name">현아 스킨 교환권</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">[아이템 설명] 현아 스킨 교환권이 들어있습니다!</span></div>
         </article>
         <article class="item" data-search="girlskin1 문신여자 교환권 물품 관리자를 호출하여 지급받아주세요">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "girlskin1")">
-              <span>girlskin1</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'girlskin1')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'girlskin1')}">girlskin1</span></div>
             <div class="name">문신여자 교환권</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">관리자를 호출하여 지급받아주세요</span></div>
@@ -755,63 +688,49 @@ footer{padding:28px 0 50px;color:#69737e;font-size:12px;text-align:center}
       <div class="items">
         <article class="item" data-search="carbox_a90pit 쉐도우 펄스 확정 지급권 물품 [아이템 설명] 안에 쉐도우 펄스 차량이 들어있습니다.">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "carbox_a90pit")">
-              <span>carbox_a90pit</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'carbox_a90pit')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'carbox_a90pit')}">carbox_a90pit</span></div>
             <div class="name">쉐도우 펄스 확정 지급권</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">[아이템 설명] 안에 쉐도우 펄스 차량이 들어있습니다.</span></div>
         </article>
         <article class="item" data-search="carbox_radisgt 어비스 비전 gt 확정 지급권 물품 [아이템 설명] 안에 어비스 비전 gt 차량이 들어있습니다.">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "carbox_radisgt")">
-              <span>carbox_radisgt</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'carbox_radisgt')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'carbox_radisgt')}">carbox_radisgt</span></div>
             <div class="name">어비스 비전 GT 확정 지급권</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">[아이템 설명] 안에 어비스 비전 GT 차량이 들어있습니다.</span></div>
         </article>
         <article class="item" data-search="carbox_ie ie 비전 gt 확정 지급권 물품 [아이템 설명] 안에 ie 비전 gt 차량이 들어있습니다.">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "carbox_ie")">
-              <span>carbox_ie</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'carbox_ie')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'carbox_ie')}">carbox_ie</span></div>
             <div class="name">ie 비전 GT 확정 지급권</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">[아이템 설명] 안에 ie 비전 GT 차량이 들어있습니다.</span></div>
         </article>
         <article class="item" data-search="carbox_tachy 엑시트 비전 확정 지급권 물품 [아이템 설명] 안에 엑시트 비전 차량이 들어있습니다.">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "carbox_tachy")">
-              <span>carbox_tachy</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'carbox_tachy')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'carbox_tachy')}">carbox_tachy</span></div>
             <div class="name">엑시트 비전 확정 지급권</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">[아이템 설명] 안에 엑시트 비전 차량이 들어있습니다.</span></div>
         </article>
         <article class="item" data-search="carbox_2018s650p 노블6 확정 지급권 물품 [아이템 설명] 안에 노블 6 차량이 들어있습니다.">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "carbox_2018s650p")">
-              <span>carbox_2018s650p</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'carbox_2018s650p')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'carbox_2018s650p')}">carbox_2018s650p</span></div>
             <div class="name">노블6 확정 지급권</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">[아이템 설명] 안에 노블 6 차량이 들어있습니다.</span></div>
         </article>
         <article class="item" data-search="carbox1591550718 멕라렌 비전 확정 지급권 물품 [아이템 설명] 안에 멕라렌 비전 차량이 들어있습니다.">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "carbox1591550718")">
-              <span>carbox1591550718</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'carbox1591550718')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'carbox1591550718')}">carbox1591550718</span></div>
             <div class="name">멕라렌 비전 확정 지급권</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">[아이템 설명] 안에 멕라렌 비전 차량이 들어있습니다.</span></div>
         </article>
         <article class="item" data-search="carbox93351303101 마쯔다 후라이 확정 지급권 물품 [아이템 설명] 안에 마쯔다 후라이 차량이 들어있습니다.">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "carbox93351303101")">
-              <span>carbox93351303101</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'carbox93351303101')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'carbox93351303101')}">carbox93351303101</span></div>
             <div class="name">마쯔다 후라이 확정 지급권</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">[아이템 설명] 안에 마쯔다 후라이 차량이 들어있습니다.</span></div>
@@ -825,162 +744,126 @@ footer{padding:28px 0 50px;color:#69737e;font-size:12px;text-align:center}
       <div class="items">
         <article class="item" data-search="pistol_m 피스톨 몸체 상자 조직 ">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "pistol_m")">
-              <span>pistol_m</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'pistol_m')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'pistol_m')}">pistol_m</span></div>
             <div class="name">피스톨 몸체 상자</div>
           </div>
           <div class="meta"><span class="badge">조직</span><span class="note">—</span></div>
         </article>
         <article class="item" data-search="pistol_t 피스톨 100발 탄약상자 조직 ">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "pistol_t")">
-              <span>pistol_t</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'pistol_t')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'pistol_t')}">pistol_t</span></div>
             <div class="name">피스톨 100발 탄약상자</div>
           </div>
           <div class="meta"><span class="badge">조직</span><span class="note">—</span></div>
         </article>
         <article class="item" data-search="carbin_m 카빈소총 몸체 상자 조직 ">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "carbin_m")">
-              <span>carbin_m</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'carbin_m')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'carbin_m')}">carbin_m</span></div>
             <div class="name">카빈소총 몸체 상자</div>
           </div>
           <div class="meta"><span class="badge">조직</span><span class="note">—</span></div>
         </article>
         <article class="item" data-search="carbin_t 카빈소총 100발 탄약상자 조직 ">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "carbin_t")">
-              <span>carbin_t</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'carbin_t')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'carbin_t')}">carbin_t</span></div>
             <div class="name">카빈소총 100발 탄약상자</div>
           </div>
           <div class="meta"><span class="badge">조직</span><span class="note">—</span></div>
         </article>
         <article class="item" data-search="ak47_m 어썰트 라이플 몸체 상자 조직 ">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "ak47_m")">
-              <span>ak47_m</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'ak47_m')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'ak47_m')}">ak47_m</span></div>
             <div class="name">어썰트 라이플 몸체 상자</div>
           </div>
           <div class="meta"><span class="badge">조직</span><span class="note">—</span></div>
         </article>
         <article class="item" data-search="ak47_t 어썰트 라이플 100발 탄약상자 조직 ">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "ak47_t")">
-              <span>ak47_t</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'ak47_t')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'ak47_t')}">ak47_t</span></div>
             <div class="name">어썰트 라이플 100발 탄약상자</div>
           </div>
           <div class="meta"><span class="badge">조직</span><span class="note">—</span></div>
         </article>
         <article class="item" data-search="smg_m 마이크로 smg 몸체 상자 조직 ">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "smg_m")">
-              <span>smg_m</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'smg_m')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'smg_m')}">smg_m</span></div>
             <div class="name">마이크로 SMG 몸체 상자</div>
           </div>
           <div class="meta"><span class="badge">조직</span><span class="note">—</span></div>
         </article>
         <article class="item" data-search="smg_t 마이크로 smg 100발 탄약상자 조직 ">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "smg_t")">
-              <span>smg_t</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'smg_t')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'smg_t')}">smg_t</span></div>
             <div class="name">마이크로 SMG 100발 탄약상자</div>
           </div>
           <div class="meta"><span class="badge">조직</span><span class="note">—</span></div>
         </article>
         <article class="item" data-search="shotgun_m 펌프 샷건 몸체 상자 조직 ">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "shotgun_m")">
-              <span>shotgun_m</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'shotgun_m')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'shotgun_m')}">shotgun_m</span></div>
             <div class="name">펌프 샷건 몸체 상자</div>
           </div>
           <div class="meta"><span class="badge">조직</span><span class="note">—</span></div>
         </article>
         <article class="item" data-search="shotgun_t 펌프 샷건 100발 탄약상자 조직 ">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "shotgun_t")">
-              <span>shotgun_t</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'shotgun_t')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'shotgun_t')}">shotgun_t</span></div>
             <div class="name">펌프 샷건 100발 탄약상자</div>
           </div>
           <div class="meta"><span class="badge">조직</span><span class="note">—</span></div>
         </article>
         <article class="item" data-search="bat_1 배트 몸체 상자 조직 ">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "bat_1")">
-              <span>bat_1</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'bat_1')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'bat_1')}">bat_1</span></div>
             <div class="name">배트 몸체 상자</div>
           </div>
           <div class="meta"><span class="badge">조직</span><span class="note">—</span></div>
         </article>
         <article class="item" data-search="knife_1 나이프 몸체 상자 조직 ">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "knife_1")">
-              <span>knife_1</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'knife_1')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'knife_1')}">knife_1</span></div>
             <div class="name">나이프 몸체 상자</div>
           </div>
           <div class="meta"><span class="badge">조직</span><span class="note">—</span></div>
         </article>
         <article class="item" data-search="swich_m 스위치 블레이드 몸체 상자 조직 ">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "swich_m")">
-              <span>swich_m</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'swich_m')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'swich_m')}">swich_m</span></div>
             <div class="name">스위치 블레이드 몸체 상자</div>
           </div>
           <div class="meta"><span class="badge">조직</span><span class="note">—</span></div>
         </article>
         <article class="item" data-search="flsh_m 플래쉬 몸체 상자 조직 ">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "flsh_m")">
-              <span>flsh_m</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'flsh_m')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'flsh_m')}">flsh_m</span></div>
             <div class="name">플래쉬 몸체 상자</div>
           </div>
           <div class="meta"><span class="badge">조직</span><span class="note">—</span></div>
         </article>
         <article class="item" data-search="turn_meleebox 근접무기 상자 조직 ">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "TURN_meleebox")">
-              <span>TURN_meleebox</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'TURN_meleebox')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'TURN_meleebox')}">TURN_meleebox</span></div>
             <div class="name">근접무기 상자</div>
           </div>
           <div class="meta"><span class="badge">조직</span><span class="note">—</span></div>
         </article>
         <article class="item" data-search="seeds 대마씨 조직 대마의 씨앗.">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "seeds")">
-              <span>seeds</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'seeds')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'seeds')}">seeds</span></div>
             <div class="name">대마씨</div>
           </div>
           <div class="meta"><span class="badge">조직</span><span class="note">대마의 씨앗.</span></div>
         </article>
         <article class="item" data-search="ticket_drug 마약공장 입장권 조직 ">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "ticket_drug")">
-              <span>ticket_drug</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'ticket_drug')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'ticket_drug')}">ticket_drug</span></div>
             <div class="name">마약공장 입장권</div>
           </div>
           <div class="meta"><span class="badge">조직</span><span class="note">—</span></div>
         </article>
         <article class="item" data-search="explosivo_c4 c4 폭발장치 조직 스토리rp사용">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "explosivo_c4")">
-              <span>explosivo_c4</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'explosivo_c4')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'explosivo_c4')}">explosivo_c4</span></div>
             <div class="name">C4 폭발장치</div>
           </div>
           <div class="meta"><span class="badge">조직</span><span class="note">스토리rp사용</span></div>
@@ -994,36 +877,28 @@ footer{padding:28px 0 50px;color:#69737e;font-size:12px;text-align:center}
       <div class="items">
         <article class="item" data-search="aw1 체포 영장 물품 엑시트 대검찰청">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "aw1")">
-              <span>aw1</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'aw1')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'aw1')}">aw1</span></div>
             <div class="name">체포 영장</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">엑시트 대검찰청</span></div>
         </article>
         <article class="item" data-search="aw2 구속 영장 물품 엑시트 대검찰청">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "aw2")">
-              <span>aw2</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'aw2')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'aw2')}">aw2</span></div>
             <div class="name">구속 영장</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">엑시트 대검찰청</span></div>
         </article>
         <article class="item" data-search="aw3 수색 영장 물품 엑시트 대검찰청">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "aw3")">
-              <span>aw3</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'aw3')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'aw3')}">aw3</span></div>
             <div class="name">수색 영장</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">엑시트 대검찰청</span></div>
         </article>
         <article class="item" data-search="aw4 수배 영장 물품 엑시트 대검찰청">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "aw4")">
-              <span>aw4</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'aw4')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'aw4')}">aw4</span></div>
             <div class="name">수배 영장</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">엑시트 대검찰청</span></div>
@@ -1037,63 +912,49 @@ footer{padding:28px 0 50px;color:#69737e;font-size:12px;text-align:center}
       <div class="items">
         <article class="item" data-search="supressor 소음기 다이소 총기파츠">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "supressor")">
-              <span>supressor</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'supressor')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'supressor')}">supressor</span></div>
             <div class="name">소음기</div>
           </div>
           <div class="meta"><span class="badge">다이소</span><span class="note">총기파츠</span></div>
         </article>
         <article class="item" data-search="flash 플래쉬 다이소 총기파츠">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "flash")">
-              <span>flash</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'flash')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'flash')}">flash</span></div>
             <div class="name">플래쉬</div>
           </div>
           <div class="meta"><span class="badge">다이소</span><span class="note">총기파츠</span></div>
         </article>
         <article class="item" data-search="grip 손잡이 다이소 총기파츠">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "grip")">
-              <span>grip</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'grip')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'grip')}">grip</span></div>
             <div class="name">손잡이</div>
           </div>
           <div class="meta"><span class="badge">다이소</span><span class="note">총기파츠</span></div>
         </article>
         <article class="item" data-search="holografik 홀로그램 스코프 다이소 총기파츠">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "holografik")">
-              <span>holografik</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'holografik')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'holografik')}">holografik</span></div>
             <div class="name">홀로그램 스코프</div>
           </div>
           <div class="meta"><span class="badge">다이소</span><span class="note">총기파츠</span></div>
         </article>
         <article class="item" data-search="powiekszonymagazynek 확장탄창 다이소 총기파츠">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "powiekszonymagazynek")">
-              <span>powiekszonymagazynek</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'powiekszonymagazynek')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'powiekszonymagazynek')}">powiekszonymagazynek</span></div>
             <div class="name">확장탄창</div>
           </div>
           <div class="meta"><span class="badge">다이소</span><span class="note">총기파츠</span></div>
         </article>
         <article class="item" data-search="eun_packaging_1 시민,기업 패키징 다이소 방탄복 100개, 파츠 종류당 30개, 스킨포장키트 1개">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "eun_packaging_1")">
-              <span>eun_packaging_1</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'eun_packaging_1')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'eun_packaging_1')}">eun_packaging_1</span></div>
             <div class="name">시민,기업 패키징</div>
           </div>
           <div class="meta"><span class="badge">다이소</span><span class="note">방탄복 100개, 파츠 종류당 30개, 스킨포장키트 1개</span></div>
         </article>
         <article class="item" data-search="eun_packaging_2 조직,공무원 패키징 다이소 방탄복 150개, 파츠 종류당 30개, 스킨포장키트 3개">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "eun_packaging_2")">
-              <span>eun_packaging_2</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'eun_packaging_2')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'eun_packaging_2')}">eun_packaging_2</span></div>
             <div class="name">조직,공무원 패키징</div>
           </div>
           <div class="meta"><span class="badge">다이소</span><span class="note">방탄복 150개, 파츠 종류당 30개, 스킨포장키트 3개</span></div>
@@ -1107,81 +968,63 @@ footer{padding:28px 0 50px;color:#69737e;font-size:12px;text-align:center}
       <div class="items">
         <article class="item" data-search="packaging_1 쥬쥬 풀패키지 1번 약국 진통제/비타500/박카스가 들어있습니다.">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "packaging_1")">
-              <span>packaging_1</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'packaging_1')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'packaging_1')}">packaging_1</span></div>
             <div class="name">쥬쥬 풀패키지 1번</div>
           </div>
           <div class="meta"><span class="badge">약국</span><span class="note">진통제/비타500/박카스가 들어있습니다.</span></div>
         </article>
         <article class="item" data-search="packaging_2 쥬쥬 식품패키지 약국 전투식량/포도당/파워엘릭서/마운자루가 들어있습니다.">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "packaging_2")">
-              <span>packaging_2</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'packaging_2')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'packaging_2')}">packaging_2</span></div>
             <div class="name">쥬쥬 식품패키지</div>
           </div>
           <div class="meta"><span class="badge">약국</span><span class="note">전투식량/포도당/파워엘릭서/마운자루가 들어있습니다.</span></div>
         </article>
         <article class="item" data-search="jtjc 진통제 약국 체력 회복">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "jtjc")">
-              <span>jtjc</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'jtjc')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'jtjc')}">jtjc</span></div>
             <div class="name">진통제</div>
           </div>
           <div class="meta"><span class="badge">약국</span><span class="note">체력 회복</span></div>
         </article>
         <article class="item" data-search="monsterdrug 박카스 약국 슈퍼점프">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "monsterdrug")">
-              <span>monsterdrug</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'monsterdrug')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'monsterdrug')}">monsterdrug</span></div>
             <div class="name">박카스</div>
           </div>
           <div class="meta"><span class="badge">약국</span><span class="note">슈퍼점프</span></div>
         </article>
         <article class="item" data-search="steroiddrugs 비타500 약국 속도버프">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "steroiddrugs")">
-              <span>steroiddrugs</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'steroiddrugs')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'steroiddrugs')}">steroiddrugs</span></div>
             <div class="name">비타500</div>
           </div>
           <div class="meta"><span class="badge">약국</span><span class="note">속도버프</span></div>
         </article>
         <article class="item" data-search="elixir5 전투식량 약국 ">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "elixir5")">
-              <span>elixir5</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'elixir5')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'elixir5')}">elixir5</span></div>
             <div class="name">전투식량</div>
           </div>
           <div class="meta"><span class="badge">약국</span><span class="note">—</span></div>
         </article>
         <article class="item" data-search="icecream 포도당 약국 ">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "icecream")">
-              <span>icecream</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'icecream')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'icecream')}">icecream</span></div>
             <div class="name">포도당</div>
           </div>
           <div class="meta"><span class="badge">약국</span><span class="note">—</span></div>
         </article>
         <article class="item" data-search="elixir 파워엘릭서 약국 ">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "elixir")">
-              <span>elixir</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'elixir')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'elixir')}">elixir</span></div>
             <div class="name">파워엘릭서</div>
           </div>
           <div class="meta"><span class="badge">약국</span><span class="note">—</span></div>
         </article>
         <article class="item" data-search="tofu 마운자로 약국 ">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "tofu")">
-              <span>tofu</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'tofu')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'tofu')}">tofu</span></div>
             <div class="name">마운자로</div>
           </div>
           <div class="meta"><span class="badge">약국</span><span class="note">—</span></div>
@@ -1195,54 +1038,42 @@ footer{padding:28px 0 50px;color:#69737e;font-size:12px;text-align:center}
       <div class="items">
         <article class="item" data-search="rakar_1 센티널렉카 패키지 렉카 배기음 튜닝권 3개, 차량포장키트 1개">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "rakar_1")">
-              <span>rakar_1</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'rakar_1')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'rakar_1')}">rakar_1</span></div>
             <div class="name">센티널렉카 패키지</div>
           </div>
           <div class="meta"><span class="badge">렉카</span><span class="note">배기음 튜닝권 3개, 차량포장키트 1개</span></div>
         </article>
         <article class="item" data-search="repairkit 수리도구 렉카 택비공에 쓰임">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "repairkit")">
-              <span>repairkit</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'repairkit')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'repairkit')}">repairkit</span></div>
             <div class="name">수리도구</div>
           </div>
           <div class="meta"><span class="badge">렉카</span><span class="note">택비공에 쓰임</span></div>
         </article>
         <article class="item" data-search="fr_repairkit 특수한 수리도구 렉카 센티널렉카 전용도구">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "fr_repairkit")">
-              <span>fr_repairkit</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'fr_repairkit')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'fr_repairkit')}">fr_repairkit</span></div>
             <div class="name">특수한 수리도구</div>
           </div>
           <div class="meta"><span class="badge">렉카</span><span class="note">센티널렉카 전용도구</span></div>
         </article>
         <article class="item" data-search="carbox_return 차량포장키트 렉카 차량 포장">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "carbox_return")">
-              <span>carbox_return</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'carbox_return')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'carbox_return')}">carbox_return</span></div>
             <div class="name">차량포장키트</div>
           </div>
           <div class="meta"><span class="badge">렉카</span><span class="note">차량 포장</span></div>
         </article>
         <article class="item" data-search="exhaust_coupon 배기음 쿠폰 렉카 배기음 튜닝">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "exhaust_coupon")">
-              <span>exhaust_coupon</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'exhaust_coupon')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'exhaust_coupon')}">exhaust_coupon</span></div>
             <div class="name">배기음 쿠폰</div>
           </div>
           <div class="meta"><span class="badge">렉카</span><span class="note">배기음 튜닝</span></div>
         </article>
         <article class="item" data-search="special_paint_coupon 특수 페인트 쿠폰 물품 차량 특수페인트 도색에 사용됩니다.">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "special_paint_coupon")">
-              <span>special_paint_coupon</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'special_paint_coupon')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'special_paint_coupon')}">special_paint_coupon</span></div>
             <div class="name">특수 페인트 쿠폰</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">차량 특수페인트 도색에 사용됩니다.</span></div>
@@ -1256,45 +1087,35 @@ footer{padding:28px 0 50px;color:#69737e;font-size:12px;text-align:center}
       <div class="items">
         <article class="item" data-search="hunter_dead 사냥개 앞다리 좀비존 (50만원)">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "hunter_dead")">
-              <span>hunter_dead</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'hunter_dead')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'hunter_dead')}">hunter_dead</span></div>
             <div class="name">사냥개 앞다리</div>
           </div>
           <div class="meta"><span class="badge">좀비존</span><span class="note">(50만원)</span></div>
         </article>
         <article class="item" data-search="hunter_trash 누군가 먹다버린 치킨조각 좀비존 (15만원)">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "hunter_trash")">
-              <span>hunter_trash</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'hunter_trash')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'hunter_trash')}">hunter_trash</span></div>
             <div class="name">누군가 먹다버린 치킨조각</div>
           </div>
           <div class="meta"><span class="badge">좀비존</span><span class="note">(15만원)</span></div>
         </article>
         <article class="item" data-search="hunter_dead1 사냥개 뒷다리 좀비존 (77만원)">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "hunter_dead1")">
-              <span>hunter_dead1</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'hunter_dead1')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'hunter_dead1')}">hunter_dead1</span></div>
             <div class="name">사냥개 뒷다리</div>
           </div>
           <div class="meta"><span class="badge">좀비존</span><span class="note">(77만원)</span></div>
         </article>
         <article class="item" data-search="hunter_dead_pice 사냥개 눈알 좀비존 180만원)">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "hunter_dead_pice")">
-              <span>hunter_dead_pice</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'hunter_dead_pice')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'hunter_dead_pice')}">hunter_dead_pice</span></div>
             <div class="name">사냥개 눈알</div>
           </div>
           <div class="meta"><span class="badge">좀비존</span><span class="note">180만원)</span></div>
         </article>
         <article class="item" data-search="hunter_dead_pice5 돈봉투 좀비존 (270만원)">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "hunter_dead_pice5")">
-              <span>hunter_dead_pice5</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'hunter_dead_pice5')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'hunter_dead_pice5')}">hunter_dead_pice5</span></div>
             <div class="name">돈봉투</div>
           </div>
           <div class="meta"><span class="badge">좀비존</span><span class="note">(270만원)</span></div>
@@ -1308,45 +1129,35 @@ footer{padding:28px 0 50px;color:#69737e;font-size:12px;text-align:center}
       <div class="items">
         <article class="item" data-search="group_ticket 그룹 생성 아이템 물품 그룹 생성">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "group_ticket")">
-              <span>group_ticket</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'group_ticket')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'group_ticket')}">group_ticket</span></div>
             <div class="name">그룹 생성 아이템</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">그룹 생성</span></div>
         </article>
         <article class="item" data-search="group_member 그룹 최대인원 추가 아이템 물품 사용시 최대 인원 10명 증가">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "group_member")">
-              <span>group_member</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'group_member')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'group_member')}">group_member</span></div>
             <div class="name">그룹 최대인원 추가 아이템</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">사용시 최대 인원 10명 증가</span></div>
         </article>
         <article class="item" data-search="group_rename 그룹 상호명 변경 아이템 물품 그룹명 변경">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "group_rename")">
-              <span>group_rename</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'group_rename')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'group_rename')}">group_rename</span></div>
             <div class="name">그룹 상호명 변경 아이템</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">그룹명 변경</span></div>
         </article>
         <article class="item" data-search="group_rank 그룹 추가 직급 아이템 물품 직급 추가">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "group_rank")">
-              <span>group_rank</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'group_rank')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'group_rank')}">group_rank</span></div>
             <div class="name">그룹 추가 직급 아이템</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">직급 추가</span></div>
         </article>
         <article class="item" data-search="group_mark 그룹 표식,로고 변경 아이템 물품 로고 변경">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "group_mark")">
-              <span>group_mark</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'group_mark')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'group_mark')}">group_mark</span></div>
             <div class="name">그룹 표식,로고 변경 아이템</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">로고 변경</span></div>
@@ -1360,99 +1171,77 @@ footer{padding:28px 0 50px;color:#69737e;font-size:12px;text-align:center}
       <div class="items">
         <article class="item" data-search="turn_fishrod_steel 강철 낚싯대 물품 낚시 lv.10 이상 사용 가능한 중급 낚싯대.">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "TURN_fishrod_steel")">
-              <span>TURN_fishrod_steel</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'TURN_fishrod_steel')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'TURN_fishrod_steel')}">TURN_fishrod_steel</span></div>
             <div class="name">강철 낚싯대</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">낚시 Lv.10 이상 사용 가능한 중급 낚싯대.</span></div>
         </article>
         <article class="item" data-search="turn_fishrod_carbon 카본 낚싯대 물품 낚시 lv.20 이상. 희귀 어종을 노릴 수 있다.">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "TURN_fishrod_carbon")">
-              <span>TURN_fishrod_carbon</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'TURN_fishrod_carbon')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'TURN_fishrod_carbon')}">TURN_fishrod_carbon</span></div>
             <div class="name">카본 낚싯대</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">낚시 Lv.20 이상. 희귀 어종을 노릴 수 있다.</span></div>
         </article>
         <article class="item" data-search="turn_fishrod_titan 티타늄 낚싯대 물품 낚시 lv.35 이상의 고급 낚싯대.">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "TURN_fishrod_titan")">
-              <span>TURN_fishrod_titan</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'TURN_fishrod_titan')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'TURN_fishrod_titan')}">TURN_fishrod_titan</span></div>
             <div class="name">티타늄 낚싯대</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">낚시 Lv.35 이상의 고급 낚싯대.</span></div>
         </article>
         <article class="item" data-search="turn_fishrod_legend 전설의 낚싯대 물품 낚시 lv.50. 전설급 어종을 낚을 수 있다.">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "TURN_fishrod_legend")">
-              <span>TURN_fishrod_legend</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'TURN_fishrod_legend')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'TURN_fishrod_legend')}">TURN_fishrod_legend</span></div>
             <div class="name">전설의 낚싯대</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">낚시 Lv.50. 전설급 어종을 낚을 수 있다.</span></div>
         </article>
         <article class="item" data-search="turn_fishbait_prem 고급 미끼 물품 고급 어종을 유인하는 미끼.">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "TURN_fishbait_prem")">
-              <span>TURN_fishbait_prem</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'TURN_fishbait_prem')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'TURN_fishbait_prem')}">TURN_fishbait_prem</span></div>
             <div class="name">고급 미끼</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">고급 어종을 유인하는 미끼.</span></div>
         </article>
         <article class="item" data-search="turn_fishbait_spec 특급 미끼 물품 희귀·전설 어종 확률을 높이는 미끼.">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "TURN_fishbait_spec")">
-              <span>TURN_fishbait_spec</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'TURN_fishbait_spec')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'TURN_fishbait_spec')}">TURN_fishbait_spec</span></div>
             <div class="name">특급 미끼</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">희귀·전설 어종 확률을 높이는 미끼.</span></div>
         </article>
         <article class="item" data-search="turn_shiprod_enh 선상 강화 낚싯대 물품 선상 lv.10 이상의 강화 낚싯대.">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "TURN_shiprod_enh")">
-              <span>TURN_shiprod_enh</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'TURN_shiprod_enh')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'TURN_shiprod_enh')}">TURN_shiprod_enh</span></div>
             <div class="name">선상 강화 낚싯대</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">선상 Lv.10 이상의 강화 낚싯대.</span></div>
         </article>
         <article class="item" data-search="turn_shiprod_deep 선상 심해 낚싯대 물품 선상 lv.20 이상. 심해 어종 대응.">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "TURN_shiprod_deep")">
-              <span>TURN_shiprod_deep</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'TURN_shiprod_deep')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'TURN_shiprod_deep')}">TURN_shiprod_deep</span></div>
             <div class="name">선상 심해 낚싯대</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">선상 Lv.20 이상. 심해 어종 대응.</span></div>
         </article>
         <article class="item" data-search="turn_shiprod_legend 선상 전설 낚싯대 물품 선상 lv.30. 전설급 심해어를 낚는다.">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "TURN_shiprod_legend")">
-              <span>TURN_shiprod_legend</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'TURN_shiprod_legend')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'TURN_shiprod_legend')}">TURN_shiprod_legend</span></div>
             <div class="name">선상 전설 낚싯대</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">선상 Lv.30. 전설급 심해어를 낚는다.</span></div>
         </article>
         <article class="item" data-search="turn_shipbait_spec 선상 특급 미끼 물품 선상 희귀 어종 확률을 높이는 미끼.">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "TURN_shipbait_spec")">
-              <span>TURN_shipbait_spec</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'TURN_shipbait_spec')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'TURN_shipbait_spec')}">TURN_shipbait_spec</span></div>
             <div class="name">선상 특급 미끼</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">선상 희귀 어종 확률을 높이는 미끼.</span></div>
         </article>
         <article class="item" data-search="turn_shipbait_deep 선상 심해 미끼 물품 선상 전설 어종 확률을 높이는 미끼.">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "TURN_shipbait_deep")">
-              <span>TURN_shipbait_deep</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'TURN_shipbait_deep')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'TURN_shipbait_deep')}">TURN_shipbait_deep</span></div>
             <div class="name">선상 심해 미끼</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">선상 전설 어종 확률을 높이는 미끼.</span></div>
@@ -1466,27 +1255,21 @@ footer{padding:28px 0 50px;color:#69737e;font-size:12px;text-align:center}
       <div class="items">
         <article class="item" data-search="o2_tank_s 소형 산소통 물품 스쿠버 잠수용 소형 산소통. 장착 시 약 90초 잠수 가능.">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "o2_tank_s")">
-              <span>o2_tank_s</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'o2_tank_s')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'o2_tank_s')}">o2_tank_s</span></div>
             <div class="name">소형 산소통</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">스쿠버 잠수용 소형 산소통. 장착 시 약 90초 잠수 가능.</span></div>
         </article>
         <article class="item" data-search="o2_tank_m 중형 산소통 물품 스쿠버 잠수용 중형 산소통. 장착 시 약 150초 잠수 가능.">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "o2_tank_m")">
-              <span>o2_tank_m</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'o2_tank_m')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'o2_tank_m')}">o2_tank_m</span></div>
             <div class="name">중형 산소통</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">스쿠버 잠수용 중형 산소통. 장착 시 약 150초 잠수 가능.</span></div>
         </article>
         <article class="item" data-search="o2_tank_l 대형 산소통 물품 스쿠버 잠수용 대형 산소통. 장착 시 약 240초 잠수 가능.">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "o2_tank_l")">
-              <span>o2_tank_l</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'o2_tank_l')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'o2_tank_l')}">o2_tank_l</span></div>
             <div class="name">대형 산소통</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">스쿠버 잠수용 대형 산소통. 장착 시 약 240초 잠수 가능.</span></div>
@@ -1500,81 +1283,63 @@ footer{padding:28px 0 50px;color:#69737e;font-size:12px;text-align:center}
       <div class="items">
         <article class="item" data-search="summer_ticket 썸머 이벤트 티켓 물품 여름 이벤트 호러게임 입장권">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "summer_ticket")">
-              <span>summer_ticket</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'summer_ticket')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'summer_ticket')}">summer_ticket</span></div>
             <div class="name">썸머 이벤트 티켓</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">여름 이벤트 호러게임 입장권</span></div>
         </article>
         <article class="item" data-search="summer_coin 썸머 이벤트 코인 물품 여름 이벤트 교환권">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "summer_coin")">
-              <span>summer_coin</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'summer_coin')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'summer_coin')}">summer_coin</span></div>
             <div class="name">썸머 이벤트 코인</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">여름 이벤트 교환권</span></div>
         </article>
         <article class="item" data-search="summer_shard 여름 치장 조각 물품 모으면 여름 치장 세트로 교환할 수 있다">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "summer_shard")">
-              <span>summer_shard</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'summer_shard')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'summer_shard')}">summer_shard</span></div>
             <div class="name">여름 치장 조각</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">모으면 여름 치장 세트로 교환할 수 있다</span></div>
         </article>
         <article class="item" data-search="ltd_skin_shard 한정 스킨 조각 물품 모으면 한정 스킨으로 교환할 수 있다">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "ltd_skin_shard")">
-              <span>ltd_skin_shard</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'ltd_skin_shard')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'ltd_skin_shard')}">ltd_skin_shard</span></div>
             <div class="name">한정 스킨 조각</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">모으면 한정 스킨으로 교환할 수 있다</span></div>
         </article>
         <article class="item" data-search="summer_sunglasses 여름 선글라스 물품 유형 : 치장 여름 이벤트 한정">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "summer_sunglasses")">
-              <span>summer_sunglasses</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'summer_sunglasses')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'summer_sunglasses')}">summer_sunglasses</span></div>
             <div class="name">여름 선글라스</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">유형 : 치장 여름 이벤트 한정</span></div>
         </article>
         <article class="item" data-search="summer_icebar 아이스바 물품 유형 : 치장 여름 이벤트 한정">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "summer_icebar")">
-              <span>summer_icebar</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'summer_icebar')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'summer_icebar')}">summer_icebar</span></div>
             <div class="name">아이스바</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">유형 : 치장 여름 이벤트 한정</span></div>
         </article>
         <article class="item" data-search="summer_bubbletool 버블건 물품 유형 : 치장 여름 이벤트 한정">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "summer_bubbletool")">
-              <span>summer_bubbletool</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'summer_bubbletool')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'summer_bubbletool')}">summer_bubbletool</span></div>
             <div class="name">버블건</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">유형 : 치장 여름 이벤트 한정</span></div>
         </article>
         <article class="item" data-search="summer_swimring1 여름 튜브 a 물품 유형 : 치장 여름 이벤트 한정">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "summer_swimring1")">
-              <span>summer_swimring1</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'summer_swimring1')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'summer_swimring1')}">summer_swimring1</span></div>
             <div class="name">여름 튜브 A</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">유형 : 치장 여름 이벤트 한정</span></div>
         </article>
         <article class="item" data-search="summer_swimring2 여름 튜브 b 물품 유형 : 치장 여름 이벤트 한정">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "summer_swimring2")">
-              <span>summer_swimring2</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'summer_swimring2')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'summer_swimring2')}">summer_swimring2</span></div>
             <div class="name">여름 튜브 B</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">유형 : 치장 여름 이벤트 한정</span></div>
@@ -1588,108 +1353,84 @@ footer{padding:28px 0 50px;color:#69737e;font-size:12px;text-align:center}
       <div class="items">
         <article class="item" data-search="metaldetector 금속 탐지기 물품 ">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "metaldetector")">
-              <span>metaldetector</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'metaldetector')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'metaldetector')}">metaldetector</span></div>
             <div class="name">금속 탐지기</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">—</span></div>
         </article>
         <article class="item" data-search="md_battery 탐지기 배터리 물품 [금속탐지] 금속탐지기 충전용 배터리. 발굴 시 소모되며, 필드에서 r키로 교체한다.">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "md_battery")">
-              <span>md_battery</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'md_battery')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'md_battery')}">md_battery</span></div>
             <div class="name">탐지기 배터리</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">[금속탐지] 금속탐지기 충전용 배터리. 발굴 시 소모되며, 필드에서 R키로 교체한다.</span></div>
         </article>
         <article class="item" data-search="md_trash 잡동사니 물품 [금속탐지] 발굴로 나온 고철 쓰레기. 해변 매표소에서 헐값에 판매할 수 있다.">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "md_trash")">
-              <span>md_trash</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'md_trash')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'md_trash')}">md_trash</span></div>
             <div class="name">잡동사니</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">[금속탐지] 발굴로 나온 고철 쓰레기. 해변 매표소에서 헐값에 판매할 수 있다.</span></div>
         </article>
         <article class="item" data-search="md_coin 오래된 동전 물품 [금속탐지] 해변 매표소에서 판매할 수 있다.">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "md_coin")">
-              <span>md_coin</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'md_coin')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'md_coin')}">md_coin</span></div>
             <div class="name">오래된 동전</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">[금속탐지] 해변 매표소에서 판매할 수 있다.</span></div>
         </article>
         <article class="item" data-search="md_copper 구리 조각 물품 [금속탐지] 판매하거나 탐지기 강화 재료로 쓴다.">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "md_copper")">
-              <span>md_copper</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'md_copper')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'md_copper')}">md_copper</span></div>
             <div class="name">구리 조각</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">[금속탐지] 판매하거나 탐지기 강화 재료로 쓴다.</span></div>
         </article>
         <article class="item" data-search="md_iron 금속 철 물품 [금속탐지] 판매하거나 탐지기 강화 재료로 쓴다.">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "md_iron")">
-              <span>md_iron</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'md_iron')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'md_iron')}">md_iron</span></div>
             <div class="name">금속 철</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">[금속탐지] 판매하거나 탐지기 강화 재료로 쓴다.</span></div>
         </article>
         <article class="item" data-search="pobie_se1 포비의 금반지 물품 제작소 1시즌아이템">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "pobie_se1")">
-              <span>pobie_se1</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'pobie_se1')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'pobie_se1')}">pobie_se1</span></div>
             <div class="name">포비의 금반지</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">제작소 1시즌아이템</span></div>
         </article>
         <article class="item" data-search="kimtasikse1 김태식의 스팅어 핸들 물품 제작소 1시즌아이템">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "kimtasikse1")">
-              <span>kimtasikse1</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'kimtasikse1')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'kimtasikse1')}">kimtasikse1</span></div>
             <div class="name">김태식의 스팅어 핸들</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">제작소 1시즌아이템</span></div>
         </article>
         <article class="item" data-search="md_silver 은 조각 물품 [금속탐지] 판매하거나 탐지기 강화 재료로 쓴다.">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "md_silver")">
-              <span>md_silver</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'md_silver')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'md_silver')}">md_silver</span></div>
             <div class="name">은 조각</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">[금속탐지] 판매하거나 탐지기 강화 재료로 쓴다.</span></div>
         </article>
         <article class="item" data-search="md_gold 금 조각 물품 [금속탐지] 판매하거나 탐지기 강화 재료로 쓴다.">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "md_gold")">
-              <span>md_gold</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'md_gold')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'md_gold')}">md_gold</span></div>
             <div class="name">금 조각</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">[금속탐지] 판매하거나 탐지기 강화 재료로 쓴다.</span></div>
         </article>
         <article class="item" data-search="md_watch 시계 물품 [금속탐지] 값나가는 골동 시계. 판매하거나 고급 강화에 쓴다.">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "md_watch")">
-              <span>md_watch</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'md_watch')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'md_watch')}">md_watch</span></div>
             <div class="name">시계</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">[금속탐지] 값나가는 골동 시계. 판매하거나 고급 강화에 쓴다.</span></div>
         </article>
         <article class="item" data-search="md_ring 반지 물품 [금속탐지] 보석 박힌 반지. 잭팟! 판매하거나 최고급 강화에 쓴다.">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "md_ring")">
-              <span>md_ring</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'md_ring')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'md_ring')}">md_ring</span></div>
             <div class="name">반지</div>
           </div>
           <div class="meta"><span class="badge">물품</span><span class="note">[금속탐지] 보석 박힌 반지. 잭팟! 판매하거나 최고급 강화에 쓴다.</span></div>
@@ -1703,432 +1444,336 @@ footer{padding:28px 0 50px;color:#69737e;font-size:12px;text-align:center}
       <div class="items">
         <article class="item" data-search="ngranturismo 현대 비전 차량 한정">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "ngranturismo")">
-              <span>ngranturismo</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'ngranturismo')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'ngranturismo')}">ngranturismo</span></div>
             <div class="name">현대 비전</div>
           </div>
           <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
         </article>
         <article class="item" data-search="nv74 현대 nv74 비전 차량 한정">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "nv74")">
-              <span>nv74</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'nv74')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'nv74')}">nv74</span></div>
             <div class="name">현대 NV74 비전</div>
           </div>
           <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
         </article>
         <article class="item" data-search="visiongt 맥라렌 비전 차량 한정">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "visiongt")">
-              <span>visiongt</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'visiongt')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'visiongt')}">visiongt</span></div>
             <div class="name">맥라렌 비전</div>
           </div>
           <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
         </article>
         <article class="item" data-search="tachy 헥시온 비전 차량 한정">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "tachy")">
-              <span>tachy</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'tachy')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'tachy')}">tachy</span></div>
             <div class="name">헥시온 비전</div>
           </div>
           <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
         </article>
         <article class="item" data-search="radisgt 어비스 비전 차량 한정">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "radisgt")">
-              <span>radisgt</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'radisgt')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'radisgt')}">radisgt</span></div>
             <div class="name">어비스 비전</div>
           </div>
           <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
         </article>
         <article class="item" data-search="ie ie 비전 gt 차량 한정">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "ie")">
-              <span>ie</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'ie')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'ie')}">ie</span></div>
             <div class="name">ie 비전 GT</div>
           </div>
           <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
         </article>
         <article class="item" data-search="s1000rrc 쿠오님 개인차 차량 한정">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "s1000rrc")">
-              <span>s1000rrc</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 's1000rrc')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 's1000rrc')}">s1000rrc</span></div>
             <div class="name">쿠오님 개인차</div>
           </div>
           <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
         </article>
         <article class="item" data-search="bm_alpine 백곰님 개인차 차량 한정">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "BM_alpine")">
-              <span>BM_alpine</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'BM_alpine')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'BM_alpine')}">BM_alpine</span></div>
             <div class="name">백곰님 개인차</div>
           </div>
           <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
         </article>
         <article class="item" data-search="bolide 부가티 볼리드 차량 한정">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "bolide")">
-              <span>bolide</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'bolide')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'bolide')}">bolide</span></div>
             <div class="name">부가티 볼리드</div>
           </div>
           <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
         </article>
         <article class="item" data-search="develsix 데빌 식스틴 차량 한정">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "develSix")">
-              <span>develSix</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'develSix')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'develSix')}">develSix</span></div>
             <div class="name">데빌 식스틴</div>
           </div>
           <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
         </article>
         <article class="item" data-search="ep9 니오 ep9 차량 한정">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "ep9")">
-              <span>ep9</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'ep9')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'ep9')}">ep9</span></div>
             <div class="name">니오 EP9</div>
           </div>
           <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
         </article>
         <article class="item" data-search="f80 f80 차량 한정">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "f80")">
-              <span>f80</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'f80')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'f80')}">f80</span></div>
             <div class="name">F80</div>
           </div>
           <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
         </article>
         <article class="item" data-search="gr1 토마호크 차량 한정">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "gr1")">
-              <span>gr1</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'gr1')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'gr1')}">gr1</span></div>
             <div class="name">토마호크</div>
           </div>
           <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
         </article>
         <article class="item" data-search="greengt2h 그린 gt 차량 한정">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "greengt2h")">
-              <span>greengt2h</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'greengt2h')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'greengt2h')}">greengt2h</span></div>
             <div class="name">그린 GT</div>
           </div>
           <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
         </article>
         <article class="item" data-search="h4rentitymtr 엔티멕스 gt 차량 한정">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "H4REntityMTR")">
-              <span>H4REntityMTR</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'H4REntityMTR')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'H4REntityMTR')}">H4REntityMTR</span></div>
             <div class="name">엔티멕스 GT</div>
           </div>
           <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
         </article>
         <article class="item" data-search="2018s650p 노블 6 차량 한정">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "2018s650p")">
-              <span>2018s650p</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, '2018s650p')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, '2018s650p')}">2018s650p</span></div>
             <div class="name">노블 6</div>
           </div>
           <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
         </article>
         <article class="item" data-search="tachy 턴 비전 차량 한정">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "tachy")">
-              <span>tachy</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'tachy')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'tachy')}">tachy</span></div>
             <div class="name">턴 비전</div>
           </div>
           <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
         </article>
         <article class="item" data-search="beetlerwb 벤틀리 rwb 차량 한정">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "beetleRWB")">
-              <span>beetleRWB</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'beetleRWB')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'beetleRWB')}">beetleRWB</span></div>
             <div class="name">벤틀리 RWB</div>
           </div>
           <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
         </article>
         <article class="item" data-search="a90pit 쉐도우 펄스 차량 한정">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "a90pit")">
-              <span>a90pit</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'a90pit')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'a90pit')}">a90pit</span></div>
             <div class="name">쉐도우 펄스</div>
           </div>
           <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
         </article>
         <article class="item" data-search="avtr 밴츠 비전 차량 한정">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "avtr")">
-              <span>avtr</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'avtr')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'avtr')}">avtr</span></div>
             <div class="name">밴츠 비전</div>
           </div>
           <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
         </article>
         <article class="item" data-search="bugatticentodieci 부가티 센토디에치 차량 한정">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "bugatticentodieci")">
-              <span>bugatticentodieci</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'bugatticentodieci')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'bugatticentodieci')}">bugatticentodieci</span></div>
             <div class="name">부가티 센토디에치</div>
           </div>
           <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
         </article>
         <article class="item" data-search="county 카운티 차량 한정">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "county")">
-              <span>county</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'county')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'county')}">county</span></div>
             <div class="name">카운티</div>
           </div>
           <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
         </article>
         <article class="item" data-search="essentia 제네시스 에센시아 차량 한정">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "essentia")">
-              <span>essentia</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'essentia')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'essentia')}">essentia</span></div>
             <div class="name">제네시스 에센시아</div>
           </div>
           <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
         </article>
         <article class="item" data-search="ferrari812super 페라리 812 슈퍼 차량 한정">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "ferrari812super")">
-              <span>ferrari812super</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'ferrari812super')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'ferrari812super')}">ferrari812super</span></div>
             <div class="name">페라리 812 슈퍼</div>
           </div>
           <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
         </article>
         <article class="item" data-search="gcram1500 램 차저 1500 차량 한정">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "gcram1500")">
-              <span>gcram1500</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'gcram1500')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'gcram1500')}">gcram1500</span></div>
             <div class="name">램 차저 1500</div>
           </div>
           <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
         </article>
         <article class="item" data-search="hellcat 닷지 챌린저 헬캣 차량 한정">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "hellcat")">
-              <span>hellcat</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'hellcat')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'hellcat')}">hellcat</span></div>
             <div class="name">닷지 챌린저 헬캣</div>
           </div>
           <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
         </article>
         <article class="item" data-search="p900rocket22 밴츠 p900 차량 한정">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "p900rocket22")">
-              <span>p900rocket22</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'p900rocket22')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'p900rocket22')}">p900rocket22</span></div>
             <div class="name">밴츠 P900</div>
           </div>
           <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
         </article>
         <article class="item" data-search="rmodspeed 맥라렌 스피드테일 차량 한정">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "rmodspeed")">
-              <span>rmodspeed</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'rmodspeed')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'rmodspeed')}">rmodspeed</span></div>
             <div class="name">맥라렌 스피드테일</div>
           </div>
           <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
         </article>
         <article class="item" data-search="sscts ssc 투아타라 차량 한정">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "sscts")">
-              <span>sscts</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'sscts')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'sscts')}">sscts</span></div>
             <div class="name">SSC 투아타라</div>
           </div>
           <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
         </article>
         <article class="item" data-search="trezor1 르노 테르조 차량 한정">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "trezor1")">
-              <span>trezor1</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'trezor1')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'trezor1')}">trezor1</span></div>
             <div class="name">르노 테르조</div>
           </div>
           <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
         </article>
         <article class="item" data-search="urusvennum 엘리박스1차)람보르기니 우루스 차량 한정">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "urusvennum")">
-              <span>urusvennum</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'urusvennum')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'urusvennum')}">urusvennum</span></div>
             <div class="name">엘리박스1차)람보르기니 우루스</div>
           </div>
           <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
         </article>
         <article class="item" data-search="gts125 보이져 차량 한정">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "gts125")">
-              <span>gts125</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'gts125')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'gts125')}">gts125</span></div>
             <div class="name">보이져</div>
           </div>
           <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
         </article>
         <article class="item" data-search="vf125 vf125 차량 한정">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "vf125")">
-              <span>vf125</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'vf125')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'vf125')}">vf125</span></div>
             <div class="name">VF125</div>
           </div>
           <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
         </article>
         <article class="item" data-search="beetlerwb 비틀 rwb 컨셉트 차량 한정">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "beetleRWB")">
-              <span>beetleRWB</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'beetleRWB')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'beetleRWB')}">beetleRWB</span></div>
             <div class="name">비틀 RWB 컨셉트</div>
           </div>
           <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
         </article>
         <article class="item" data-search="ocnrrvn100 롤스로이스 컨셉트 차량 한정">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "ocnrrvn100")">
-              <span>ocnrrvn100</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'ocnrrvn100')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'ocnrrvn100')}">ocnrrvn100</span></div>
             <div class="name">롤스로이스 컨셉트</div>
           </div>
           <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
         </article>
         <article class="item" data-search="s63coupe 밴츠 컨셉트 차량 한정">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "s63coupe")">
-              <span>s63coupe</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 's63coupe')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 's63coupe')}">s63coupe</span></div>
             <div class="name">밴츠 컨셉트</div>
           </div>
           <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
         </article>
         <article class="item" data-search="gyuseok_terzo 테르조 led 차량 한정">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "Gyuseok_terzo")">
-              <span>Gyuseok_terzo</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'Gyuseok_terzo')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'Gyuseok_terzo')}">Gyuseok_terzo</span></div>
             <div class="name">테르조 LED</div>
           </div>
           <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
         </article>
         <article class="item" data-search="impronta4 임프론타 led 차량 한정">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "impronta4")">
-              <span>impronta4</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'impronta4')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'impronta4')}">impronta4</span></div>
             <div class="name">임프론타 LED</div>
           </div>
           <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
         </article>
         <article class="item" data-search="scv 람보르기니 시안 led 2 차량 한정">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "scv")">
-              <span>scv</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'scv')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'scv')}">scv</span></div>
             <div class="name">람보르기니 시안 LED 2</div>
           </div>
           <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
         </article>
         <article class="item" data-search="duckcar 엘리박스1차)오리차 차량 한정">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "duckcar")">
-              <span>duckcar</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'duckcar')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'duckcar')}">duckcar</span></div>
             <div class="name">엘리박스1차)오리차</div>
           </div>
           <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
         </article>
         <article class="item" data-search="ppht3 세이버 차량 한정">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "ppht3")">
-              <span>ppht3</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'ppht3')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'ppht3')}">ppht3</span></div>
             <div class="name">세이버</div>
           </div>
           <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
         </article>
         <article class="item" data-search="pv_bugatti 부가티 미니카 차량 한정">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "PV_bugatti")">
-              <span>PV_bugatti</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'PV_bugatti')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'PV_bugatti')}">PV_bugatti</span></div>
             <div class="name">부가티 미니카</div>
           </div>
           <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
         </article>
         <article class="item" data-search="pv_bugvr 부가티 미니카 2 차량 한정">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "PV_bugvr")">
-              <span>PV_bugvr</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'PV_bugvr')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'PV_bugvr')}">PV_bugvr</span></div>
             <div class="name">부가티 미니카 2</div>
           </div>
           <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
         </article>
         <article class="item" data-search="pv_dawn 롤스로이스 미니카 차량 한정">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "PV_dawn")">
-              <span>PV_dawn</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'PV_dawn')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'PV_dawn')}">PV_dawn</span></div>
             <div class="name">롤스로이스 미니카</div>
           </div>
           <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
         </article>
         <article class="item" data-search="pv_gtr gtr 미니카 차량 한정">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "PV_gtr")">
-              <span>PV_gtr</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'PV_gtr')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'PV_gtr')}">PV_gtr</span></div>
             <div class="name">GTR 미니카</div>
           </div>
           <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
         </article>
         <article class="item" data-search="pv_jeep 지프 미니카 차량 한정">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "PV_jeep")">
-              <span>PV_jeep</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'PV_jeep')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'PV_jeep')}">PV_jeep</span></div>
             <div class="name">지프 미니카</div>
           </div>
           <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
         </article>
         <article class="item" data-search="pv_sianr 람보르기니 시안 미니카 차량 한정">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "PV_sianr")">
-              <span>PV_sianr</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'PV_sianr')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'PV_sianr')}">PV_sianr</span></div>
             <div class="name">람보르기니 시안 미니카</div>
           </div>
           <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
         </article>
         <article class="item" data-search="pv_rover 랜드로버 미니카 차량 한정">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "PV_rover")">
-              <span>PV_rover</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'PV_rover')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'PV_rover')}">PV_rover</span></div>
             <div class="name">랜드로버 미니카</div>
           </div>
           <div class="meta"><span class="badge">차량</span><span class="note">한정</span></div>
@@ -2142,27 +1787,21 @@ footer{padding:28px 0 50px;color:#69737e;font-size:12px;text-align:center}
       <div class="items">
         <article class="item" data-search="speeder 보트] 스피더 차량 보트 / 3,000,000,000원">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "speeder")">
-              <span>speeder</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'speeder')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'speeder')}">speeder</span></div>
             <div class="name">보트] 스피더</div>
           </div>
           <div class="meta"><span class="badge">차량</span><span class="note">보트 / 3,000,000,000원</span></div>
         </article>
         <article class="item" data-search="dinghy 보트] 딩이 차량 보트 / 1,000,000,000원">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "dinghy")">
-              <span>dinghy</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'dinghy')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'dinghy')}">dinghy</span></div>
             <div class="name">보트] 딩이</div>
           </div>
           <div class="meta"><span class="badge">차량</span><span class="note">보트 / 1,000,000,000원</span></div>
         </article>
         <article class="item" data-search="seashark 보트] 씨샤크 차량 보트 / 500,000,000원">
           <div class="item-main">
-            <button class="code" type="button" title="코드 복사" onclick="copyCode(this, "seashark")">
-              <span>seashark</span><span class="copy">복사</span>
-            </button>
+            <div class="code" title="코드를 클릭하면 복사됩니다."><span class="code-text" role="button" tabindex="0" onclick="copyCode(this, 'seashark')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();copyCode(this, 'seashark')}">seashark</span></div>
             <div class="name">보트] 씨샤크</div>
           </div>
           <div class="meta"><span class="badge">차량</span><span class="note">보트 / 500,000,000원</span></div>
@@ -2204,17 +1843,112 @@ function filter(){
 }
 input.addEventListener('input',filter);
 
-async function copyCode(btn,code){
-  try{
-    await navigator.clipboard.writeText(code);
-    const label=btn.querySelector('.copy');
-    const old=label.textContent; label.textContent='복사됨';
-    setTimeout(()=>label.textContent=old,900);
-  }catch(e){
-    const ta=document.createElement('textarea');ta.value=code;document.body.appendChild(ta);
-    ta.select();document.execCommand('copy');ta.remove();
+function copyCode(btn, code){
+  let copied = false;
+  try {
+    const ta = document.createElement('textarea');
+    ta.value = code;
+    ta.setAttribute('readonly', '');
+    ta.style.position = 'fixed';
+    ta.style.left = '-9999px';
+    ta.style.top = '0';
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
+    ta.setSelectionRange(0, ta.value.length);
+    copied = document.execCommand('copy');
+    ta.remove();
+  } catch (e) {}
+
+  if (!copied && navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(code).then(() => showCopied(btn)).catch(() => showCopied(btn, false));
+    return;
   }
+  showCopied(btn, copied);
 }
+
+function showCopied(btn, copied = true){
+  const label = btn.querySelector('.copy');
+  const old = label.textContent;
+  label.textContent = copied ? '복사됨' : '복사 실패';
+  setTimeout(() => label.textContent = old, 1000);
+}
+</script>
+<script id="7brjk8">
+function copyCode(el, code){
+  const text = String(code);
+  let ok = false;
+
+  // Works on HTTPS / localhost when clipboard permission is available.
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(function(){
+      showCodeCopied(el);
+    }).catch(function(){
+      fallbackCopy(el, text);
+    });
+    return;
+  }
+
+  fallbackCopy(el, text);
+}
+
+function fallbackCopy(el, text){
+  try {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.setAttribute('readonly', '');
+    ta.style.position = 'fixed';
+    ta.style.left = '-10000px';
+    ta.style.top = '0';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
+    ta.setSelectionRange(0, ta.value.length);
+    ok = document.execCommand('copy');
+    ta.remove();
+
+    if (ok) {
+      showCodeCopied(el);
+      return;
+    }
+  } catch(e) {}
+
+  // file:// 환경에서 브라우저가 복사를 차단하는 경우,
+  // 코드명 자체를 선택해서 Ctrl+C로 바로 복사할 수 있게 한다.
+  selectCode(el);
+}
+
+function selectCode(el){
+  const range = document.createRange();
+  range.selectNodeContents(el);
+  const selection = window.getSelection();
+  selection.removeAllRanges();
+  selection.addRange(range);
+  showCodeCopied(el, '선택됨');
+}
+
+function showCodeCopied(el, message){
+  const old = el.textContent;
+  el.textContent = message || '복사됨';
+  el.classList.add('code-copied');
+
+  clearTimeout(el._copyTimer);
+  el._copyTimer = setTimeout(function(){
+    el.textContent = old;
+    el.classList.remove('code-copied');
+  }, 900);
+}
+</script>
+<script id="code-text-key-handler">
+document.addEventListener('keydown', function(e){
+  const el = document.activeElement;
+  if (!el || !el.classList || !el.classList.contains('code-text')) return;
+  if (e.key === 'Enter' || e.key === ' ') {
+    e.preventDefault();
+    copyCode(el, el.textContent);
+  }
+});
 </script>
 </body>
 </html>
